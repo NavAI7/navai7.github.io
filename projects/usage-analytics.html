@@ -118,6 +118,54 @@
 
     <section id="system" class="doc-section reveal">
       <h2>System approach</h2>
+      <div class="doc-figure">
+        <svg viewBox="0 0 860 310" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Architecture: click events feed a per-user daily graph, which merges into one aggregate monthly graph; that aggregate graph is what surfaces business-process insight, through an interactive diagram, four report views, and an agent-written summary." style="width:100%;height:auto;display:block;background:var(--paper-2);">
+          <defs>
+            <marker id="arrow-usage" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+              <path d="M0,0 L10,5 L0,10 z" fill="var(--muted)" />
+            </marker>
+          </defs>
+          <path d="M180,150 L200,150" fill="none" stroke="var(--line-strong)" stroke-width="1.5" marker-end="url(#arrow-usage)" />
+          <path d="M360,150 L395,150" fill="none" stroke="var(--line-strong)" stroke-width="1.5" marker-end="url(#arrow-usage)" />
+          <path d="M565,150 C590,150 590,75 615,75" fill="none" stroke="var(--line-strong)" stroke-width="1.5" marker-end="url(#arrow-usage)" />
+          <path d="M565,150 L615,165" fill="none" stroke="var(--line-strong)" stroke-width="1.5" marker-end="url(#arrow-usage)" />
+          <path d="M565,150 C590,150 590,255 615,255" fill="none" stroke="var(--line-strong)" stroke-width="1.5" marker-end="url(#arrow-usage)" />
+
+          <g>
+            <rect x="20" y="120" width="160" height="60" rx="8" fill="var(--paper)" stroke="var(--line-strong)" stroke-width="1.5" />
+            <text x="100" y="146" text-anchor="middle" font-family="var(--mono)" font-size="12" fill="var(--ink)">Click events</text>
+            <text x="100" y="162" text-anchor="middle" font-family="var(--mono)" font-size="9" fill="var(--muted)">views · reports · actions</text>
+          </g>
+          <g>
+            <rect x="200" y="120" width="160" height="60" rx="8" fill="var(--paper)" stroke="var(--line-strong)" stroke-width="1.5" />
+            <text x="280" y="146" text-anchor="middle" font-family="var(--mono)" font-size="12" fill="var(--ink)">Daily graph</text>
+            <text x="280" y="162" text-anchor="middle" font-family="var(--mono)" font-size="10" fill="var(--muted)">Start → steps → End</text>
+          </g>
+          <g>
+            <rect x="395" y="120" width="170" height="60" rx="8" fill="var(--paper)" stroke="var(--accent-dark)" stroke-width="2" />
+            <text x="480" y="146" text-anchor="middle" font-family="var(--mono)" font-size="12" fill="var(--ink)">Monthly merge</text>
+            <text x="480" y="162" text-anchor="middle" font-family="var(--mono)" font-size="10" fill="var(--muted)">aggregate graph</text>
+          </g>
+
+          <rect x="600" y="15" width="205" height="280" rx="10" fill="none" stroke="var(--line-strong)" stroke-dasharray="5 4" />
+          <text x="615" y="32" font-family="var(--mono)" font-size="10" fill="var(--muted)" letter-spacing="0.06em">BUSINESS PROCESS INSIGHT</text>
+
+          <g>
+            <rect x="615" y="50" width="170" height="50" rx="8" fill="var(--paper)" stroke="var(--line-strong)" stroke-width="1.5" />
+            <text x="700" y="80" text-anchor="middle" font-family="var(--mono)" font-size="12" fill="var(--ink)">Interactive diagram</text>
+          </g>
+          <g>
+            <rect x="615" y="140" width="170" height="50" rx="8" fill="var(--paper)" stroke="var(--line-strong)" stroke-width="1.5" />
+            <text x="700" y="170" text-anchor="middle" font-family="var(--mono)" font-size="12" fill="var(--ink)">4 report views</text>
+          </g>
+          <g>
+            <rect x="615" y="230" width="170" height="50" rx="8" fill="var(--ink)" stroke="var(--ink)" stroke-width="1.5" />
+            <text x="700" y="255" text-anchor="middle" font-family="var(--mono)" font-size="12" fill="var(--paper)">Agent summary</text>
+            <text x="700" y="270" text-anchor="middle" font-family="var(--mono)" font-size="10" fill="var(--void-muted)">plain-English recap</text>
+          </g>
+        </svg>
+        <div class="doc-figure-caption">Architecture — per-user daily graphs merge into one aggregate monthly graph, and that aggregate graph is what surfaces business-process insight: through an interactive diagram, four report views, and the agent's plain-English monthly summary.</div>
+      </div>
       <h3>Clicks into daily graphs</h3>
       <p>
         For every user and every day, the system reconstructs the sequence of views, reports, and

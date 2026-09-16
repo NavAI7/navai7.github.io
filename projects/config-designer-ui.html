@@ -116,6 +116,61 @@
 
     <section id="system" class="doc-section reveal">
       <h2>System approach</h2>
+      <div class="doc-figure">
+        <svg viewBox="0 0 900 360" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Architecture: a shared Config Graph backs both the Explorer and Schema views, which stay in sync and expose Traverse, Add to Chat, and View Data actions on every entity; Add to Chat feeds the Config tab's Solution Architect and the Data tab's EKG Data Populator, which live-preview their work back onto the same canvas." style="width:100%;height:auto;display:block;background:var(--paper-2);">
+          <defs>
+            <marker id="arrow-ui" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+              <path d="M0,0 L10,5 L0,10 z" fill="var(--muted)" />
+            </marker>
+          </defs>
+          <path d="M400,95 L245,120" fill="none" stroke="var(--line-strong)" stroke-width="1.5" marker-end="url(#arrow-ui)" />
+          <path d="M500,95 L655,120" fill="none" stroke="var(--line-strong)" stroke-width="1.5" marker-end="url(#arrow-ui)" />
+          <path d="M330,145 L565,145" fill="none" stroke="var(--line-strong)" stroke-width="1.5" marker-end="url(#arrow-ui)" />
+          <path d="M565,160 L330,160" fill="none" stroke="var(--line-strong)" stroke-width="1.5" marker-end="url(#arrow-ui)" />
+          <path d="M280,170 L280,205" fill="none" stroke="var(--line-strong)" stroke-width="1.5" marker-end="url(#arrow-ui)" />
+          <path d="M620,170 L620,205" fill="none" stroke="var(--line-strong)" stroke-width="1.5" marker-end="url(#arrow-ui)" />
+          <path d="M340,251 L245,280" fill="none" stroke="var(--line-strong)" stroke-width="1.5" marker-end="url(#arrow-ui)" />
+          <path d="M560,251 L655,280" fill="none" stroke="var(--line-strong)" stroke-width="1.5" marker-end="url(#arrow-ui)" />
+          <path d="M200,280 C 120,235 150,150 195,120" fill="none" stroke="var(--muted)" stroke-width="1.5" stroke-dasharray="4 3" marker-end="url(#arrow-ui)" />
+          <path d="M700,280 C 780,235 750,150 705,120" fill="none" stroke="var(--muted)" stroke-width="1.5" stroke-dasharray="4 3" marker-end="url(#arrow-ui)" />
+
+          <g>
+            <rect x="360" y="45" width="180" height="50" rx="8" fill="var(--paper)" stroke="var(--accent-dark)" stroke-width="2" />
+            <text x="450" y="66" text-anchor="middle" font-family="var(--mono)" font-size="12" fill="var(--ink)">Config Graph</text>
+            <text x="450" y="80" text-anchor="middle" font-family="var(--mono)" font-size="10" fill="var(--muted)">shared, one source</text>
+          </g>
+
+          <g>
+            <rect x="120" y="120" width="160" height="50" rx="8" fill="var(--paper)" stroke="var(--line-strong)" stroke-width="1.5" />
+            <text x="200" y="141" text-anchor="middle" font-family="var(--mono)" font-size="12" fill="var(--ink)">Explorer</text>
+            <text x="200" y="155" text-anchor="middle" font-family="var(--mono)" font-size="10" fill="var(--muted)">search-first list</text>
+          </g>
+          <g>
+            <rect x="620" y="120" width="160" height="50" rx="8" fill="var(--paper)" stroke="var(--line-strong)" stroke-width="1.5" />
+            <text x="700" y="141" text-anchor="middle" font-family="var(--mono)" font-size="12" fill="var(--ink)">Schema</text>
+            <text x="700" y="155" text-anchor="middle" font-family="var(--mono)" font-size="10" fill="var(--muted)">visual graph view</text>
+          </g>
+
+          <g>
+            <rect x="200" y="205" width="500" height="46" rx="8" fill="var(--paper)" stroke="var(--line-strong)" stroke-width="1.5" />
+            <text x="450" y="233" text-anchor="middle" font-family="var(--mono)" font-size="11.5" fill="var(--ink)">Traverse to · Add to Chat · View Data</text>
+          </g>
+
+          <g>
+            <rect x="90" y="280" width="200" height="55" rx="8" fill="var(--ink)" stroke="var(--ink)" stroke-width="1.5" />
+            <text x="190" y="303" text-anchor="middle" font-family="var(--mono)" font-size="11.5" fill="var(--paper)">Config tab</text>
+            <text x="190" y="319" text-anchor="middle" font-family="var(--mono)" font-size="10" fill="var(--void-muted)">o9 Solution Architect</text>
+          </g>
+          <g>
+            <rect x="610" y="280" width="200" height="55" rx="8" fill="var(--ink)" stroke="var(--ink)" stroke-width="1.5" />
+            <text x="710" y="303" text-anchor="middle" font-family="var(--mono)" font-size="11.5" fill="var(--paper)">Data tab</text>
+            <text x="710" y="319" text-anchor="middle" font-family="var(--mono)" font-size="10" fill="var(--void-muted)">EKG Data Populator</text>
+          </g>
+          <text x="450" y="180" text-anchor="middle" font-family="var(--mono)" font-size="10" fill="var(--muted)">selection syncs both ways</text>
+          <text x="450" y="269" text-anchor="middle" font-family="var(--mono)" font-size="10" fill="var(--muted)">live preview back onto canvas</text>
+        </svg>
+        <div class="doc-figure-caption">Architecture — Explorer and Schema read and write the same Config Graph and stay in sync; Add to Chat hands entities to whichever assistant panel is open, and both live-preview their work back onto the canvas the configurator is already looking at.</div>
+      </div>
       <h3>Explorer and Schema, one graph</h3>
       <p>
         The page splits into an <strong>Explorer</strong>, search-first, grouped by category, and a
