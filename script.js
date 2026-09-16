@@ -1,3 +1,5 @@
+const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
 // Scroll reveal
 const revealEls = document.querySelectorAll('.reveal');
 const io = new IntersectionObserver((entries) => {
@@ -23,7 +25,7 @@ updateProgress();
 
 // Custom cursor (desktop / fine pointer only)
 const cursor = document.getElementById('cursorDot');
-if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+if (!prefersReducedMotion && window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
   window.addEventListener('mousemove', (e) => {
     cursor.classList.add('active');
     cursor.style.left = e.clientX + 'px';
@@ -43,8 +45,10 @@ function updateParallax() {
   if (heroBgText) heroBgText.style.transform = `translate(-50%, ${y * 0.18}px)`;
   if (heroPhoto) heroPhoto.style.transform = `translateY(${y * -0.06}px)`;
 }
-window.addEventListener('scroll', updateParallax, { passive: true });
-updateParallax();
+if (!prefersReducedMotion) {
+  window.addEventListener('scroll', updateParallax, { passive: true });
+  updateParallax();
+}
 
 // Mobile nav toggle
 const navToggle = document.getElementById('navToggle');
