@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Config Designer UI — Case Study — Navneeth Anil Kumar</title>
+<meta name="description" content="Case study: Config Designer UI (Config Explorer), o9 Solutions. An AI-first, graph-aware workspace for tenant configuration." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles.css?v=2" />
+<link rel="stylesheet" href="case-study.css" />
+</head>
+<body>
+
+<div class="grain"></div>
+<div class="cursor-dot" id="cursorDot"></div>
+
+<header class="doc-header">
+  <div class="doc-header-inner">
+    <a href="../index.html#projects" class="doc-back">&larr; Back to Selected Work</a>
+    <p class="doc-eyebrow">Flagship 03 &middot; Agentic UI &middot; Solution Architect Agent</p>
+    <h1 class="doc-title">Config Designer UI</h1>
+    <p class="doc-subtitle">
+      An AI-first, graph-aware workspace for tenant configuration, built so implementers can see a
+      solution before they change it, and watch an agent build or extend it live, not just read
+      about it after the fact.
+    </p>
+    <div class="doc-meta">
+      <div><span>Role</span><strong>Product Manager, AI R&amp;D</strong></div>
+      <div><span>Org</span><strong>o9 Solutions</strong></div>
+      <div><span>Internally known as</span><strong>Config Explorer</strong></div>
+    </div>
+  </div>
+</header>
+
+<div class="doc-skim-wrap">
+  <p class="doc-skim-label">TL;DR</p>
+  <div class="doc-skim">
+    <div class="doc-skim-item"><span>Problem</span><p>No visual way to see how a tenant was actually configured before changing it; browsing, data inspection, and AI help lived in three disconnected tools.</p></div>
+    <div class="doc-skim-item"><span>User</span><p>Solution architects and implementation consultants configuring tenants day to day.</p></div>
+    <div class="doc-skim-item"><span>Decision</span><p>Built Explorer, Schema, and the AI assistant against one shared graph, and split the assistant into Config and Data tabs so structural changes and data population could never blur together.</p></div>
+    <div class="doc-skim-item"><span>Outcome</span><p>Replaced a workflow implementers actively avoided with one they now use to review and approve agent-proposed plans.</p></div>
+    <div class="doc-skim-item"><span>My role</span><p>Drove the search-first design call, the one-action-set-per-entity decision, and the Config/Data trust split.</p></div>
+  </div>
+</div>
+
+<div class="doc-layout">
+  <aside class="doc-toc">
+    <div class="doc-toc-head">Contents</div>
+    <div class="doc-toc-progress"><div class="doc-toc-progress-bar"></div></div>
+    <ol>
+      <li><a href="#problem"><span class="doc-toc-num">01</span>Problem</a></li>
+      <li><a href="#users"><span class="doc-toc-num">02</span>Users</a></li>
+      <li><a href="#why-failed"><span class="doc-toc-num">03</span>Why existing approaches failed</a></li>
+      <li><a href="#insight"><span class="doc-toc-num">04</span>Product insight</a></li>
+      <li><a href="#system"><span class="doc-toc-num">05</span>System approach</a></li>
+      <li><a href="#pm-decisions"><span class="doc-toc-num">06</span>Key PM decisions</a></li>
+      <li><a href="#trust"><span class="doc-toc-num">07</span>Human-in-the-loop &amp; trust</a></li>
+      <li><a href="#tradeoffs"><span class="doc-toc-num">08</span>Tradeoffs &amp; risks</a></li>
+      <li><a href="#impact"><span class="doc-toc-num">09</span>Impact</a></li>
+    </ol>
+  </aside>
+
+  <main class="doc-content">
+
+    <section id="problem" class="doc-section reveal">
+      <h2>Problem</h2>
+      <p class="doc-dropcap">
+        The legacy configuration UI was slow, click-heavy, and genuinely frustrating to use day to
+        day, with no visual way to understand how a tenant was actually configured before changing
+        it. Solution architects and implementation teams needed faster answers to basic questions:
+        what entities already exist on this tenant, how are
+        <span class="gloss" tabindex="0">dimensions<span class="gloss-tip">Categories used to slice and group data, e.g. product, location, or time.</span></span>
+        and rules actually connected, and what data backs a given part of the model. Instead, they got
+        a UI that made even those basic questions slow to answer.
+      </p>
+      <div class="doc-callout">
+        <span class="doc-callout-label">Two jobs, one page</span>
+        <p>Explore and understand an existing tenant configuration, or use agentic AI to extend it
+          or seed a new solution path, without ever losing the configuration context you started from.</p>
+      </div>
+    </section>
+
+    <section id="users" class="doc-section reveal">
+      <h2>Users</h2>
+      <p>
+        Solution architects and implementation consultants who configure tenants day to day are the
+        core users, alongside internal model builders and pre-sales teams seeding greenfield demo
+        solutions. All of them were previously served by separate tools for browsing config,
+        inspecting data, and prompting an AI assistant, with no shared context between the three.
+      </p>
+    </section>
+
+    <section id="why-failed" class="doc-section reveal">
+      <h2>Why existing approaches failed</h2>
+      <p>
+        Getting an answer meant piecing it together across separate tools: one screen to browse
+        config, another to inspect the data behind it, and a completely disconnected chat interface
+        if you wanted AI help, which meant re-describing by hand whatever you'd just found. None of
+        those tools shared a data model, so nothing carried over between them, and every question
+        about "how is this tenant actually set up" started from zero.
+      </p>
+    </section>
+
+    <section id="insight" class="doc-section reveal">
+      <h2>Product insight</h2>
+      <p>
+        Exploration and action don't need to be separate systems. The same graph that explains a
+        tenant to a human is the same graph an agent needs in order to act on it, so instead of
+        bolting an AI assistant onto an existing browsing UI, both were built against one shared
+        graph-aware surface. Understanding a tenant and extending it became one continuous flow
+        instead of two disconnected tools joined by copy-paste.
+      </p>
+    </section>
+
+    <section id="system" class="doc-section reveal">
+      <h2>System approach</h2>
+      <h3>Explorer and Schema, one graph</h3>
+      <p>
+        The page splits into an <strong>Explorer</strong>, search-first, grouped by category, and a
+        <strong>Schema</strong> view that renders the same information visually: a tenant config map
+        with relationship lines instead of a flat list. Selecting anything in one updates the other,
+        and drilling into any entity scopes the view down to it without losing the path back to the
+        broader map.
+      </p>
+      <div class="doc-figure">
+        <img src="../assets/config-explorer-2.png" alt="Config Explorer schema view showing a tenant's Dimensions, Plans, Graph Plans, Workspaces, and Computation entities as a connected graph." />
+        <div class="doc-figure-caption">Schema view &mdash; a tenant's configuration as a connected graph, not a flat list.</div>
+      </div>
+      <h3>One action set, every node</h3>
+      <p>
+        Every entity in the graph exposes the same three actions, regardless of entity type:
+        <strong>Traverse to</strong>, pivot to related entities without losing context;
+        <strong>Add to Chat</strong>, hand the entity to the AI assistant as structured context; and
+        <strong>View Data</strong>, inspect what backs the entity without leaving the page. The same
+        action set scales to a multi-selection, so comparing several entities doesn't require a
+        separate, heavier workflow.
+      </p>
+      <div class="doc-figure">
+        <img src="../assets/config-explorer-3.png" alt="Config Explorer drilled into the Item dimension, showing its hierarchical attributes and relationships without losing the path back to Schema." />
+        <div class="doc-figure-caption">Drilling into an entity, Item here, scopes the view without losing the path back to the broader map.</div>
+      </div>
+      <h3>Two assistants, one panel</h3>
+      <div class="doc-metric-grid">
+        <div class="doc-metric">
+          <h4>Config tab</h4>
+          <p>The o9 Solution Architect: designs, builds, and extends model structure, grounded in
+            whatever entities were passed in via Add to Chat.</p>
+        </div>
+        <div class="doc-metric">
+          <h4>Data tab</h4>
+          <p>The o9 EKG Data Populator: populates data into an already-defined model, kept
+            explicitly separate from structural changes.</p>
+        </div>
+      </div>
+      <h3>Live, on the same canvas</h3>
+      <p>
+        As the assistant works, whatever it builds or proposes shows up as a live preview directly on
+        the Explorer and Schema canvas the configurator is already looking at, not as a wall of text
+        in a chat transcript they'd have to cross-reference by hand. The goal was a workspace that
+        stays highly visual and easy to read even while an agent is actively changing it underneath,
+        so a configurator can watch a build happen instead of waiting for a summary of it afterward.
+      </p>
+      <div class="doc-figure">
+        <img src="../assets/config-explorer-1.png" alt="Config Explorer with the o9 Solution Architect panel open alongside the Item drill-down, showing contextual suggestions and an Ask o9 AI input." />
+        <div class="doc-figure-caption">The o9 Solution Architect panel, open alongside whatever the configurator is already looking at, with contextual suggestions for what to build next.</div>
+      </div>
+    </section>
+
+    <section id="pm-decisions" class="doc-section reveal">
+      <h2>Key PM decisions</h2>
+      <ul>
+        <li><strong>Search-first, not browse-first.</strong> Implementers usually know roughly what they're looking for, so search is the default entry point and browsing the category tree is the fallback, not the other way around.</li>
+        <li><strong>One identical action set across every entity type, deliberately not customized per type.</strong> A configurator has to learn the interaction model exactly once, then it holds everywhere, which matters more at scale than a slightly more tailored menu per entity.</li>
+        <li><strong>A hard split between the Config and Data assistant tabs.</strong> Structural changes and data population are different classes of risk, so they're never allowed to share one ambiguous chat thread where it's unclear which kind of change a prompt is about to make.</li>
+      </ul>
+    </section>
+
+    <section id="trust" class="doc-section reveal">
+      <h2>Human-in-the-loop &amp; trust</h2>
+      <p>
+        Add to Chat inserts a visible, editable token into the composer rather than silently
+        attaching context behind the scenes, so a user can see and correct exactly what the
+        assistant is about to reason over before sending anything. View Data exists specifically so a
+        user can verify what's actually behind an entity before deciding to act on it, rather than
+        trusting a label alone.
+      </p>
+      <p>
+        Empty states are treated as a trust question, not a cosmetic one: if a selected graph or
+        entity has no data or no relationships to show, the page says so explicitly rather than
+        rendering a blank canvas a user might mistake for a loading or broken state.
+      </p>
+    </section>
+
+    <section id="tradeoffs" class="doc-section reveal">
+      <h2>Tradeoffs &amp; risks</h2>
+      <p>
+        Multi-select on graph nodes currently lives behind a right-click context menu, which is
+        discoverable for power users but easy to miss for a first-time configurator, and remains an
+        open product question rather than a settled one: whether it needs a more obvious primary
+        affordance. Similarly, an empty "View Data" result for a technically valid graph pair can
+        still read as ambiguous to a new user, since "no rows" and "something's wrong" look similar
+        at a glance, an area still being refined rather than fully solved.
+      </p>
+    </section>
+
+    <section id="impact" class="doc-section reveal">
+      <h2>Impact</h2>
+      <p>
+        Config Designer UI runs on the Solution Architect agent built as part of
+        <strong>Config Model Extension</strong>, so the same reasoning that plans a build is what
+        drives what the UI shows and explains. That replaces a workflow implementers actively
+        avoided with one that's fast, transparent, and self-explanatory, and it doubles as a review
+        surface for checking an agent-proposed plan before committing it to a tenant.
+      </p>
+    </section>
+
+  </main>
+</div>
+
+<footer class="footer" style="max-width:1180px;margin:0 auto;padding:32px clamp(24px,5vw,72px) 48px;display:flex;justify-content:space-between;font-family:var(--mono);font-size:12px;color:var(--muted);">
+  <p>&copy; 2026 Navneeth Anil Kumar</p>
+  <a href="../index.html#projects">Back to Selected Work &uarr;</a>
+</footer>
+
+<script src="case-study.js?v=3"></script>
+</body>
+</html>

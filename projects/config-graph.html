@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Config Graph (EKG) — Case Study — Navneeth Anil Kumar</title>
+<meta name="description" content="Case study: Config Graph, o9 Solutions. A semantic enterprise knowledge graph that gives AI agents real platform context." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles.css?v=2" />
+<link rel="stylesheet" href="case-study.css" />
+</head>
+<body>
+
+<div class="grain"></div>
+<div class="cursor-dot" id="cursorDot"></div>
+
+<header class="doc-header">
+  <div class="doc-header-inner">
+    <a href="../index.html#projects" class="doc-back">&larr; Back to Selected Work</a>
+    <p class="doc-eyebrow">Flagship 01 &middot; Knowledge Graph &middot; Agent Infrastructure</p>
+    <h1 class="doc-title">Config Graph <span style="color:var(--void-muted);font-weight:400;">(EKG)</span></h1>
+    <p class="doc-subtitle">
+      A semantic enterprise knowledge graph of platform configuration, built so AI agents can
+      finally see a tenant the way an expert implementer does.
+    </p>
+    <div class="doc-meta">
+      <div><span>Role</span><strong>Product Manager, AI R&amp;D</strong></div>
+      <div><span>Org</span><strong>o9 Solutions</strong></div>
+      <div><span>Backing DB</span><strong>FalkorDB</strong></div>
+      <div><span>Status</span><strong>Live &middot; Foundational layer</strong></div>
+    </div>
+  </div>
+</header>
+
+<div class="doc-skim-wrap">
+  <p class="doc-skim-label">TL;DR</p>
+  <div class="doc-skim">
+    <div class="doc-skim-item"><span>Problem</span><p>Agents had no native way to understand a tenant's own configuration, so every fact had to be told to them by hand.</p></div>
+    <div class="doc-skim-item"><span>User</span><p>No direct end users; consumed internally by Agent Builder, the o9 Solution Architect, Skill Builder, and Synthetic Data Generation.</p></div>
+    <div class="doc-skim-item"><span>Decision</span><p>Chose the graph database, scoped entity coverage to fit a realistic timeline, and modeled derived relationships, not just explicit ones.</p></div>
+    <div class="doc-skim-item"><span>Outcome</span><p>Became the shared context layer every agentic workflow at o9 now queries against.</p></div>
+    <div class="doc-skim-item"><span>My role</span><p>Designed the graph schema, made the database tradeoff (including legal review), scoped coverage, and set the timeline.</p></div>
+  </div>
+</div>
+
+<div class="doc-layout">
+  <aside class="doc-toc">
+    <div class="doc-toc-head">Contents</div>
+    <div class="doc-toc-progress"><div class="doc-toc-progress-bar"></div></div>
+    <ol>
+      <li><a href="#problem"><span class="doc-toc-num">01</span>Problem</a></li>
+      <li><a href="#users"><span class="doc-toc-num">02</span>Users</a></li>
+      <li><a href="#why-failed"><span class="doc-toc-num">03</span>Why existing approaches failed</a></li>
+      <li><a href="#insight"><span class="doc-toc-num">04</span>Product insight</a></li>
+      <li><a href="#system"><span class="doc-toc-num">05</span>System approach</a></li>
+      <li><a href="#pm-decisions"><span class="doc-toc-num">06</span>Key PM decisions</a></li>
+      <li><a href="#trust"><span class="doc-toc-num">07</span>Human-in-the-loop &amp; trust</a></li>
+      <li><a href="#tradeoffs"><span class="doc-toc-num">08</span>Tradeoffs &amp; risks</a></li>
+      <li><a href="#impact"><span class="doc-toc-num">09</span>Impact</a></li>
+    </ol>
+  </aside>
+
+  <main class="doc-content">
+
+    <section id="problem" class="doc-section reveal">
+      <h2>Problem</h2>
+      <p class="doc-dropcap">
+        Agentic AI systems working inside o9 had no native way to understand a tenant's own
+        configuration. An agent had no reliable way to answer the questions an expert implementer
+        answers from memory: what columns a given report actually contains, which
+        <span class="gloss" tabindex="0">measures<span class="gloss-tip">The numeric metrics being tracked, e.g. sales or inventory.</span></span>
+        feed into a plugin, or which actions a report even supports. Every one of those had to be told
+        to the agent by hand, one prompt at a time, and re-told the moment configuration changed.
+        Every agent product on the roadmap, from a config-building agent to a data-lineage agent,
+        needed the same missing thing underneath it: a real, queryable model of what exists on a
+        tenant and how it connects.
+      </p>
+      <div class="doc-callout">
+        <span class="doc-callout-label">Why it matters</span>
+        <p>Graph, industry, and platform knowledge combined is what unlocks powerful agent
+          applications on top of o9, from explainability to autonomous config extension.</p>
+      </div>
+    </section>
+
+    <section id="users" class="doc-section reveal">
+      <h2>Users</h2>
+      <p>
+        Config Graph has no end users of its own, it's consumed internally by other products and
+        agents on the platform: <strong>Agent Builder</strong> (which people use to build new
+        agents), the <strong>o9 Solution Architect</strong> (which configurators use to extend a
+        tenant), <strong>Skill Builder</strong>, and <strong>Synthetic Data Generation</strong>. Each
+        of those needed the same missing thing, a way to ground itself in a tenant's real state, and
+        each was solving that independently before this existed.
+      </p>
+      <p>
+        The people who actually feel Config Graph, without ever touching it directly, are anyone
+        talking to any agent built on the platform. When someone asks an agent for "sales data," the
+        graph is what disambiguates which of a tenant's dozens of similarly-named measures "sales"
+        actually refers to, instead of the agent guessing.
+      </p>
+    </section>
+
+    <section id="why-failed" class="doc-section reveal">
+      <h2>Why existing approaches failed</h2>
+      <p>
+        Before this, "grounding" an agent in a tenant meant one of three things, and none of them
+        held up past a demo. Hardcoding tenant knowledge into a prompt breaks the moment
+        configuration changes, which is constantly. Retrieving from a flat catalog or a plain vector
+        index finds a similar-sounding name but throws away the relationships between entities,
+        which is exactly what disambiguates one measure from another. And asking the model to just
+        infer structure from names alone works until two measures have almost the same name and
+        completely different meanings, which is the normal case on a real tenant, not the exception.
+      </p>
+    </section>
+
+    <section id="insight" class="doc-section reveal">
+      <h2>Product insight</h2>
+      <p>
+        The reframe that mattered: agents don't need <em>more context</em>, they need the same
+        relational mental model a solution architect already carries. A measure isn't a string, it's
+        a node with defined inputs, outputs, and a container it lives in. Platform entities are
+        relational by construction, a
+        <span class="gloss" tabindex="0">plugin<span class="gloss-tip">A packaged calculation or automation module that runs on the platform.</span></span>
+        takes measures in and produces a measure out, a view surfaces a set of reports, a report is
+        powered by an action button, so the fix wasn't a better prompt or a bigger retrieval index.
+        It was building the graph that structure already implies.
+      </p>
+    </section>
+
+    <section id="system" class="doc-section reveal">
+      <h2>System approach</h2>
+      <h3>Modeling the platform</h3>
+      <p>
+        Every config entity, attributes, measure groups, measures, reports, views, plugins,
+        procedures, active rules, and action buttons, is modeled as a graph node with typed,
+        directional relationships between them. If measures A and B feed into a plugin XYZ that
+        outputs measure C, the graph carries an <strong>INPUTS_TO</strong> relationship from A and B
+        into XYZ, and an <strong>OUTPUTS_TO</strong> relationship from XYZ into C.
+      </p>
+
+      <h3>Choosing the database</h3>
+      <p>
+        The graph needed to run natively at scale, 100+ tenants, each with their own graph, on
+        infrastructure the platform team could actually operate, which ruled out anything that only
+        supports multi-tenancy as a paid enterprise feature. Native Cypher support mattered just as
+        much, since LLMs already generate it well.
+      </p>
+      <div class="doc-compare-wrap">
+        <table class="doc-compare">
+          <thead>
+            <tr><th>Platform</th><th>Multi-tenancy</th><th>Cypher</th><th>License</th><th>Verdict</th></tr>
+          </thead>
+          <tbody>
+            <tr class="doc-compare-winner">
+              <td>FalkorDB <span class="doc-compare-pill">Chosen</span></td>
+              <td>Native high-density support: 10k+ graphs per cluster</td>
+              <td>Native OpenCypher</td>
+              <td>SSPLv1</td>
+              <td>Best balance of tenant density, native AI features, and easy migration. Runs on Redis, which the platform already operates.</td>
+            </tr>
+            <tr>
+              <td>Memgraph</td>
+              <td>Enterprise-only</td>
+              <td>Native OpenCypher</td>
+              <td>BSL</td>
+              <td>Fastest engine and an easy migration, but multi-tenancy sits behind a paid enterprise license.</td>
+            </tr>
+            <tr>
+              <td>Neo4j</td>
+              <td>Enterprise-only</td>
+              <td>Native, the standard</td>
+              <td>GPLv3 / Commercial</td>
+              <td>Best ecosystem and docs, but running 100+ JVMs on Community Edition isn't viable, and multi-database is Enterprise-only.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p>
+        The license column carried real legal weight, not just a technical one: SSPL, BSL, and
+        GPL/Commercial terms each expose a platform vendor bundling the database differently, so
+        FalkorDB's license went through legal review before it was chosen, not just an engineering
+        comparison.
+      </p>
+
+      <h3>Capturing relationships that aren't explicit</h3>
+      <p>
+        Some relationships are already explicit in a tenant's configuration, a measure belongs to a
+        measure group, a view belongs to a workspace. Others aren't stored anywhere as a direct link
+        and have to be derived: which procedure actually computes a given measure, or which report
+        exposes it downstream, has to be traced through code and cross-references rather than read
+        off a single config record. Getting that derived layer right mattered as much as covering
+        more entity types, since it's exactly the relationships an implementer would otherwise trace
+        by hand.
+      </p>
+
+      <h3>Keeping it grounded and searchable</h3>
+      <p>
+        Ingestion reads a tenant's live configuration directly and is generic across entity types, so
+        onboarding a new tenant's graph doesn't need bespoke engineering per tenant, which is what
+        makes 100+ tenants viable at all. An LLM-written description layer turns a node named
+        <code>Rpt_NPI_Fcst_v3</code> into something an agent can search by meaning, and three tools
+        sit on top for agents to use together: reading the schema, searching it, and querying it.
+      </p>
+    </section>
+
+    <section id="pm-decisions" class="doc-section reveal">
+      <h2>Key PM decisions</h2>
+      <ul>
+        <li><strong>Shipped as pure infrastructure, no UI, on purpose.</strong> Getting it adopted by Agent Builder, Skill Builder, and Config Model Extension first meant real usage patterns existed before deciding what a graph-exploration UI should even look like. Config Designer UI came later, informed by that usage &mdash; a deliberate sequencing call, not a resourcing gap.</li>
+        <li><strong>Prioritized coverage breadth over exhaustive depth, to fit a realistic timeline.</strong> Ten core entity types across every tenant beat perfect metadata on a handful of entity types, since the goal was something usable at 100+ tenant scale from day one, not a showcase on one tenant, and it kept the initial build achievable instead of open-ended. That traded off richer metadata on any single entity type, and a larger database footprint, for a graph every downstream team could rely on immediately.</li>
+        <li><strong>Modeled derived relationships, not just explicit ones.</strong> Deciding which implicit relationships, like which procedure actually computes a measure, were worth deriving and encoding was as much a scoping call as picking entity types, since getting it wrong either bloats the graph with low-value inference or leaves gaps agents fall into.</li>
+        <li><strong>Accepted an open infrastructure question rather than blocking on it.</strong> FalkorDB's memory cost at full multi-tenant scale couldn't be answered definitively without production load, so the call was to ship on the strongest available evidence and monitor, not stall the whole roadmap waiting for certainty no evaluation could have provided anyway.</li>
+      </ul>
+    </section>
+
+    <section id="trust" class="doc-section reveal">
+      <h2>Human-in-the-loop &amp; trust</h2>
+      <p>
+        Config Graph never writes back to the platform, it's a derived, read-oriented layer synced
+        <em>from</em> configuration, never authoritative over it. That constrains the trust problem
+        by construction: correctness is enforced upstream, a node only gets created in the graph
+        after its platform counterpart is validated to exist, so any agent consuming the graph
+        inherits that guarantee instead of needing its own verification step.
+      </p>
+      <p>
+        The one place this needed a deliberate boundary was description generation. LLM-written
+        descriptions are attached to nodes purely as search metadata and never fed back into the
+        platform's own config, keeping a hard line between "context that helps an agent find the
+        right node" and "the actual system of record."
+      </p>
+    </section>
+
+    <section id="tradeoffs" class="doc-section reveal">
+      <h2>Tradeoffs &amp; risks</h2>
+      <ul>
+        <li><strong>Breadth over depth means real blind spots.</strong> Entity types outside the initial ten aren't modeled yet, so an agent can still hit a gap the graph doesn't cover.</li>
+        <li><strong>Derived relationships can be wrong.</strong> Some of the relationships the graph encodes aren't read directly off configuration, they're inferred, and an inference can be incorrect in a way a directly-stored relationship can't be. An agent that trusts a bad inferred edge inherits that mistake silently.</li>
+        <li><strong>FalkorDB's memory footprint at full scale is still the main open risk.</strong> It was a knowing bet, not a solved problem, and stays something the team actively watches rather than something closed out at launch.</li>
+        <li><strong>Generated descriptions can be wrong or bland.</strong> Since semantic search depends on them, a weak description directly costs search precision. This is mitigated by better grounding context, not eliminated.</li>
+      </ul>
+    </section>
+
+    <section id="impact" class="doc-section reveal">
+      <h2>Impact</h2>
+      <p>
+        Config Graph is the foundational context layer for <strong>Agent Builder</strong> and
+        <strong>Skill Builder</strong>, so any agent can be scoped with real platform context instead
+        of hardcoded knowledge. <strong>Config Model Extension</strong> and
+        <strong>Synthetic Data Generation</strong> are both built directly on top of it, which is the
+        direct payoff of prioritizing breadth-first infrastructure over a polished single-tenant demo:
+        four separate product teams could build on the same graph instead of each solving grounding
+        on their own. Beyond that, it's the disambiguation layer behind a huge share of natural-language
+        queries on the platform: when someone asks an agent to "get me sales data," Config Graph is
+        what resolves "sales" to the right measure, and it lets a user ask why a number is what it is
+        and get a real trace back through the procedures and plugins that computed it, instead of a
+        shrug.
+      </p>
+    </section>
+
+  </main>
+</div>
+
+<footer class="footer" style="max-width:1180px;margin:0 auto;padding:32px clamp(24px,5vw,72px) 48px;display:flex;justify-content:space-between;font-family:var(--mono);font-size:12px;color:var(--muted);">
+  <p>&copy; 2026 Navneeth Anil Kumar</p>
+  <a href="../index.html#projects">Back to Selected Work &uarr;</a>
+</footer>
+
+<script src="case-study.js?v=3"></script>
+</body>
+</html>

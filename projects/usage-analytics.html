@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Usage Analytics — Case Study — Navneeth Anil Kumar</title>
+<meta name="description" content="Case study: Usage Analytics, o9 Solutions. Turning platform clickstreams into process-level intelligence." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles.css?v=2" />
+<link rel="stylesheet" href="case-study.css" />
+</head>
+<body>
+
+<div class="grain"></div>
+<div class="cursor-dot" id="cursorDot"></div>
+
+<header class="doc-header">
+  <div class="doc-header-inner">
+    <a href="../index.html#projects" class="doc-back">&larr; Back to Selected Work</a>
+    <p class="doc-eyebrow">Flagship 04 &middot; Analytics &middot; Process Mining</p>
+    <h1 class="doc-title">Usage Analytics</h1>
+    <p class="doc-subtitle">
+      Turning raw platform clickstreams into the actual business processes people run on o9,
+      without asking anyone to self-report what they did.
+    </p>
+    <div class="doc-meta">
+      <div><span>Role</span><strong>Product Manager, AI R&amp;D</strong></div>
+      <div><span>Org</span><strong>o9 Solutions</strong></div>
+      <div><span>Domain</span><strong>Process Mining</strong></div>
+      <div><span>Status</span><strong>Live</strong></div>
+    </div>
+  </div>
+</header>
+
+<div class="doc-skim-wrap">
+  <p class="doc-skim-label">TL;DR</p>
+  <div class="doc-skim">
+    <div class="doc-skim-item"><span>Problem</span><p>Teams could describe their process in a meeting, but nobody could show what they actually did day to day.</p></div>
+    <div class="doc-skim-item"><span>User</span><p>Team leads tracking where time goes, and implementation teams checking real adoption after go-live.</p></div>
+    <div class="doc-skim-item"><span>Decision</span><p>Used click frequency on a graph, not a ranked feature list, so the resulting view of "the real process" preserved order as well as popularity.</p></div>
+    <div class="doc-skim-item"><span>Outcome</span><p>Feeds four report views plus an agent that writes a team's monthly summary in plain English.</p></div>
+    <div class="doc-skim-item"><span>My role</span><p>Defined the four report views, the per-user/per-day computation approach, and the traceability requirement behind every summary number.</p></div>
+  </div>
+</div>
+
+<div class="doc-layout">
+  <aside class="doc-toc">
+    <div class="doc-toc-head">Contents</div>
+    <div class="doc-toc-progress"><div class="doc-toc-progress-bar"></div></div>
+    <ol>
+      <li><a href="#problem"><span class="doc-toc-num">01</span>Problem</a></li>
+      <li><a href="#users"><span class="doc-toc-num">02</span>Users</a></li>
+      <li><a href="#why-failed"><span class="doc-toc-num">03</span>Why existing approaches failed</a></li>
+      <li><a href="#insight"><span class="doc-toc-num">04</span>Product insight</a></li>
+      <li><a href="#system"><span class="doc-toc-num">05</span>System approach</a></li>
+      <li><a href="#pm-decisions"><span class="doc-toc-num">06</span>Key PM decisions</a></li>
+      <li><a href="#trust"><span class="doc-toc-num">07</span>Human-in-the-loop &amp; trust</a></li>
+      <li><a href="#tradeoffs"><span class="doc-toc-num">08</span>Tradeoffs &amp; risks</a></li>
+      <li><a href="#impact"><span class="doc-toc-num">09</span>Impact</a></li>
+    </ol>
+  </aside>
+
+  <main class="doc-content">
+
+    <section id="problem" class="doc-section reveal">
+      <h2>Problem</h2>
+      <p class="doc-dropcap">
+        Every click on the o9 platform, every filter applied, every action button fired, already
+        gets logged. What was missing was a way to turn that raw event stream into an answer to a
+        much more useful question: what is this team actually doing all month, and where is the
+        effort going?
+      </p>
+      <div class="doc-callout">
+        <span class="doc-callout-label">Why it matters</span>
+        <p>Teams could describe their process in a meeting. Nobody could show it. This makes the
+          actual, as-executed process visible from the data itself.</p>
+      </div>
+    </section>
+
+    <section id="users" class="doc-section reveal">
+      <h2>Users</h2>
+      <p>
+        Team leads who need to know where their team's time actually goes are the primary audience,
+        alongside implementation teams checking whether a delivered solution is genuinely being used
+        or quietly abandoned after go-live. Individual platform users are the indirect beneficiaries:
+        their real work becomes visible automatically, without filling out a status report about it.
+      </p>
+    </section>
+
+    <section id="why-failed" class="doc-section reveal">
+      <h2>Why existing approaches failed</h2>
+      <p>
+        o9 platform usage is logged at a fine grain: every
+        <span class="gloss" tabindex="0">view<span class="gloss-tip">A saved combination of metrics and categories presented to a user.</span></span>
+        opened, every
+        <span class="gloss" tabindex="0">report<span class="gloss-tip">A specific chart or table surfaced inside a view.</span></span>
+        looked at, every
+        <span class="gloss" tabindex="0">action button<span class="gloss-tip">A UI trigger that runs a plugin or rule against the platform.</span></span>
+        fired. That log already exists. What doesn't exist by default is a way to read it as a
+        process rather than a list of isolated events. The only alternative was asking a team to
+        describe its own workflow in a meeting, which answers what people believe they do, not what
+        the data says they actually do.
+      </p>
+    </section>
+
+    <section id="insight" class="doc-section reveal">
+      <h2>Product insight</h2>
+      <p>
+        Frequency, not existence, is what defines a real process. Any single click sequence could be
+        a one-off experiment. A sequence a person runs twenty times in a month is a workflow. That
+        reframing meant the system didn't need anyone to label or categorize their own behavior, it
+        just needed to count how often each path repeated and let the highest-frequency paths speak
+        for themselves.
+      </p>
+    </section>
+
+    <section id="system" class="doc-section reveal">
+      <h2>System approach</h2>
+      <h3>Clicks into daily graphs</h3>
+      <p>
+        For every user and every day, the system reconstructs the sequence of views, reports, and
+        action buttons touched, in order, as a small directed graph: a <strong>Start</strong> node,
+        the sequence of platform entities visited, and an <strong>End</strong> node. Where an action
+        button fired, the specific data it acted on travels along with it, so the graph carries not
+        just "an action ran" but what it actually acted on.
+      </p>
+      <h3>Daily into monthly, with frequency</h3>
+      <p>
+        Daily graphs for the same user are merged into one monthly graph where repeated paths
+        accumulate a frequency count instead of being listed as separate events. The structure stays
+        the same, Start through a sequence of steps to End, but now every edge carries a number: how
+        many times that step happened that month. The paths with the highest frequency are, by
+        definition, the process this person actually runs regularly.
+      </p>
+      <h3>An interactive diagram, and four report views</h3>
+      <p>
+        A simplified version of that monthly graph is rendered as an interactive diagram: hover a
+        node for what it represents, hover an edge for how often that step happened, click an action
+        node for the data breakdown that traveled with it.
+      </p>
+      <div id="flow-diagram-mount" class="doc-figure"></div>
+      <p>
+        The underlying monthly graphs across a team feed four distinct report views, since a team
+        lead, an adoption auditor, and someone spotting month-end crunches are each asking a
+        different shape of question:
+      </p>
+      <div class="doc-metric-grid">
+        <div class="doc-metric">
+          <h4>Executive summary</h4>
+          <p>The team's highest-frequency paths across the month, plus individual highlights for
+            anyone whose activity stands out from the group.</p>
+        </div>
+        <div class="doc-metric">
+          <h4>Members worked on</h4>
+          <p>Which specific items and locations were touched by which activities, and by whom,
+            broken out by dimension.</p>
+        </div>
+        <div class="doc-metric">
+          <h4>Activities worked on</h4>
+          <p>A ranked view of the platform's most-run activities that month, both team-wide and
+            per person.</p>
+        </div>
+        <div class="doc-metric">
+          <h4>Work hotspots</h4>
+          <p>A day-by-day view of which activities spiked on which days, useful for spotting
+            month-end crunches or recurring cycles.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="pm-decisions" class="doc-section reveal">
+      <h2>Key PM decisions</h2>
+      <ul>
+        <li><strong>Built per-user, per-day graphs first, not one giant graph.</strong> Keeping each unit of computation small and cheap is what makes daily reconstruction viable at all, and it keeps any single day's trace easy to inspect and debug on its own.</li>
+        <li><strong>Chose frequency-weighted paths over a simple ranked feature list.</strong> A ranked list of "most clicked" would lose the sequence, what led to what. Frequency on a graph preserves order as well as popularity, which is what actually distinguishes a workflow from a pile of popular clicks.</li>
+        <li><strong>Split into four report views instead of one dashboard.</strong> A team lead, someone auditing adoption, and someone hunting month-end crunches are asking different questions, so each gets a view shaped for its own question instead of one screen trying to answer all three at once.</li>
+      </ul>
+    </section>
+
+    <section id="trust" class="doc-section reveal">
+      <h2>Human-in-the-loop &amp; trust</h2>
+      <p>
+        Reconstructing behavior automatically, with nobody self-reporting anything, raises an obvious
+        trust question: how does a team lead know the system got it right? The answer was to keep
+        every level inspectable rather than asking anyone to trust a single opaque score. A summary
+        number always traces back to the report view behind it, which traces back to the interactive
+        monthly graph, which traces back to the daily graphs it was built from, so a skeptical reader
+        can always click down to the raw path that produced any given claim.
+      </p>
+    </section>
+
+    <section id="tradeoffs" class="doc-section reveal">
+      <h2>Tradeoffs &amp; risks</h2>
+      <p>
+        Frequency captures <em>what</em> happened and <em>how often</em>, not <em>why</em>, so
+        interpreting a spike or a new high-frequency path still needs a human who knows the business
+        context, the system surfaces the pattern, not the explanation. A single unusual month, a
+        crunch period or a one-time migration, can also distort what looks like "the real process"
+        if read in isolation; the day-by-day hotspot view exists specifically to catch that kind of
+        anomaly rather than assuming a month is always representative.
+      </p>
+    </section>
+
+    <section id="impact" class="doc-section reveal">
+      <h2>Impact</h2>
+      <p>
+        Beyond the reporting views, the same monthly graphs are the input to an agent that turns the
+        aggregated metrics into a plain-English monthly summary for a team lead, replacing a report a
+        team lead used to have to assemble by hand every month. The same process-mining approach also
+        gives implementation teams an honest, data-backed way to see which parts of a solution are
+        actually being used, versus configured and forgotten, turning "is this adopted?" from a
+        guess into something they can check directly.
+      </p>
+    </section>
+
+  </main>
+</div>
+
+<footer class="footer" style="max-width:1180px;margin:0 auto;padding:32px clamp(24px,5vw,72px) 48px;display:flex;justify-content:space-between;font-family:var(--mono);font-size:12px;color:var(--muted);">
+  <p>&copy; 2026 Navneeth Anil Kumar</p>
+  <a href="../index.html#projects">Back to Selected Work &uarr;</a>
+</footer>
+
+<script src="case-study.js?v=3"></script>
+<script src="flow-diagram.js"></script>
+</body>
+</html>

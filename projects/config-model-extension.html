@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Config Model Extension — Case Study — Navneeth Anil Kumar</title>
+<meta name="description" content="Case study: Config Model Extension, o9 Solutions. Agent-driven configuration tooling and the o9 Solution Architect." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles.css?v=2" />
+<link rel="stylesheet" href="case-study.css" />
+</head>
+<body>
+
+<div class="grain"></div>
+<div class="cursor-dot" id="cursorDot"></div>
+
+<header class="doc-header">
+  <div class="doc-header-inner">
+    <a href="../index.html#projects" class="doc-back">&larr; Back to Selected Work</a>
+    <p class="doc-eyebrow">Flagship 02 &middot; Agentic Configuration &middot; o9 Solution Architect Agent</p>
+    <h1 class="doc-title">Config Model Extension</h1>
+    <p class="doc-subtitle">
+      The o9 Solution Architect agent, and the CRUD tooling and modeling best practices built to
+      power it, that turn configuration from a manual, click-heavy slog into an agent-executed,
+      human-approved workflow.
+    </p>
+    <div class="doc-meta">
+      <div><span>Role</span><strong>Product Manager, AI R&amp;D</strong></div>
+      <div><span>Org</span><strong>o9 Solutions</strong></div>
+      <div><span>Agent</span><strong>o9 Solution Architect</strong></div>
+    </div>
+  </div>
+</header>
+
+<div class="doc-skim-wrap">
+  <p class="doc-skim-label">TL;DR</p>
+  <div class="doc-skim">
+    <div class="doc-skim-item"><span>Problem</span><p>Configuration took 4&ndash;6 months, was expert-bound, and relied on fragile manual dependency tracking.</p></div>
+    <div class="doc-skim-item"><span>User</span><p>Configurators, who use the o9 Solution Architect agent to provision or extend a tenant's configuration.</p></div>
+    <div class="doc-skim-item"><span>Decision</span><p>Shipped the agent's core capabilities before any dedicated UI, and scoped exactly which edits it could make safely on its own.</p></div>
+    <div class="doc-skim-item"><span>Outcome</span><p>4&ndash;6 month builds now ship in weeks, sometimes days, with a human approving every phase.</p></div>
+    <div class="doc-skim-item"><span>My role</span><p>Scoped the PRD, defined capability boundaries and edit safety, deferred the UI, and set success metrics.</p></div>
+  </div>
+</div>
+
+<div class="doc-layout">
+  <aside class="doc-toc">
+    <div class="doc-toc-head">Contents</div>
+    <div class="doc-toc-progress"><div class="doc-toc-progress-bar"></div></div>
+    <ol>
+      <li><a href="#problem"><span class="doc-toc-num">01</span>Problem</a></li>
+      <li><a href="#users"><span class="doc-toc-num">02</span>Users</a></li>
+      <li><a href="#why-failed"><span class="doc-toc-num">03</span>Why existing approaches failed</a></li>
+      <li><a href="#insight"><span class="doc-toc-num">04</span>Product insight</a></li>
+      <li><a href="#system"><span class="doc-toc-num">05</span>System approach</a></li>
+      <li><a href="#pm-decisions"><span class="doc-toc-num">06</span>Key PM decisions</a></li>
+      <li><a href="#trust"><span class="doc-toc-num">07</span>Human-in-the-loop &amp; trust</a></li>
+      <li><a href="#tradeoffs"><span class="doc-toc-num">08</span>Tradeoffs &amp; risks</a></li>
+      <li><a href="#impact"><span class="doc-toc-num">09</span>Impact</a></li>
+    </ol>
+  </aside>
+
+  <main class="doc-content">
+
+    <section id="problem" class="doc-section reveal">
+      <h2>Problem</h2>
+      <p class="doc-dropcap">
+        Configuration carries a high interaction cost: multiple clicks and complex setups, especially
+        for backend entities like plugins and procedures. It demands a steep cognitive load, a deep,
+        tribal understanding of the existing configuration before a single change is safe to make.
+        And it depends on fragile, manual dependency tracking, where getting the creation order
+        wrong introduces errors that slow delivery down further, turning a 4&ndash;6 month
+        implementation into a slow, expert-bound slog.
+      </p>
+      <div class="doc-callout">
+        <span class="doc-callout-label">Scope, precisely</span>
+        <p>This is the o9 Solution Architect agent itself, plus the Create/Read/Update tools, skills,
+          and configuration-modeling best practices built specifically to power it. The tools weren't
+          built as a generic platform API first and handed to an agent second, they were shaped by
+          what this agent needed in order to act safely.</p>
+      </div>
+    </section>
+
+    <section id="users" class="doc-section reveal">
+      <h2>Users</h2>
+      <p>
+        The user is the <strong>configurator</strong>, an implementation consultant who today builds
+        or extends a tenant by hand, either from a precise spec or from a vague business ask they
+        have to translate into config themselves. They interact directly with the o9 Solution
+        Architect agent to do that work; the agent's own needs, structured errors, predictable
+        ordering, resumable phases, shaped its underlying tools as much as any configurator's did.
+      </p>
+    </section>
+
+    <section id="why-failed" class="doc-section reveal">
+      <h2>Why existing approaches failed</h2>
+      <p>
+        Agentic frameworks could already reason about plans and sequencing well before this existed.
+        What they lacked was a reliable, complete, machine-consumable interface to the platform's own
+        configuration entities. Without first-class CRUD tools, agents couldn't act at all, no matter
+        how capable the underlying model was. Any partial automation attempt was forced to
+        screen-scrape the UI or call internal APIs that were never designed for programmatic
+        consumers, and every one of those attempts had to reinvent its own safety net for
+        validation, ordering, and rollback, or skip it entirely and hope nothing broke.
+      </p>
+    </section>
+
+    <section id="insight" class="doc-section reveal">
+      <h2>Product insight</h2>
+      <p>
+        The bottleneck was never agent intelligence, it was the absence of a trustworthy interface
+        for that intelligence to act through. That reframing changed the whole scope of this
+        initiative: instead of building a smarter agent on top of whatever existed, the job was to
+        build the agent and the tooling foundation beneath it together, with the platform itself
+        enforcing the safety the agent shouldn't be trusted to enforce on its own.
+      </p>
+    </section>
+
+    <section id="system" class="doc-section reveal">
+      <h2>System approach</h2>
+      <h3>Dependency-ordered tooling</h3>
+      <p>
+        The tooling layer enforces one non-negotiable rule: entities must be created in the order the
+        platform actually depends on them.
+      </p>
+      <div class="doc-callout">
+        <p style="font-size:16px;font-family:var(--mono);font-weight:500;letter-spacing:-0.01em;">
+          Dimensions &rarr; Attributes &rarr; Attribute Properties &rarr; Hierarchies &rarr; Plans &rarr;
+          Measure Groups &rarr; Measures &rarr; Named Sets &rarr; Procedures / Active Rules &rarr; Plugins
+        </p>
+      </div>
+      <p>
+        Enforcement is the tool's job, not the agent's: a call against an entity whose upstream
+        dependencies don't exist yet gets rejected with a descriptive, actionable error instead of
+        being allowed to leave a partially valid state behind.
+      </p>
+      <h3>Two capabilities, one agent</h3>
+      <div class="doc-metric-grid">
+        <div class="doc-metric">
+          <h4>Greenfield provisioning</h4>
+          <p>Stand up a new tenant's entire ontology and computation layer from scratch: structure
+            first, then data-bearing entities, then rules, then plugins last.</p>
+        </div>
+        <div class="doc-metric">
+          <h4>Extending an existing solution</h4>
+          <p>Grow an already-configured tenant without starting over, for example moving it from a
+            basic statistical forecasting engine to a driver-based ML forecast engine, which means
+            extending the ontology (dimensions, measures) and building the new computation layer
+            underneath it.</p>
+        </div>
+      </div>
+      <p>
+        Either way, the o9 Solution Architect grounds itself in two graphs before proposing anything:
+        the tenant's own Config Graph, and a separate, cross-tenant Reference Model Graph of
+        standardized solution patterns. Depending on the ask, it either executes directly against a
+        known spec or proposes a phased plan, structure first, then data-bearing entities, then
+        rules, then plugins last, submitted for review one phase at a time before anything runs.
+      </p>
+    </section>
+
+    <section id="pm-decisions" class="doc-section reveal">
+      <h2>Key PM decisions</h2>
+      <ul>
+        <li><strong>Built the tools as the agent's foundation, not a generic API.</strong> Structured errors, predictable ordering, resumable phases, and modeling best practices were designed in because the o9 Solution Architect needed them, not bolted on afterward for a hypothetical external caller.</li>
+        <li><strong>Scoped exactly which edits the agent could make safely on its own.</strong> Not every config entity tolerates the same blast radius of change, so some, like renaming an entity that's already referenced by procedures or plugins elsewhere, keep the same limitation the manual UI has today rather than ship a new, only-partial safety guarantee that looks safer than it is.</li>
+        <li><strong>Decided against a dedicated UI up front.</strong> Shipping the agent's core capabilities first meant real usage patterns existed before deciding what a configuration UI should even look like. That later became Config Designer UI.</li>
+        <li><strong>Chose deliberately boring success metrics.</strong> Tool coverage, call success rate, and dependency-rejection rate, not agent reasoning quality. A foundational layer earns trust by being measurable, not by being clever.</li>
+      </ul>
+    </section>
+
+    <section id="trust" class="doc-section reveal">
+      <h2>Human-in-the-loop &amp; trust</h2>
+      <p>
+        No phase of a proposed plan executes unattended. The configurator can accept, edit, or
+        reject each phase before the agent proceeds to the tool calls for it, human-in-the-loop by
+        design, not as an afterthought bolted onto an autonomous system.
+      </p>
+      <p>
+        Failure handling gets the same treatment as a first-class flow, not an edge case. When a tool
+        call fails, validation error, platform error, or dependency violation, the agent halts the
+        sequence and rolls back to the last stable state, then returns a structured error:
+        the failing entity, the failure reason, the rollback outcome, and, where determinable, a
+        remediation hint. The agent surfaces that to the configurator in plain language and
+        re-proposes the affected phase, instead of silently continuing or aborting the entire plan.
+        Update tools are also required to surface downstream dependents before applying a change, so
+        a configurator approving a risky update is making an informed call, not a blind one.
+      </p>
+    </section>
+
+    <section id="tradeoffs" class="doc-section reveal">
+      <h2>Tradeoffs &amp; risks</h2>
+      <p>
+        The sharpest risk is that modifying an upstream entity, a dimension, say, can silently break
+        a downstream measure or active rule already running in production. Surfacing dependents
+        before a change reduces that risk but doesn't eliminate it, since a human still has to read
+        and act on what's surfaced. A second, messier problem: some entity creation still requires a
+        tenant restart before downstream entities can be created, and today's errors aren't always
+        descriptive enough for an agent to recover from on its own. Rather than guess at a fix, that
+        was flagged explicitly as an open design question for the architecture review, not something
+        worth papering over with a false sense of completeness.
+      </p>
+    </section>
+
+    <section id="impact" class="doc-section reveal">
+      <h2>Impact</h2>
+      <div class="case-stats">
+        <div class="stat">
+          <span class="stat-num">4&ndash;6mo &rarr; wks</span>
+          <span class="stat-label">typical build time, greenfield &amp; extension</span>
+        </div>
+      </div>
+      <p>
+        Implementations that used to take four to six months can ship in weeks, sometimes days, for
+        both greenfield tenant provisioning and extending an existing solution, for example moving a
+        tenant from statistical to ML-based forecasting. The Solution Architect agent built here also
+        became the engine behind <strong>Config Designer UI</strong>, and a related, adjacent tool
+        surface reuses the same agent to generate synthetic dimension and measure-group data for
+        full proof-of-concept builds.
+      </p>
+    </section>
+
+  </main>
+</div>
+
+<footer class="footer" style="max-width:1180px;margin:0 auto;padding:32px clamp(24px,5vw,72px) 48px;display:flex;justify-content:space-between;font-family:var(--mono);font-size:12px;color:var(--muted);">
+  <p>&copy; 2026 Navneeth Anil Kumar</p>
+  <a href="../index.html#projects">Back to Selected Work &uarr;</a>
+</footer>
+
+<script src="case-study.js?v=3"></script>
+</body>
+</html>

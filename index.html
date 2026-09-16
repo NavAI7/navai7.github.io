@@ -7,8 +7,8 @@
 <meta name="description" content="Navneeth Anil Kumar — Product Manager, AI R&D at o9 Solutions. Building the agentic layer of enterprise supply chain planning." />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;0,9..144,900;1,9..144,400;1,9..144,500&family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css" />
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css?v=2" />
 </head>
 <body>
 
@@ -24,15 +24,16 @@
 <header class="nav-wrap">
   <nav class="nav">
     <a href="#top" class="nav-mark">NAV.</a>
-    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="navLinks">
       <span></span><span></span><span></span>
     </button>
     <ul class="nav-links" id="navLinks">
       <li><a href="#about"><span class="idx">01</span>About</a></li>
       <li><a href="#experience"><span class="idx">02</span>Experience</a></li>
       <li><a href="#projects"><span class="idx">03</span>Projects</a></li>
-      <li><a href="#education"><span class="idx">04</span>Education</a></li>
-      <li><a href="#contact"><span class="idx">05</span>Contact</a></li>
+      <li><a href="#how-i-work"><span class="idx">04</span>How I Work</a></li>
+      <li><a href="#education"><span class="idx">05</span>Education</a></li>
+      <li><a href="#contact"><span class="idx">06</span>Contact</a></li>
     </ul>
   </nav>
 </header>
@@ -40,17 +41,26 @@
 <main id="top">
 
   <!-- HERO -->
+  <div class="hero-wrap">
   <section class="hero">
     <div class="hero-bg-text" aria-hidden="true">PRODUCT</div>
     <div class="hero-inner">
-      <p class="eyebrow reveal"><span class="dot"></span>Product Manager &middot; AI R&amp;D &middot; o9 Solutions</p>
+      <p class="eyebrow reveal"><span class="dot"></span>Technical AI Product Manager &middot; o9 Solutions</p>
       <h1 class="hero-name reveal">
-        Navneeth<br/>
-        <span class="outline">Anil Kumar</span>
+        <span class="line">Navneeth</span><br/>
+        <span class="line outline">Anil Kumar</span>
       </h1>
+      <p class="hero-position reveal">
+        I spent three years configuring enterprise planning systems by hand. Now I build the AI
+        systems behind them.
+      </p>
       <p class="hero-sub reveal">
-        From hand-configuring enterprise planning solutions to building the AI that does it
-        &mdash; I ship the products that make enterprise software understand itself.
+        I figure out what an AI system should actually own, then build the workflow, trust model, and
+        infrastructure that make it work in the real world&mdash;not just in a demo.
+      </p>
+      <p class="hero-sub reveal">
+        That's the vantage point behind everything I build now: products that make enterprise
+        software understand itself.
       </p>
       <div class="hero-actions reveal">
         <a href="#projects" class="btn btn-solid">View the work<span class="arrow">&rarr;</span></a>
@@ -67,6 +77,36 @@
       <span>Scroll</span>
       <div class="scroll-cue-line"></div>
     </div>
+  </section>
+  </div>
+
+  <!-- AI PM SUMMARY -->
+  <section class="pm-summary">
+    <div class="pm-summary-grid">
+      <div class="pm-summary-item reveal">
+        <span class="pm-summary-label">Build time</span>
+        <p>4&ndash;6 month configuration builds now ship in weeks, sometimes days.</p>
+      </div>
+      <div class="pm-summary-item reveal">
+        <span class="pm-summary-label">Enterprise scale</span>
+        <p>70%+ faster runtime delivered for a $26B+ Fortune 500 retailer.</p>
+      </div>
+      <div class="pm-summary-item reveal">
+        <span class="pm-summary-label">Recognition</span>
+        <p>Won o9's Innovation Hackathon, built and pitched solo against 250+ participants.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SELECTED WINS -->
+  <section class="wins">
+    <ul class="wins-list">
+      <li class="reveal"><strong>Cut solution build time</strong> from months to days with agent-driven configuration</li>
+      <li class="reveal"><strong>Built the foundational context layer</strong> every agentic workflow at o9 now queries against</li>
+      <li class="reveal"><strong>Leading AI configuration product direction</strong> for o9's planning platform</li>
+      <li class="reveal"><strong>Won o9's Innovation Hackathon</strong>, building and pitching solo against 250+ participants</li>
+      <li class="reveal"><strong>3 years in delivery</strong> before product, at enterprise scale ($26B+ client, Fortune 500)</li>
+    </ul>
   </section>
 
   <!-- MARQUEE -->
@@ -93,29 +133,26 @@
     </div>
     <div class="about-grid">
       <p class="about-lead reveal">
-        I'm a Product Manager on o9 Solutions' <strong>AI R&amp;D team</strong>. My work spans the
-        full stack of making AI a first-class citizen of enterprise software: a knowledge graph
-        that gives agents real platform context, an agentic engine that builds and extends
-        configuration on top of it, the UI that makes that usable, and the analytics that close
-        the loop.
+        I'm an AI Product Manager on o9 Solutions' AI R&amp;D team. I don't just decide what an AI
+        agent should do, I help build the system underneath it: the map it reasons over, the
+        guardrails that keep it safe, and the trust a human needs to actually approve its work.
       </p>
       <div class="about-body reveal">
+        <h4 class="about-subhead">What I build</h4>
         <p>
-          Most of my current work sits underneath the products people see: a knowledge graph that
-          gives agents a real model of the platform, an agentic configuration engine that can build
-          and extend planning solutions on top of it, and the tooling that turns both into usable
-          products for implementers and customers.
+          A map of a company's own setup that AI agents can actually read, an agent that can extend
+          that setup on its own, and the tools that let the people using both trust what they see.
         </p>
+        <h4 class="about-subhead">Before product</h4>
         <p>
-          Before moving into product, I spent three years in delivery at o9, implementing large-scale
-          supply chain planning solutions for Fortune 500 retailers &mdash; most notably leading the
-          replenishment planning build for <strong>Starbucks</strong>. That hands-on delivery
-          experience &mdash; watching where configuration got slow, fragile, and expert-bound &mdash;
-          is a lot of what shapes the AI R&amp;D products I build today.
+          Three years in delivery at o9, implementing large-scale supply chain planning solutions for
+          Fortune 500 retailers, most notably leading the replenishment planning build for
+          <strong>Starbucks</strong>. Watching configuration go slow, fragile, and expert-bound from
+          the inside is exactly what shapes the products I build now.
         </p>
+        <h4 class="about-subhead">Education</h4>
         <p>
-          I hold a B.Tech in Electrical and Electronics Engineering from
-          <strong>NIT Karnataka, Surathkal</strong>.
+          B.Tech, Electrical and Electronics Engineering, <strong>NIT Karnataka, Surathkal</strong>.
         </p>
       </div>
     </div>
@@ -135,12 +172,12 @@
         <div class="tl-content">
           <div class="tl-top">
             <h3>Product Manager, AI R&amp;D</h3>
-            <span class="tl-date">Sep 2025 &mdash; Present</span>
+            <span class="tl-date">Sep 2025 &ndash; Present</span>
           </div>
           <p class="tl-org">o9 Solutions</p>
           <p class="tl-desc">
             Own the agentic configuration and knowledge-graph products that let AI agents
-            understand, build, and extend o9's planning platform &mdash; cutting solution build
+            understand, build, and extend o9's planning platform, cutting solution build
             time from months to days. See the full case studies in
             <a href="#projects">Projects &darr;</a>.
           </p>
@@ -156,7 +193,7 @@
           <div class="case-card">
             <div class="case-card-head">
               <span class="case-tag">Recognition &middot; o9 Innovation Hackathon 2025</span>
-              <h4>Flo9 &mdash; "Your data has a story. Flo9 tells it."</h4>
+              <h4>Flo9: "Your data has a story. Flo9 tells it."</h4>
             </div>
             <div class="case-stats">
               <div class="stat">
@@ -173,13 +210,13 @@
               </div>
             </div>
             <p class="case-note">
-              Figuring out how any o9 measure is actually calculated meant tracing plugins,
-              batch order, and integration code by hand &mdash; a job that could eat a full week.
+              Figuring out how any o9 <span class="gloss" tabindex="0">measure<span class="gloss-tip">A numeric metric being tracked, e.g. a forecast or inventory number.</span></span> is
+              actually calculated meant tracing <span class="gloss" tabindex="0">plugins<span class="gloss-tip">Packaged calculation modules that run on the platform.</span></span>,
+              batch order, and integration code by hand, a job that could eat a full week.
               Built solo in the hackathon, Flo9 is an agent that traces that data lineage
               automatically and explains it in plain English, with auto-generated flow diagrams
               for root-cause analysis and code-logic summarization. Demoed live with Starbucks'
-              CS team &mdash; whose first question was <em>"how quickly can we get access to
-              this?"</em>
+              Customer Success team, who have since adopted it as part of their solution.
             </p>
           </div>
         </div>
@@ -190,20 +227,20 @@
         <div class="tl-content">
           <div class="tl-top">
             <h3>Consultant, Delivery</h3>
-            <span class="tl-date">Jul 2022 &mdash; Sep 2025</span>
+            <span class="tl-date">Jul 2022 &ndash; Sep 2025</span>
           </div>
           <p class="tl-org">o9 Solutions</p>
           <p class="tl-desc">
             Drove digital transformation in Supply Chain Planning across enterprise implementations,
             translating business requirements into configured, tested o9 solutions. Specialized in
-            replenishment planning &mdash; forecast accuracy, inventory optimization, and order
+            replenishment planning: forecast accuracy, inventory optimization, and order
             management.
           </p>
 
           <div class="case-card">
             <div class="case-card-head">
               <span class="case-tag">Featured Engagement</span>
-              <h4>Starbucks &mdash; Replenishment Planning</h4>
+              <h4>Starbucks: Replenishment Planning</h4>
             </div>
             <div class="case-stats">
               <div class="stat">
@@ -236,9 +273,15 @@
         <div class="tl-content">
           <div class="tl-top">
             <h3>Business Analyst Intern</h3>
-            <span class="tl-date">May 2021 &mdash; Jun 2021</span>
+            <span class="tl-date">May 2021 &ndash; Jun 2021</span>
           </div>
           <p class="tl-org">Goodera</p>
+          <p class="tl-desc">
+            Worked on the Growth team, turning raw data into reports and charts that surfaced key
+            business insights, then helped translate those insights into data-driven growth
+            strategies. Also identified and helped onboard process-automation tools to improve the
+            efficiency of day-to-day business operations.
+          </p>
         </div>
       </article>
 
@@ -247,9 +290,14 @@
         <div class="tl-content">
           <div class="tl-top">
             <h3>Software Development Intern</h3>
-            <span class="tl-date">Nov 2020 &mdash; Apr 2021</span>
+            <span class="tl-date">Nov 2020 &ndash; Apr 2021</span>
           </div>
           <p class="tl-org">Smarkt</p>
+          <p class="tl-desc">
+            Collaborated with cross-functional teams to design and build features for consumer
+            mobile apps, working on API integrations under an MVVM architecture in Java and Kotlin.
+            Spent a good part of the role on bug fixing and performance tuning.
+          </p>
         </div>
       </article>
 
@@ -262,8 +310,8 @@
       <span class="section-num">03</span>
       <h2>Selected Work</h2>
       <p class="section-intro">
-        A knowledge graph, an agentic build engine, and the tools built on top &mdash;
-        the products behind o9's push to make AI a first-class configurator of the platform.
+        Four flagship products, each shown as a system I built and the product problem it solves,
+        plus the supporting work underneath them.
       </p>
     </div>
 
@@ -272,34 +320,21 @@
       <div class="project-index">01</div>
       <div class="project-main">
         <div class="project-heading">
-          <h3>Config Graph <span class="mono">(EKG)</span></h3>
-          <p class="project-role">Knowledge Graph &middot; Agent Infrastructure</p>
-        </div>
-        <div class="project-copy">
-          <div class="project-col">
-            <span class="col-label">Problem</span>
-            <p>AI agents need to disambiguate and reason about platform entities &mdash; measures,
-              attributes, views, plugins, dimensions, reports &mdash; but there was no rich, machine
-              -readable map of what exists on a tenant or how it connects.</p>
-          </div>
-          <div class="project-col">
-            <span class="col-label">Approach</span>
-            <p>Built a knowledge graph over o9's configuration and fixed pipeline &mdash; every
-              measure, attribute, dimension, view, plugin, and button modeled as a node with rich
-              descriptive context, navigable by agents to identify and disambiguate platform
-              entities.</p>
-          </div>
-          <div class="project-col">
-            <span class="col-label">Impact</span>
-            <p>Now the foundational context layer for <strong>Agent Builder</strong> and
-              <strong>Skill Builder</strong> &mdash; any agent can be scoped with real platform
-              context instead of hardcoded knowledge. Other AI R&amp;D products, including Config
-              Model Extension and Synthetic Data Generation, are built directly on top of it.</p>
+          <h3><a href="projects/config-graph.html">Config Graph <span class="mono">(EKG)</span></a></h3>
+          <div class="project-meta-row">
+            <p class="project-role">Knowledge Graph &middot; Agent Infrastructure</p>
+            <span class="status-pill status-live">Live &middot; Foundational layer</span>
           </div>
         </div>
+        <div class="project-layers">
+          <div class="layer-row"><span class="layer-label layer-product">Product</span><p>Turns "which measure is this, what feeds it, and what's in this report" from a guess into a question any agent can answer on its own.</p></div>
+          <div class="layer-row"><span class="layer-label layer-system">System</span><p>A graph database that turns platform configuration into a context-rich, searchable semantic layer powering every agentic app on the platform.</p></div>
+        </div>
+        <p class="card-why">Why: it's now the shared context layer Agent Builder, Skill Builder, Config Model Extension, and Synthetic Data Generation all query against.</p>
         <ul class="project-tags">
           <li>Knowledge Graph</li><li>Agent Builder</li><li>Skill Builder</li><li>Platform Context</li>
         </ul>
+        <a href="projects/config-graph.html" class="project-read-more">Read the full case study &rarr;</a>
       </div>
     </article>
 
@@ -308,34 +343,21 @@
       <div class="project-index">02</div>
       <div class="project-main">
         <div class="project-heading">
-          <h3>Config Model Extension</h3>
-          <p class="project-role">Agentic Configuration &middot; MCP Tooling</p>
-        </div>
-        <div class="project-copy">
-          <div class="project-col">
-            <span class="col-label">Problem</span>
-            <p>Configuration was the friction point blocking agentic delivery: high interaction
-              cost, tribal knowledge requirements, and fragile manual dependency ordering &mdash;
-              turning a 4&ndash;6 month implementation into a slow, expert-bound slog.</p>
-          </div>
-          <div class="project-col">
-            <span class="col-label">Approach</span>
-            <p>Shipped first-class CRUD tools for every config entity over Nova's MCP interface, with
-              two flows on the same engine &mdash; an <em>Express Lane</em> for precise, spec-driven
-              builds, and an <em>Architect Lane</em> where agents explore the Config Graph, propose a
-              plan grounded in o9's Reference Model graph DB, and execute end-to-end after review.</p>
-          </div>
-          <div class="project-col">
-            <span class="col-label">Impact</span>
-            <p>Implementations that used to take <strong>4&ndash;6 months</strong> can now ship in
-              <strong>weeks, sometimes days</strong> &mdash; for both greenfield provisioning and
-              extending existing solutions (e.g. stat forecasting &rarr; ML-based forecasting) &mdash;
-              with continuous improvement built in as a byproduct.</p>
+          <h3><a href="projects/config-model-extension.html">Config Model Extension</a></h3>
+          <div class="project-meta-row">
+            <p class="project-role">Agentic Configuration &middot; MCP Tooling</p>
+            <span class="status-pill status-live">Live</span>
           </div>
         </div>
+        <div class="project-layers">
+          <div class="layer-row"><span class="layer-label layer-product">Product</span><p>Turns a 4&ndash;6 month, expert-bound implementation into an agent-run, human-approved build finished in weeks.</p></div>
+          <div class="layer-row"><span class="layer-label layer-system">System</span><p>First-class CRUD tools that provision a solution's data model and computation layer from scratch, or extend an existing one, with enforced dependency ordering, phased execution, and structured rollback on failure.</p></div>
+        </div>
+        <p class="card-why">Why: implementations that used to take months now ship in weeks, sometimes days, with a human approving every step.</p>
         <ul class="project-tags">
           <li>Agent-Driven Config</li><li>MCP Tools</li><li>Reference Models</li><li>Greenfield Provisioning</li>
         </ul>
+        <a href="projects/config-model-extension.html" class="project-read-more">Read the full case study &rarr;</a>
       </div>
     </article>
 
@@ -344,50 +366,57 @@
       <div class="project-index">03</div>
       <div class="project-main">
         <div class="project-heading">
-          <h3>Config Designer UI</h3>
-          <p class="project-role">Agentic UI &middot; Solution Architect Agent</p>
-        </div>
-        <div class="project-copy">
-          <div class="project-col">
-            <span class="col-label">Problem</span>
-            <p>The legacy configuration UI was slow and click-heavy, with no visual way to
-              understand how a tenant was actually configured before changing it.</p>
-          </div>
-          <div class="project-col">
-            <span class="col-label">Approach</span>
-            <p>Designed an agentic configuration UI powered by the Solution Architect agent
-              (built as part of Config Model Extension) &mdash; giving users a guided, visual way to
-              build and understand configuration instead of clicking through disconnected screens.</p>
-          </div>
-          <div class="project-col">
-            <span class="col-label">Impact</span>
-            <p>Replaced a workflow implementers actively avoided with one that's fast, transparent,
-              and self-explanatory &mdash; turning configuration from a black box into something
-              users can actually see and reason about.</p>
+          <h3><a href="projects/config-designer-ui.html">Config Designer UI</a></h3>
+          <div class="project-meta-row">
+            <p class="project-role">Agentic UI &middot; Solution Architect Agent</p>
+            <span class="status-pill status-live">Live</span>
           </div>
         </div>
+        <div class="project-layers">
+          <div class="layer-row"><span class="layer-label layer-product">Product</span><p>Lets an implementer see how a tenant is actually configured before changing it, instead of working blind.</p></div>
+          <div class="layer-row"><span class="layer-label layer-system">System</span><p>A graph-aware exploration UI driven by the same Solution Architect agent that plans and executes builds.</p></div>
+        </div>
+        <p class="card-why">Why: replaced a workflow implementers actively avoided with one that's fast, transparent, and self-explanatory.</p>
         <ul class="project-tags">
           <li>Agentic UI</li><li>Solution Architect Agent</li><li>Config Visualization</li>
         </ul>
+        <a href="projects/config-designer-ui.html" class="project-read-more">Read the full case study &rarr;</a>
+      </div>
+    </article>
+
+    <!-- Case Study 04 -->
+    <article class="project reveal">
+      <div class="project-index">04</div>
+      <div class="project-main">
+        <div class="project-heading">
+          <h3><a href="projects/usage-analytics.html">Usage Analytics</a></h3>
+          <div class="project-meta-row">
+            <p class="project-role">Analytics &middot; Process Mining</p>
+            <span class="status-pill status-live">Live</span>
+          </div>
+        </div>
+        <div class="project-layers">
+          <div class="layer-row"><span class="layer-label layer-product">Product</span><p>Replaces guesswork about how a team actually works with a real, automatic process trace.</p></div>
+          <div class="layer-row"><span class="layer-label layer-system">System</span><p>Frequency-weighted process graphs reconstructed automatically from platform clickstream logs.</p></div>
+        </div>
+        <p class="card-why">Why: replaces guesswork with a real process trace, feeding both team-facing reports and an agent that writes the monthly summary itself.</p>
+        <ul class="project-tags">
+          <li>Analytics</li><li>Process Mining</li><li>Agent Reporting</li>
+        </ul>
+        <a href="projects/usage-analytics.html" class="project-read-more">Read the full case study &rarr;</a>
       </div>
     </article>
 
     <!-- Compact cards -->
+    <h3 class="supporting-heading reveal">Supporting work</h3>
     <div class="project-grid">
-
-      <article class="project-card reveal">
-        <span class="card-index">04</span>
-        <h4>Usage Analytics</h4>
-        <p>Mines user actions across the o9 platform to surface insight on the actual business
-          processes users perform &mdash; turning raw clickstreams into process-level intelligence.</p>
-        <ul class="card-tags"><li>Analytics</li><li>Process Mining</li></ul>
-      </article>
 
       <article class="project-card reveal">
         <span class="card-index">05</span>
         <h4>Harness Engineering</h4>
         <p>Led the move from a traditional LangGraph orchestration harness to a middleware-based
-          LangGraph architecture, incorporating LLM response caching for cost and latency.</p>
+          LangGraph architecture, incorporating LLM response caching that cut LLM costs by up to 65%.</p>
+        <p class="card-why">Why: every agent product above sits on this harness, so a cheaper, faster core pays off across all of them at once.</p>
         <ul class="card-tags"><li>LangGraph</li><li>LLM Caching</li></ul>
       </article>
 
@@ -395,26 +424,58 @@
         <span class="card-index">06</span>
         <h4>Synthetic Data Generation</h4>
         <p>Agents generate meaningful Dimension, Fact, and graph data for o9's live server, grounded
-          in the Config Graph &mdash; powering demo stories, performance testing at scale, and rapid
+          in the Config Graph, powering demo stories, performance testing at scale, and rapid
           POC setup.</p>
+        <p class="card-why">Why: real customer data is off-limits for demos and load tests. This gives teams data that behaves like the real thing without the risk.</p>
         <ul class="card-tags"><li>Data Generation</li><li>POC Toolkit</li></ul>
-      </article>
-
-      <article class="project-card reveal">
-        <span class="card-index">07</span>
-        <h4>Documentation Portal</h4>
-        <p>Built an o9 docs portal on Fuma Docs with a release pipeline &mdash; new capability docs
-          publish straight from the codebase, keeping users and power users current automatically.</p>
-        <ul class="card-tags"><li>Fuma Docs</li><li>Release Pipeline</li></ul>
       </article>
 
     </div>
   </section>
 
+  <!-- HOW I WORK -->
+  <section id="how-i-work" class="section how-i-work">
+    <div class="section-head reveal">
+      <span class="section-num">04</span>
+      <h2>How I work</h2>
+      <p class="section-intro">
+        Five layers I move across on every product, in order, because skipping one is usually
+        where an agent product quietly fails.
+      </p>
+    </div>
+    <ol class="how-list">
+      <li class="reveal">
+        <span class="how-num">01</span>
+        <h4>User problems</h4>
+        <p>Start from what's actually slow, fragile, or expert-bound for the person doing the work, not from what the technology can do.</p>
+      </li>
+      <li class="reveal">
+        <span class="how-num">02</span>
+        <h4>Product workflows</h4>
+        <p>Design the end-to-end flow a user goes through, including the parts before and after the AI touches anything.</p>
+      </li>
+      <li class="reveal">
+        <span class="how-num">03</span>
+        <h4>AI behavior design</h4>
+        <p>Define exactly what the agent should and shouldn't do on its own, where it must stop and ask, and how it fails.</p>
+      </li>
+      <li class="reveal">
+        <span class="how-num">04</span>
+        <h4>System constraints</h4>
+        <p>The graph, orchestration, and infra decisions underneath, since a product promise the system can't keep isn't a product.</p>
+      </li>
+      <li class="reveal">
+        <span class="how-num">05</span>
+        <h4>Enterprise deployment reality</h4>
+        <p>Rollout, stakeholder buy-in, and what it takes for a skeptical implementer to actually trust and adopt it.</p>
+      </li>
+    </ol>
+  </section>
+
   <!-- EDUCATION -->
   <section id="education" class="section education">
     <div class="section-head reveal">
-      <span class="section-num">04</span>
+      <span class="section-num">05</span>
       <h2>Education</h2>
     </div>
     <div class="edu-card reveal">
@@ -431,11 +492,11 @@
   <!-- CONTACT -->
   <section id="contact" class="section contact">
     <div class="contact-inner">
-      <span class="section-num reveal">05</span>
+      <span class="section-num reveal">06</span>
       <h2 class="reveal">Let's talk<span class="dot-accent">.</span></h2>
       <p class="reveal">
-        Open to conversations on agentic product, enterprise AI, or planning systems &mdash;
-        reach out any time.
+        Open to conversations on agentic product, enterprise AI, or planning systems.
+        Reach out any time.
       </p>
       <div class="contact-links reveal">
         <a href="mailto:anil.navneeth@gmail.com" class="contact-link">
@@ -457,6 +518,6 @@
   <a href="#top">Back to top &uarr;</a>
 </footer>
 
-<script src="script.js"></script>
+<script src="script.js?v=2"></script>
 </body>
 </html>
