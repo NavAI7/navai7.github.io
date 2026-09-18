@@ -13,7 +13,7 @@
   --void-muted: rgba(245,243,236,0.6);
   --void-line: rgba(245,243,236,0.14);
 
-  --accent: #2dd4bf;
+  --accent: #14b8a6;
   --accent-dark: #0f5f5c;
 
   --display: "Bricolage Grotesque", "Helvetica Neue", Arial, sans-serif;
@@ -411,6 +411,9 @@ em{ font-style:italic; }
 .edu-meta .mono{ font-family:var(--mono); font-size:12px; letter-spacing:0.06em; color:var(--muted); text-transform:uppercase; }
 
 /* ============ Contact ============ */
+/* Full-bleed like .hero-wrap: .contact is a .section, so its own background
+   stopped at --maxw and left paper down both edges. */
+.contact-wrap{ background:var(--void); }
 .contact{ background:var(--void); color:var(--void-text); border-radius:0; }
 .contact-inner{ max-width:720px; }
 .contact .section-num{ border-color:var(--void-line); color:var(--void-muted); }
