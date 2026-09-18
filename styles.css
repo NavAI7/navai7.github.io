@@ -80,8 +80,10 @@ em{ font-style:italic; }
 /* ============ Nav ============ */
 .nav-wrap{
   position:sticky; top:0; z-index:100;
-  background:rgba(10,10,10,0.72);
-  backdrop-filter:blur(14px);
+  /* Opaque: the nav sits above .hero-wrap in the DOM, so a translucent
+     background sampled the cream body behind it and rendered grey. The
+     blur also recomposited on every hover repaint, which read as flicker. */
+  background:var(--void);
   border-bottom:1px solid var(--void-line);
 }
 .nav{
