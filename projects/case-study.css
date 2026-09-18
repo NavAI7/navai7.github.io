@@ -39,7 +39,10 @@
 
 .doc-layout{
   max-width:var(--maxw); margin:0 auto; padding:64px var(--pad) 120px;
-  display:grid; grid-template-columns:260px 1fr; gap:64px; align-items:start;
+  /* minmax(0,...) not 1fr: the comparison table sets min-width:640px, and a bare
+     1fr track adopts that as its minimum, blowing the whole grid past the
+     viewport and dragging the TOC with it. */
+  display:grid; grid-template-columns:260px minmax(0,1fr); gap:64px; align-items:start;
 }
 
 .doc-toc{
@@ -136,7 +139,7 @@
 }
 
 @media (max-width:900px){
-  .doc-layout{ grid-template-columns:1fr; }
+  .doc-layout{ grid-template-columns:minmax(0,1fr); }
   .doc-toc{ position:static; }
   .doc-metric-grid{ grid-template-columns:1fr; }
   .doc-skim{ grid-template-columns:1fr; gap:20px; }

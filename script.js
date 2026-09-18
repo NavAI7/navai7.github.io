@@ -40,13 +40,17 @@ if (!prefersReducedMotion && window.matchMedia('(hover: hover) and (pointer: fin
 // Hero parallax on scroll
 const heroBgText = document.querySelector('.hero-bg-text');
 const heroPhoto = document.querySelector('.hero-photo');
+// The photo only parallaxes while the hero is two columns. Below 960px the hero
+// stacks and the photo sits under the buttons, so shifting it up overlapped them.
+const wideHero = window.matchMedia('(min-width: 961px)');
 function updateParallax() {
   const y = window.scrollY;
   if (heroBgText) heroBgText.style.transform = `translate(-50%, ${y * 0.18}px)`;
-  if (heroPhoto) heroPhoto.style.transform = `translateY(${y * -0.06}px)`;
+  if (heroPhoto) heroPhoto.style.transform = wideHero.matches ? `translateY(${y * -0.06}px)` : '';
 }
 if (!prefersReducedMotion) {
   window.addEventListener('scroll', updateParallax, { passive: true });
+  wideHero.addEventListener('change', updateParallax);
   updateParallax();
 }
 
