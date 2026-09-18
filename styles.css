@@ -59,13 +59,16 @@ em{ font-style:italic; }
 
 .cursor-dot{
   position:fixed; top:0; left:0; width:10px; height:10px; border-radius:50%;
-  background:var(--ink); pointer-events:none; z-index:1000;
+  /* difference blending inverts against the backdrop, so the cursor stays
+     visible over the dark nav, hero and contact sections as well as paper */
+  background:#fff; mix-blend-mode:difference;
+  pointer-events:none; z-index:1000;
   transform:translate(-50%,-50%);
   transition:width .18s ease, height .18s ease, background .18s ease, opacity .18s ease;
   opacity:0;
 }
 .cursor-dot.active{ opacity:1; }
-.cursor-dot.hover{ width:44px; height:44px; background:transparent; border:1.5px solid var(--ink); }
+.cursor-dot.hover{ width:44px; height:44px; background:transparent; border:1.5px solid #fff; }
 
 .scroll-progress{
   position:fixed; top:0; left:0; height:3px; background:var(--ink); z-index:998; width:0%;
