@@ -68,9 +68,12 @@
 .doc-toc li.active a .doc-toc-num{ color:var(--accent); }
 
 .doc-content{ max-width:720px; }
-.doc-section{ padding-bottom:72px; margin-bottom:72px; border-bottom:1px solid var(--line); }
+.doc-section{ padding-bottom:72px; margin-bottom:72px; border-bottom:1px solid var(--line);
+  /* The id is on the section, so scroll-margin must live here -- on the h2 it
+     never applied, and .reveal shifts the target up ~28px after the jump. */
+  scroll-margin-top:80px; }
 .doc-section:last-child{ border-bottom:none; margin-bottom:0; padding-bottom:0; }
-.doc-section h2{ font-size:clamp(26px,3vw,36px); margin-bottom:24px; scroll-margin-top:100px; }
+.doc-section h2{ font-size:clamp(26px,3vw,36px); margin-bottom:24px; }
 .doc-section h3{ font-size:19px; margin:32px 0 12px; }
 .doc-section p{ font-size:16px; line-height:1.75; color:var(--muted); margin-bottom:18px; }
 .doc-section p:last-child{ margin-bottom:0; }
@@ -145,4 +148,25 @@
   .doc-skim{ grid-template-columns:1fr; gap:20px; }
   .doc-skim-item{ border-left:none; padding-left:0; border-top:1px solid var(--line-strong); padding-top:16px; }
   .doc-skim-item:first-child{ border-top:none; padding-top:0; }
+}
+
+/* ============ Phone ============ */
+@media (max-width:900px){
+  /* The TOC is a sticky sidebar on desktop; stacked inline on a phone it was a
+     459px wall between the summary and the writing. case-study.js collapses it
+     and makes the head a toggle. Without JS it stays open, which is fine. */
+  .doc-toc-head{ display:flex; align-items:center; justify-content:space-between; cursor:pointer; }
+  .doc-toc-head::after{
+    content:"\25be"; font-size:13px; color:var(--accent-dark);
+    transition:transform .2s ease;
+  }
+  .doc-toc.is-collapsed .doc-toc-head::after{ transform:rotate(-90deg); }
+  .doc-toc.is-collapsed ol,
+  .doc-toc.is-collapsed .doc-toc-progress{ display:none; }
+  .doc-toc-head:focus-visible{ outline:2px solid var(--accent-dark); outline-offset:-2px; }
+
+  /* A 900-unit viewBox scaled into ~320px rendered the 10px labels at 3.6px.
+     Give it a legible floor and pan horizontally, same as .doc-compare-wrap. */
+  .doc-figure{ overflow-x:auto; }
+  .doc-figure svg{ width:820px !important; max-width:none; }
 }

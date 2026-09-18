@@ -41,3 +41,48 @@ const io = new IntersectionObserver((entries) => {
   });
 }, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
 revealEls.forEach(el => io.observe(el));
+
+// Collapse the contents list on phones. Stacked inline it pushed the article
+// more than two screens down; the head becomes a toggle instead. Everything is
+// torn down again above the breakpoint so no dead button is left in the
+// accessibility tree on desktop.
+const toc = document.querySelector('.doc-toc');
+const tocHead = document.querySelector('.doc-toc-head');
+if (toc && tocHead) {
+  const narrow = window.matchMedia('(max-width: 900px)');
+
+  function collapse(on) {
+    toc.classList.toggle('is-collapsed', on);
+    tocHead.setAttribute('aria-expanded', String(!on));
+  }
+  function toggle() {
+    collapse(!toc.classList.contains('is-collapsed'));
+  }
+  function onKey(e) {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      toggle();
+    }
+  }
+
+  function applyNarrow() {
+    if (narrow.matches) {
+      tocHead.setAttribute('role', 'button');
+      tocHead.setAttribute('tabindex', '0');
+      tocHead.addEventListener('click', toggle);
+      tocHead.addEventListener('keydown', onKey);
+      collapse(true);
+    } else {
+      tocHead.removeEventListener('click', toggle);
+      tocHead.removeEventListener('keydown', onKey);
+      tocHead.removeAttribute('role');
+      tocHead.removeAttribute('tabindex');
+      tocHead.removeAttribute('aria-expanded');
+      toc.classList.remove('is-collapsed');
+    }
+  }
+
+  applyNarrow();
+  narrow.addEventListener('change', applyNarrow);
+  window.addEventListener('resize', applyNarrow, { passive: true });
+}
