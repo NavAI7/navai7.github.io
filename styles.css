@@ -26,7 +26,10 @@
 }
 
 *{ box-sizing:border-box; }
-html{ scroll-behavior:smooth; }
+/* overflow-x:clip stops a stray element creating a horizontal scroll (and the
+   paper gutter beside the dark hero) without making a scroll container the way
+   overflow:hidden would, which would break the sticky nav. */
+html{ scroll-behavior:smooth; overflow-x:clip; }
 
 body{
   margin:0;
@@ -527,4 +530,41 @@ em{ font-style:italic; }
   .hero-bg-text{ display:none; }
   .how-list{ grid-template-columns:1fr; }
   .pm-summary-grid{ grid-template-columns:1fr; gap:20px; }
+}
+
+/* Phone sizing. The layout stacked correctly below 720px but kept desktop
+   proportions: 140px section padding, a 52px timeline indent and 36px card
+   padding all ate a 375px screen. */
+@media (max-width:720px){
+  .section{ padding:88px var(--pad); }
+  .section-head{ margin-bottom:40px; }
+
+  /* Buttons were wrapping to two ragged rows at different widths. */
+  .hero-actions{ flex-direction:column; align-items:stretch; gap:12px; }
+  .btn{ justify-content:center; }
+
+  /* The dot centred itself against the eyebrow once the text wrapped. */
+  .eyebrow{ align-items:flex-start; }
+  .eyebrow .dot{ margin-top:5px; flex:0 0 auto; }
+
+  /* Matches the desktop frame: --ink is invisible on the dark hero. */
+  .hero-photo-frame{ box-shadow:8px 8px 0 var(--void-2), 9px 9px 0 var(--void-line); }
+
+  /* 52px of indent left ~275px for text, so every tag sat on its own row. */
+  .tl-item{ padding-left:34px; margin-bottom:44px; }
+  .tl-top h3{ font-size:21px; }
+
+  .project-card{ padding:26px 22px; }
+  .case-card{ padding:26px 20px; }
+
+  /* Three stats were stacking vertically into a 308px column. */
+  .case-stats{ display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:14px; }
+  .stat-num{ font-size:22px; }
+
+  /* Label and value collided in a 327px row. */
+  .contact-link{ flex-direction:column; align-items:flex-start; gap:4px; padding:18px 0; }
+  .contact-link strong{ font-size:19px; }
+
+  /* A 240px tooltip centred on a word near the right edge ran off screen. */
+  .gloss .gloss-tip{ max-width:min(240px, calc(100vw - 48px)); }
 }
