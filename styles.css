@@ -3,9 +3,10 @@
   --ink: #111110;
   --paper: #f4f3f1;
   --paper-2: #e9e8e4;
-  --line: rgba(17,17,16,0.14);
-  --line-strong: rgba(17,17,16,0.48);
-  --muted: rgba(17,17,16,0.70);
+  --paper-alt: #ecebe7;
+  --line: rgba(17,17,16,0.24);
+  --line-strong: rgba(17,17,16,0.55);
+  --muted: rgba(17,17,16,0.76);
 
   --void: #0a0a0a;
   --void-2: #161615;
@@ -237,11 +238,13 @@ em{ font-style:italic; }
 @keyframes marquee{ from{ transform:translateX(0); } to{ transform:translateX(-50%); } }
 
 /* ============ Sections (generic) ============ */
+/* Alt surface for one mid-page band; full-bleed like .hero-wrap and .contact-wrap. */
+.band-alt{ background:var(--paper-alt); }
 .section{ max-width:var(--maxw); margin:0 auto; padding:140px var(--pad); }
 .section-head{ margin-bottom:64px; }
 .section-num{
-  display:inline-block; font-family:var(--mono); font-size:13px; color:var(--muted);
-  border:1px solid var(--line-strong); border-radius:999px; padding:4px 12px; margin-bottom:18px;
+  display:inline-block; font-family:var(--mono); font-size:13px; color:var(--accent-dark);
+  border:1px solid var(--accent-dark); border-radius:999px; padding:4px 12px; margin-bottom:18px;
 }
 .section-num::before{ content:"/// "; color:var(--accent-dark); }
 .section-head h2{ font-size:clamp(42px,6.2vw,84px); line-height:0.98; }
@@ -277,13 +280,14 @@ em{ font-style:italic; }
 .tl-item:last-child{ margin-bottom:0; }
 .tl-marker{ position:absolute; left:0; top:6px; width:20px; height:20px; display:flex; align-items:center; justify-content:center; }
 .tl-dot{ width:11px; height:11px; border-radius:50%; background:var(--paper); border:2px solid var(--ink); }
-.tl-featured .tl-dot{ background:var(--ink); }
+.tl-featured .tl-dot{ background:var(--accent-dark); border-color:var(--accent-dark); }
 .tl-top{ display:flex; align-items:baseline; justify-content:space-between; flex-wrap:wrap; gap:8px; }
 .tl-top h3{ font-size:24px; }
 .tl-date{ font-family:var(--mono); font-size:12.5px; color:var(--muted); letter-spacing:0.03em; }
 .tl-org{ font-size:14px; color:var(--muted); margin-top:4px; font-weight:500; }
 .tl-desc{ margin-top:14px; color:var(--muted); font-size:15.5px; line-height:1.7; max-width:640px; }
-.tl-desc a{ text-decoration:underline; text-underline-offset:3px; color:var(--ink); }
+.tl-desc a{ text-decoration:underline; text-underline-offset:3px; color:var(--ink); transition:color .2s ease; }
+.tl-desc a:hover{ color:var(--accent-dark); }
 .tl-tags{ display:flex; flex-wrap:wrap; gap:8px; margin-top:16px; }
 .tl-tags li{
   font-family:var(--mono); font-size:11.5px; padding:5px 10px; border:1px solid var(--line-strong);
@@ -335,7 +339,7 @@ em{ font-style:italic; }
   font-family:var(--mono); font-size:10.5px; text-transform:uppercase; letter-spacing:0.05em;
   padding:3px 10px; border-radius:999px; border:1px solid currentColor;
 }
-.status-pill.status-live{ color:var(--accent-dark); }
+.status-pill.status-live{ color:var(--accent-dark); background:rgba(20,184,166,0.10); }
 .status-pill.status-build{ color:var(--muted); }
 .status-pill.status-prototype{ color:var(--muted); }
 .status-pill.status-internal{ color:var(--accent-dark); }
@@ -389,6 +393,7 @@ em{ font-style:italic; }
   display:flex; flex-direction:column; gap:12px;
 }
 .project-card:hover{ background:var(--paper-2); }
+.project-card:hover h4{ color:var(--accent-dark); }
 .card-index{ font-family:var(--mono); font-size:12px; color:var(--accent-dark); }
 .project-card h4{ font-size:22px; }
 .card-why{ font-size:13px; line-height:1.6; color:var(--muted); font-style:italic; border-left:2px solid var(--accent-dark); padding-left:12px; }
@@ -416,7 +421,7 @@ em{ font-style:italic; }
 .contact-wrap{ background:var(--void); }
 .contact{ background:var(--void); color:var(--void-text); border-radius:0; }
 .contact-inner{ max-width:720px; }
-.contact .section-num{ border-color:var(--void-line); color:var(--void-muted); }
+.contact .section-num{ border-color:var(--accent); color:var(--accent); }
 .contact .section-num::before{ color:var(--accent); }
 .contact h2{ color:var(--void-text); font-size:clamp(48px,7.5vw,96px); margin-top:20px; }
 .dot-accent{ color:var(--accent); }
