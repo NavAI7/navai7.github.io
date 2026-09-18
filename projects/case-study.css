@@ -113,7 +113,7 @@
 }
 .doc-compare td{ color:var(--muted); }
 .doc-compare tr:last-child td{ border-bottom:none; }
-.doc-compare tr.doc-compare-winner td{ background:rgba(240,168,48,0.16); color:var(--ink); }
+.doc-compare tr.doc-compare-winner td{ background:rgba(45,212,191,0.18); color:var(--ink); }
 .doc-compare tr.doc-compare-winner td:first-child{ font-weight:700; color:var(--ink); position:relative; }
 .doc-compare-pill{
   display:inline-block; font-family:var(--mono); font-size:10px; text-transform:uppercase; letter-spacing:0.05em;

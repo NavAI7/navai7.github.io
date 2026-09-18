@@ -1,8 +1,8 @@
 /* ============ Tokens ============ */
 :root{
   --ink: #111110;
-  --paper: #f3f1ea;
-  --paper-2: #eae7dc;
+  --paper: #f4f3f1;
+  --paper-2: #e9e8e4;
   --line: rgba(17,17,16,0.14);
   --line-strong: rgba(17,17,16,0.48);
   --muted: rgba(17,17,16,0.70);
@@ -13,8 +13,8 @@
   --void-muted: rgba(245,243,236,0.6);
   --void-line: rgba(245,243,236,0.14);
 
-  --accent: #f0a830;
-  --accent-dark: #6a4a12;
+  --accent: #2dd4bf;
+  --accent-dark: #0f5f5c;
 
   --display: "Bricolage Grotesque", "Helvetica Neue", Arial, sans-serif;
   --serif: var(--display);
