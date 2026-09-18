@@ -4,8 +4,8 @@
   --paper: #f3f1ea;
   --paper-2: #eae7dc;
   --line: rgba(17,17,16,0.14);
-  --line-strong: rgba(17,17,16,0.35);
-  --muted: rgba(17,17,16,0.62);
+  --line-strong: rgba(17,17,16,0.48);
+  --muted: rgba(17,17,16,0.70);
 
   --void: #0a0a0a;
   --void-2: #161615;
@@ -45,6 +45,10 @@ ul{ list-style:none; margin:0; padding:0; }
 h1,h2,h3,h4{ margin:0; font-family:var(--display); font-weight:700; letter-spacing:-0.02em; }
 p{ margin:0; }
 em{ font-style:italic; }
+
+/* Selection uses the accent so no browser default blue lands on the page */
+::selection{ background:var(--accent); color:var(--void); }
+::-moz-selection{ background:var(--accent); color:var(--void); }
 
 /* ============ Texture ============ */
 .grain{
