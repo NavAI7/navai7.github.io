@@ -23,8 +23,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../styles.css?v=4" />
-<link rel="stylesheet" href="case-study.css?v=3" />
+<link rel="stylesheet" href="../styles.css?v=14" />
+<link rel="stylesheet" href="case-study.css?v=10" />
 <noscript><style>
   .reveal, .reveal.in{ opacity:1 !important; transform:none !important; filter:none !important; }
 </style></noscript>
@@ -36,8 +36,8 @@
 
 <header class="doc-header">
   <div class="doc-header-inner">
-    <a href="../index.html#projects" class="doc-back">&larr; Back to Selected Work</a>
-    <p class="doc-eyebrow">Flagship 02 &middot; Agentic Configuration &middot; o9 Solution Architect Agent</p>
+    <a href="../index.html?v=2#projects" class="doc-back">&larr; Back to Selected Work</a>
+    <p class="doc-eyebrow">Layer 2 of 3 &middot; Agent Built on the Config Graph</p>
     <h1 class="doc-title">Config Model Extension</h1>
     <p class="doc-subtitle">
       The o9 Solution Architect agent, and the CRUD tooling and modeling best practices built to
@@ -51,6 +51,7 @@
     </div>
   </div>
 </header>
+<nav class="doc-series" aria-label="Part of one system"><div class="doc-series-inner"><span class="doc-series-label">One system, three layers</span><a href="config-graph.html?v=2"><b>1</b> Config Graph</a><span class="doc-series-sep" aria-hidden="true">&rarr;</span><a href="config-model-extension.html?v=2" aria-current="page"><b>2</b> Config Model Extension</a><span class="doc-series-sep" aria-hidden="true">&rarr;</span><a href="config-designer-ui.html?v=2"><b>3</b> Config Designer UI</a></div></nav>
 
 <div class="doc-skim-wrap">
   <p class="doc-skim-label">TL;DR</p>
@@ -138,67 +139,40 @@
 
     <section id="system" class="doc-section reveal">
       <h2>System approach</h2>
-      <div class="doc-figure">
-        <svg viewBox="0 0 900 360" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Architecture: a configurator request, grounded by the tenant Config Graph and the Reference Model Graph, drives the o9 Solution Architect agent to propose a phased plan; each phase goes through human approval and dependency-ordered CRUD tooling before it reaches the platform, with invalid-order calls rejected back to the agent." style="width:100%;height:auto;display:block;background:var(--paper-2);">
-          <defs>
-            <marker id="arrow-model" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
-              <path d="M0,0 L10,5 L0,10 z" fill="var(--muted)" />
-            </marker>
-          </defs>
-          <path d="M110,95 L280,105" fill="none" stroke="var(--line-strong)" stroke-width="1.5" marker-end="url(#arrow-model)" />
-          <path d="M310,95 L310,105" fill="none" stroke="var(--line-strong)" stroke-width="1.5" marker-end="url(#arrow-model)" />
-          <path d="M510,95 L340,105" fill="none" stroke="var(--line-strong)" stroke-width="1.5" marker-end="url(#arrow-model)" />
-          <path d="M310,160 L310,197" fill="none" stroke="var(--line-strong)" stroke-width="1.5" marker-end="url(#arrow-model)" />
-          <path d="M235,243 L235,267" fill="none" stroke="var(--line-strong)" stroke-width="1.5" marker-end="url(#arrow-model)" />
-          <path d="M330,290 L410,290" fill="none" stroke="var(--line-strong)" stroke-width="1.5" marker-end="url(#arrow-model)" />
-          <path d="M600,290 L680,290" fill="none" stroke="var(--line-strong)" stroke-width="1.5" marker-end="url(#arrow-model)" />
-          <path d="M560,267 C 650,267 650,130 470,133" fill="none" stroke="var(--muted)" stroke-width="1.5" stroke-dasharray="4 3" marker-end="url(#arrow-model)" />
-
-          <g>
-            <rect x="20" y="45" width="180" height="50" rx="8" fill="var(--paper)" stroke="var(--line-strong)" stroke-width="1.5" />
-            <text x="110" y="66" text-anchor="middle" font-family="var(--mono)" font-size="11.5" fill="var(--ink)">Tenant Config Graph</text>
-            <text x="110" y="80" text-anchor="middle" font-family="var(--mono)" font-size="10" fill="var(--muted)">grounding, source A</text>
-          </g>
-          <g>
-            <rect x="220" y="45" width="180" height="50" rx="8" fill="var(--paper)" stroke="var(--line-strong)" stroke-width="1.5" />
-            <text x="310" y="66" text-anchor="middle" font-family="var(--mono)" font-size="11.5" fill="var(--ink)">Reference Model Graph</text>
-            <text x="310" y="80" text-anchor="middle" font-family="var(--mono)" font-size="10" fill="var(--muted)">grounding, source B</text>
-          </g>
-          <g>
-            <rect x="420" y="45" width="180" height="50" rx="8" fill="var(--paper)" stroke="var(--line-strong)" stroke-width="1.5" />
-            <text x="510" y="66" text-anchor="middle" font-family="var(--mono)" font-size="11.5" fill="var(--ink)">Configurator request</text>
-            <text x="510" y="80" text-anchor="middle" font-family="var(--mono)" font-size="10" fill="var(--muted)">spec or vague ask</text>
-          </g>
-
-          <g>
-            <rect x="150" y="105" width="320" height="55" rx="8" fill="var(--ink)" stroke="var(--ink)" stroke-width="1.5" />
-            <text x="310" y="128" text-anchor="middle" font-family="var(--mono)" font-size="12.5" fill="var(--paper)">o9 Solution Architect</text>
-            <text x="310" y="144" text-anchor="middle" font-family="var(--mono)" font-size="10" fill="var(--void-muted)">agent</text>
-          </g>
-
-          <g>
-            <rect x="70" y="197" width="480" height="46" rx="8" fill="var(--paper)" stroke="var(--line-strong)" stroke-width="1.5" />
-            <text x="310" y="225" text-anchor="middle" font-family="var(--mono)" font-size="11.5" fill="var(--ink)">Structure → data-bearing → rules → plugins</text>
-          </g>
-
-          <g>
-            <rect x="150" y="267" width="170" height="50" rx="8" fill="var(--paper)" stroke="var(--line-strong)" stroke-width="1.5" />
-            <text x="235" y="288" text-anchor="middle" font-family="var(--mono)" font-size="11.5" fill="var(--ink)">Human approval</text>
-            <text x="235" y="302" text-anchor="middle" font-family="var(--mono)" font-size="10" fill="var(--muted)">one phase at a time</text>
-          </g>
-          <g>
-            <rect x="410" y="267" width="190" height="50" rx="8" fill="var(--paper)" stroke="var(--accent-dark)" stroke-width="2" />
-            <text x="505" y="288" text-anchor="middle" font-family="var(--mono)" font-size="11.5" fill="var(--ink)">CRUD tooling</text>
-            <text x="505" y="302" text-anchor="middle" font-family="var(--mono)" font-size="10" fill="var(--muted)">dependency-ordered</text>
-          </g>
-          <g>
-            <rect x="680" y="267" width="180" height="50" rx="8" fill="var(--paper)" stroke="var(--line-strong)" stroke-width="1.5" />
-            <text x="770" y="288" text-anchor="middle" font-family="var(--mono)" font-size="11.5" fill="var(--ink)">Platform</text>
-            <text x="770" y="302" text-anchor="middle" font-family="var(--mono)" font-size="10" fill="var(--muted)">tenant configuration</text>
-          </g>
-          <text x="670" y="195" text-anchor="middle" font-family="var(--mono)" font-size="10" fill="var(--muted)">reject: bad order</text>
-        </svg>
-        <div class="doc-figure-caption">Architecture — grounded in two graphs, the agent proposes a phased plan; each phase clears human approval and dependency-ordered CRUD tooling before it lands on the platform, with out-of-order calls rejected back to the agent instead of leaving a partial state.</div>
+      <div class="doc-figure dia">
+        <div class="dia-scroll">
+          <svg class="dia-svg" viewBox="0 0 720 506" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="A request and two graphs feed the Solution Architect agent, which reads both graphs, plans phases and asks for approval. A person approves each phase before dependency-ordered tools change the platform. Calls in the wrong order go back to the agent.">
+            <defs><marker id="model-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path class="d-head" d="M0,0 L10,5 L0,10 z"/></marker></defs>
+            <g class="d-part d-box" style="--o:11;--at:3.3s"><rect x="20" y="296" width="680" height="78" rx="10"/><text class="d-label" x="32" y="313">PHASED PLAN</text></g>
+            <g class="d-part d-link know" style="--o:3;--at:0.4s"><path class="d-line" d="M120 80 V105 H230 V130" marker-end="url(#model-arrow)"/><path class="d-flow" d="M120 80 V105 H230 V130" pathLength="100"/></g>
+            <g class="d-part d-link " style="--o:4;--at:0.4s"><path class="d-line" d="M360 80 V130" marker-end="url(#model-arrow)"/><path class="d-flow" d="M360 80 V130" pathLength="100"/></g>
+            <g class="d-part d-link know" style="--o:5;--at:0.4s"><path class="d-line" d="M600 80 V105 H490 V130" marker-end="url(#model-arrow)"/><path class="d-flow" d="M600 80 V105 H490 V130" pathLength="100"/></g>
+            <g class="d-part d-link " style="--o:10;--at:3s"><path class="d-line" d="M360 256 V296" marker-end="url(#model-arrow)"/><path class="d-flow" d="M360 256 V296" pathLength="100"/></g>
+            <g class="d-part d-link " style="--o:14;--at:3.6s"><path class="d-line" d="M186 342 H200" marker-end="url(#model-arrow)"/><path class="d-flow" d="M186 342 H200" pathLength="100"/></g>
+            <g class="d-part d-link " style="--o:16;--at:3.9s"><path class="d-line" d="M352 342 H366" marker-end="url(#model-arrow)"/><path class="d-flow" d="M352 342 H366" pathLength="100"/></g>
+            <g class="d-part d-link " style="--o:18;--at:4.2s"><path class="d-line" d="M518 342 H532" marker-end="url(#model-arrow)"/><path class="d-flow" d="M518 342 H532" pathLength="100"/></g>
+            <g class="d-part d-link human" style="--o:19;--at:4.6s"><path class="d-line" d="M120 374 V426" marker-end="url(#model-arrow)"/><path class="d-flow" d="M120 374 V426" pathLength="100"/></g>
+            <g class="d-part d-link human" style="--o:21;--at:5.4s"><path class="d-line" d="M220 455 H260" marker-end="url(#model-arrow)"/><path class="d-flow" d="M220 455 H260" pathLength="100"/></g>
+            <g class="d-part d-link " style="--o:23;--at:6s"><path class="d-line" d="M460 455 H500" marker-end="url(#model-arrow)"/><path class="d-flow" d="M460 455 H500" pathLength="100"/></g>
+            <g class="d-part d-link back" style="--o:25;--at:6.7s"><path class="d-line" d="M420 426 V400 H711 V193 H610" marker-end="url(#model-arrow)"/><path class="d-flow" d="M420 426 V400 H711 V193 H610" pathLength="100"/></g>
+            <g class="d-part d-node core" style="--o:0;--at:0s"><rect x="20" y="22" width="200" height="58" rx="8"/><text class="d-title" x="120" y="48">Tenant Config Graph</text><text class="d-sub" x="120" y="65">what exists today</text></g>
+            <g class="d-part d-node " style="--o:1;--at:0s"><rect x="260" y="22" width="200" height="58" rx="8"/><text class="d-title" x="360" y="48">Configurator request</text><text class="d-sub" x="360" y="65">spec or vague ask</text></g>
+            <g class="d-part d-node core" style="--o:2;--at:0s"><rect x="500" y="22" width="200" height="58" rx="8"/><text class="d-title" x="600" y="48">Reference Model Graph</text><text class="d-sub" x="600" y="65">proven patterns</text></g>
+            <g class="d-part d-node dark agent" style="--o:6;--at:1s"><rect x="110" y="130" width="500" height="126" rx="10"/><text class="d-title" x="360" y="164">o9 Solution Architect</text><text class="d-sub" x="360" y="184">understands the setup, plans the change, waits for a person</text></g>
+            <g class="d-part d-node step know" style="--o:7;--at:1.3s"><rect x="128" y="202" width="148" height="36" rx="8"/><text class="d-title" x="202" y="224.5">Read both graphs</text></g>
+            <g class="d-part d-node step" style="--o:8;--at:1.9s"><rect x="286" y="202" width="148" height="36" rx="8"/><text class="d-title" x="360" y="224.5">Plan the phases</text></g>
+            <g class="d-part d-node step human" style="--o:9;--at:2.5s"><rect x="444" y="202" width="148" height="36" rx="8"/><text class="d-title" x="518" y="224.5">Ask for approval</text></g>
+            <g class="d-part d-node " style="--o:12;--at:3.5s"><rect x="34" y="322" width="152" height="40" rx="8"/><text class="d-title" x="110" y="346.5">Structure</text></g>
+            <g class="d-part d-node " style="--o:13;--at:3.8s"><rect x="200" y="322" width="152" height="40" rx="8"/><text class="d-title" x="276" y="346.5">Data-bearing</text></g>
+            <g class="d-part d-node " style="--o:15;--at:4.1s"><rect x="366" y="322" width="152" height="40" rx="8"/><text class="d-title" x="442" y="346.5">Rules</text></g>
+            <g class="d-part d-node " style="--o:17;--at:4.4s"><rect x="532" y="322" width="152" height="40" rx="8"/><text class="d-title" x="608" y="346.5">Plugins</text></g>
+            <g class="d-part d-node human" style="--o:20;--at:5s"><rect x="20" y="426" width="200" height="58" rx="8"/><text class="d-title" x="120" y="452">Human approval</text><text class="d-sub" x="120" y="469">one phase at a time</text></g>
+            <g class="d-part d-node key" style="--o:22;--at:5.7s"><rect x="260" y="426" width="200" height="58" rx="8"/><text class="d-title" x="360" y="452">CRUD tooling</text><text class="d-sub" x="360" y="469">enforces build order</text></g>
+            <g class="d-part d-node " style="--o:24;--at:6.3s"><rect x="500" y="426" width="200" height="58" rx="8"/><text class="d-title" x="600" y="452">Platform</text><text class="d-sub" x="600" y="469">tenant configuration</text></g>
+            <text class="d-part d-note" style="--o:26" x="566" y="393" text-anchor="middle">wrong order: sent back</text>
+          </svg>
+        </div>
+        <div class="doc-figure-caption">The agent plans from two graphs. A person approves each phase, and the tools send anything out of order back before it reaches the platform.</div>
       </div>
       <h3>Dependency-ordered tooling</h3>
       <p>
@@ -306,9 +280,9 @@
 
 <footer class="footer" style="max-width:1180px;margin:0 auto;padding:32px clamp(24px,5vw,72px) 48px;display:flex;justify-content:space-between;font-family:var(--mono);font-size:12px;color:var(--muted);">
   <p>&copy; 2026 Navneeth Anil Kumar</p>
-  <a href="../index.html#projects">Back to Selected Work &uarr;</a>
+  <a href="../index.html?v=2#projects">Back to Selected Work &uarr;</a>
 </footer>
 
-<script src="case-study.js?v=5"></script>
+<script src="case-study.js?v=6"></script>
 </body>
 </html>

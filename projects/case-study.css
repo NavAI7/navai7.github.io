@@ -10,7 +10,7 @@
 }
 .doc-back:hover{ color:var(--accent); }
 .doc-eyebrow{
-  font-family:var(--mono); font-size:12.5px; color:var(--accent); text-transform:uppercase;
+  font-family:var(--mono); font-size:12.5px; color:var(--void-muted); text-transform:uppercase;
   letter-spacing:0.08em; margin-bottom:14px;
 }
 .doc-title{ font-size:clamp(36px,5.5vw,64px); line-height:1.02; color:var(--void-text); }
@@ -20,19 +20,45 @@
 .doc-meta span{ font-family:var(--mono); font-size:10.5px; color:var(--void-muted); text-transform:uppercase; letter-spacing:0.06em; }
 .doc-meta strong{ font-family:var(--display); font-size:17px; color:var(--void-text); font-weight:600; }
 
+/* Links the three layered products (graph, agent, workspace) to each other. */
+.doc-series{ background:var(--void-2); border-top:1px solid var(--void-line); }
+.doc-series-inner{
+  max-width:var(--maxw); margin:0 auto; padding:14px var(--pad);
+  display:flex; flex-wrap:wrap; align-items:center; gap:10px 14px;
+  font-family:var(--mono); font-size:12px; color:var(--void-muted);
+}
+.doc-series-label{ text-transform:uppercase; letter-spacing:0.08em; font-size:11px; margin-right:6px; }
+.doc-series a{ color:var(--void-text); padding:4px 10px; border:1px solid var(--void-line); border-radius:999px; transition:border-color .2s ease, color .2s ease; }
+.doc-series a b{ color:var(--tone); font-weight:500; margin-right:4px; }
+.doc-series a:hover{ border-color:var(--tone); color:var(--tone); }
+.doc-series a[aria-current="page"]{ background:var(--tone); border-color:var(--tone); color:var(--void); }
+.doc-series a[aria-current="page"] b{ color:var(--void); }
+.doc-series-sep{ color:var(--void-muted); }
+@media (max-width:720px){
+  .doc-series-sep{ display:none; }
+  .doc-series-label{ flex-basis:100%; }
+}
+
+.doc-series a{ --tone:var(--void-text); }
+.doc-series a[href^="config-graph"]{ --tone:var(--accent); }
+.doc-series a[href^="config-designer-ui"]{ --tone:var(--human); }
+/* The contents list clips, so its focus ring sits inside each link. */
+.doc-toc a:focus-visible{ outline-offset:-3px; }
+.doc-toc li.active a:focus-visible{ outline-color:var(--accent); }
+
 .doc-skim-wrap{
   max-width:var(--maxw); margin:0 auto; padding:28px var(--pad);
   border-bottom:1px solid var(--line-strong);
 }
 .doc-skim-label{
-  font-family:var(--mono); font-size:11px; color:var(--accent-dark); font-weight:600;
+  font-family:var(--mono); font-size:11px; color:var(--muted); font-weight:600;
   text-transform:uppercase; letter-spacing:0.08em; margin-bottom:18px;
 }
 .doc-skim{ display:grid; grid-template-columns:repeat(5,1fr); gap:0; }
 .doc-skim-item{ padding:0 20px; border-left:1px solid var(--line-strong); }
 .doc-skim-item:first-child{ padding-left:0; border-left:none; }
 .doc-skim-item span{
-  display:block; font-family:var(--mono); font-size:10.5px; color:var(--accent-dark);
+  display:block; font-family:var(--mono); font-size:10.5px; color:var(--muted);
   text-transform:uppercase; letter-spacing:0.06em; margin-bottom:8px;
 }
 .doc-skim-item p{ font-size:13.5px; line-height:1.55; color:var(--muted); margin:0; }
@@ -62,10 +88,10 @@
   display:flex; gap:10px; padding:11px 18px; font-size:13.5px; color:var(--muted);
   transition:background .15s ease, color .15s ease;
 }
-.doc-toc a .doc-toc-num{ font-family:var(--mono); font-size:11px; color:var(--line-strong); flex-shrink:0; }
+.doc-toc a .doc-toc-num{ font-family:var(--mono); font-size:11px; color:var(--muted); flex-shrink:0; }
 .doc-toc a:hover{ background:var(--paper-2); color:var(--ink); }
 .doc-toc li.active a{ background:var(--ink); color:var(--paper); }
-.doc-toc li.active a .doc-toc-num{ color:var(--accent); }
+.doc-toc li.active a .doc-toc-num{ color:var(--void-muted); }
 
 .doc-content{ max-width:720px; }
 .doc-section{ padding-bottom:72px; margin-bottom:72px; border-bottom:1px solid var(--line);
@@ -85,7 +111,7 @@
 
 .doc-dropcap::first-letter{
   font-family:var(--display); font-weight:800; font-size:76px; float:left; line-height:0.8;
-  padding:8px 10px 0 0; color:var(--accent-dark);
+  padding:8px 10px 0 0; color:var(--ink);
 }
 
 .doc-callout{
@@ -94,15 +120,86 @@
 }
 .doc-callout p{ color:var(--void-text); font-size:19px; line-height:1.5; font-weight:600; font-family:var(--display); margin:0; }
 .doc-callout .doc-callout-label{
-  display:block; font-family:var(--mono); font-size:11px; color:var(--accent); text-transform:uppercase;
+  display:block; font-family:var(--mono); font-size:11px; color:var(--void-muted); text-transform:uppercase;
   letter-spacing:0.08em; margin-bottom:12px; font-weight:400;
 }
 
 .doc-figure{ margin:32px 0; border:1px solid var(--line-strong); border-radius:8px; overflow:hidden; background:var(--paper-2); }
-.doc-figure img{ width:100%; display:block; }
+.doc-figure img{ width:100%; height:auto; display:block; }
 .doc-figure-caption{
   font-family:var(--mono); font-size:12px; color:var(--muted); padding:12px 18px;
   border-top:1px solid var(--line-strong); background:var(--paper);
+}
+
+/* ============ Animated diagrams ============ */
+/* Resting state is the finished drawing. case-study.js adds .is-waiting until
+   first seen, .is-built to assemble it once, and .is-live while on screen.
+   --o is the build order, --at is when the flow reaches that part. */
+.doc-figure.dia{ position:relative; }
+.dia-scroll{ padding-top:20px; }
+.dia-svg{ display:block; width:100%; height:auto; }
+.dia-svg text{ font-family:var(--mono); }
+.d-title{ font-size:13px; fill:var(--ink); text-anchor:middle; }
+.d-sub{ font-size:10.5px; fill:var(--muted); text-anchor:middle; }
+.d-note{ font-size:10.5px; fill:var(--muted); }
+.d-label{ font-size:9.5px; letter-spacing:.08em; fill:var(--muted); }
+.d-node rect{ fill:var(--paper); stroke:var(--line-strong); stroke-width:1.4; }
+.d-node.core rect{ stroke:var(--accent-dark); stroke-width:2; }
+.d-node.open rect{ stroke-dasharray:4 3; }
+.d-node.dark rect{ fill:var(--ink); stroke:var(--ink); }
+.d-node.dark .d-title{ fill:var(--paper); }
+.d-node.dark .d-sub{ fill:var(--void-muted); }
+/* Agent block: name, job, and three steps that light up as it thinks */
+.d-node.agent .d-title{ font-size:18px; font-weight:600; }
+.d-node.agent .d-sub{ font-size:11px; }
+.d-node.step rect{ fill:rgba(245,243,236,.06); stroke:var(--void-muted); stroke-width:1; }
+.d-node.step .d-title{ font-size:12px; fill:var(--paper); }
+.dia.is-live .d-node.step rect{ animation:dStep 8s ease calc(1.3s + var(--at)) infinite; }
+@keyframes dStep{
+  0%,16%,100%{ fill:rgba(245,243,236,.06); stroke:var(--void-muted); }
+  3%,10%{ fill:var(--step-fill); stroke:var(--tone); }
+}
+/* --tone is the colour a part lights up in */
+.d-node.dark{ --tone:#a3a19b; }
+.d-node.step{ --tone:var(--void-text); --step-fill:rgba(245,243,236,.2); }
+.d-node.key rect{ stroke:var(--ink); stroke-width:2; }
+.dia-know, .dia-know .d-node.dark, .d-node.core, .d-link.know{ --tone:var(--accent); }
+.d-node.step.know{ --tone:var(--accent); --step-fill:rgba(20,184,166,.45); }
+.d-node.human, .d-link.human{ --tone:var(--human-dark); }
+.d-node.human:not(.step) rect{ fill:#f6ecd9; stroke:var(--human-dark); stroke-width:2; }
+.d-node.human:not(.step) text{ fill:var(--human-dark); }
+.d-link.human .d-line{ stroke:var(--human-dark); }
+.d-node.step.human{ --tone:var(--human); --step-fill:rgba(242,182,75,.3); }
+.d-node.step.human rect{ stroke:var(--human); }
+.d-node.step.human .d-title{ fill:var(--human); }
+.d-box rect{ fill:none; stroke:var(--line-strong); stroke-dasharray:5 4; }
+.d-line{ fill:none; stroke:var(--line-strong); stroke-width:1.4; stroke-linejoin:round; }
+.d-link.back .d-line{ stroke-dasharray:4 4; }
+.d-head{ fill:var(--muted); }
+.d-flow{
+  fill:none; stroke:var(--tone, #55544f); stroke-width:4; stroke-linecap:round; stroke-linejoin:round;
+  stroke-dasharray:14 200; stroke-dashoffset:14; opacity:0; pointer-events:none;
+}
+.dia.is-waiting .d-part{ opacity:0; }
+.dia.is-built .d-part{ animation:dBuild .5s ease calc(var(--o) * 45ms) backwards; }
+.dia.is-live .d-node rect,
+.dia.is-live .d-box rect{ animation:dGlow 8s ease calc(1.3s + var(--at)) infinite; }
+.dia.is-live .d-flow{ animation:dFlow 8s linear calc(1.3s + var(--at)) infinite; }
+.dia.is-paused *{ animation-play-state:paused !important; }
+@keyframes dBuild{ from{ opacity:0; transform:translateY(5px); } }
+@keyframes dGlow{ 4%,9%{ stroke:var(--tone, #55544f); stroke-width:4; } 17%{ stroke-width:1.4; } }
+@keyframes dFlow{
+  0%{ opacity:1; stroke-dashoffset:14; }
+  10%{ opacity:1; stroke-dashoffset:-100; }
+  11%,100%{ opacity:0; stroke-dashoffset:-100; }
+}
+.dia-toggle{
+  position:absolute; top:5px; right:6px; padding:2px 7px; cursor:pointer;
+  font-family:var(--mono); font-size:10px; line-height:1.4; text-transform:uppercase; letter-spacing:.06em;
+  color:var(--muted); background:var(--paper); border:1px solid var(--line); border-radius:999px;
+}
+@media (prefers-reduced-motion: reduce){
+  .dia *{ animation:none !important; }
 }
 
 .doc-metric-grid{ display:grid; grid-template-columns:repeat(2,1fr); gap:16px; margin:28px 0; }
@@ -129,12 +226,12 @@
 /* .case-stats/.stat is themed for dark backgrounds (--void-muted labels) elsewhere on the
    site; override for use inside the light-background doc-section content column. */
 .doc-section .case-stats{ border-bottom-color:var(--line-strong); }
-.doc-section .stat-num{ color:var(--accent-dark); }
+.doc-section .stat-num{ color:var(--ink); }
 .doc-section .stat-label{ color:var(--muted); }
 
 .doc-tool-card{ border:1px solid var(--line-strong); border-radius:8px; padding:24px; margin-bottom:16px; }
 .doc-tool-card h4{ font-size:16px; margin-bottom:8px; display:flex; align-items:center; gap:10px; }
-.doc-tool-card h4 .doc-tool-num{ font-family:var(--mono); font-size:11px; color:var(--accent-dark); border:1px solid var(--accent-dark); border-radius:999px; padding:2px 8px; }
+.doc-tool-card h4 .doc-tool-num{ font-family:var(--mono); font-size:11px; color:var(--muted); border:1px solid var(--muted); border-radius:999px; padding:2px 8px; }
 .doc-tool-card p{ font-size:14.5px; }
 .doc-tool-card .doc-example{
   margin-top:12px; padding:12px 14px; background:var(--paper-2); border-radius:6px;
@@ -165,8 +262,8 @@
   .doc-toc.is-collapsed .doc-toc-progress{ display:none; }
   .doc-toc-head:focus-visible{ outline:2px solid var(--accent-dark); outline-offset:-2px; }
 
-  /* A 900-unit viewBox scaled into ~320px rendered the 10px labels at 3.6px.
-     Give it a legible floor and pan horizontally, same as .doc-compare-wrap. */
-  .doc-figure{ overflow-x:auto; }
-  .doc-figure svg{ width:820px !important; max-width:none; }
+  /* Keep diagram labels legible: the drawing pans, the caption stays put. */
+  .dia-scroll{ overflow-x:auto; }
+  .dia-svg{ width:660px; max-width:none; }
+  .dia-wide .dia-svg{ width:820px; }
 }

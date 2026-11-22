@@ -23,8 +23,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../styles.css?v=4" />
-<link rel="stylesheet" href="case-study.css?v=3" />
+<link rel="stylesheet" href="../styles.css?v=14" />
+<link rel="stylesheet" href="case-study.css?v=10" />
 <noscript><style>
   .reveal, .reveal.in{ opacity:1 !important; transform:none !important; filter:none !important; }
 </style></noscript>
@@ -36,18 +36,17 @@
 
 <header class="doc-header">
   <div class="doc-header-inner">
-    <a href="../index.html#projects" class="doc-back">&larr; Back to Selected Work</a>
-    <p class="doc-eyebrow">Flagship 04 &middot; Analytics &middot; Process Mining</p>
+    <a href="../index.html?v=2#projects" class="doc-back">&larr; Back to Selected Work</a>
+    <p class="doc-eyebrow">Platform Intelligence &middot; Process Mining</p>
     <h1 class="doc-title">Usage Analytics</h1>
     <p class="doc-subtitle">
-      Turning raw platform clickstreams into the actual business processes people run on o9,
-      without asking anyone to self-report what they did.
+      An intelligence layer built into o9 that shows how people actually use the platform and
+      the business processes they follow, without asking anyone to self-report what they did.
     </p>
     <div class="doc-meta">
       <div><span>Role</span><strong>Product Manager, AI R&amp;D</strong></div>
       <div><span>Org</span><strong>o9 Solutions</strong></div>
       <div><span>Domain</span><strong>Process Mining</strong></div>
-      <div><span>Status</span><strong>Live</strong></div>
     </div>
   </div>
 </header>
@@ -58,7 +57,7 @@
     <div class="doc-skim-item"><span>Problem</span><p>Teams could describe their process in a meeting, but nobody could show what they actually did day to day.</p></div>
     <div class="doc-skim-item"><span>User</span><p>Team leads tracking where time goes, and implementation teams checking real adoption after go-live.</p></div>
     <div class="doc-skim-item"><span>Decision</span><p>Used click frequency on a graph, not a ranked feature list, so the resulting view of "the real process" preserved order as well as popularity.</p></div>
-    <div class="doc-skim-item"><span>Outcome</span><p>Feeds four report views plus an agent that writes a team's monthly summary in plain English.</p></div>
+    <div class="doc-skim-item"><span>Outcome</span><p>Feeds four report views, plus an agent that uses paths, handoffs and hours to surface insights and write a team's monthly summary.</p></div>
     <div class="doc-skim-item"><span>My role</span><p>Defined the four report views, the per-user/per-day computation approach, and the traceability requirement behind every summary number.</p></div>
   </div>
 </div>
@@ -90,6 +89,15 @@
         much more useful question: what is this team actually doing all month, and where is the
         effort going?
       </p>
+      <h3>What it answers</h3>
+        <ul class="ua-questions">
+          <li>How do people actually use the platform?</li>
+          <li>Which business processes do they follow?</li>
+          <li>Where are the bottlenecks in those processes?</li>
+          <li>What do work patterns and handoffs look like?</li>
+          <li>Which views are visited most?</li>
+          <li>How many hours go into each process?</li>
+        </ul>
       <div class="doc-callout">
         <span class="doc-callout-label">Why it matters</span>
         <p>Teams could describe their process in a meeting. Nobody could show it. This makes the
@@ -130,59 +138,36 @@
         a one-off experiment. A sequence a person runs twenty times in a month is a workflow. That
         reframing meant the system didn't need anyone to label or categorize their own behavior, it
         just needed to count how often each path repeated and let the highest-frequency paths speak
-        for themselves.
+        for themselves. Frequency shows what the process is. Handoffs and hours show how it runs.
       </p>
     </section>
 
     <section id="system" class="doc-section reveal">
       <h2>System approach</h2>
-      <div class="doc-figure">
-        <svg viewBox="0 0 860 310" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Architecture: click events feed a per-user daily graph, which merges into one aggregate monthly graph; that aggregate graph is what surfaces business-process insight, through an interactive diagram, four report views, and an agent-written summary." style="width:100%;height:auto;display:block;background:var(--paper-2);">
-          <defs>
-            <marker id="arrow-usage" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
-              <path d="M0,0 L10,5 L0,10 z" fill="var(--muted)" />
-            </marker>
-          </defs>
-          <path d="M180,150 L200,150" fill="none" stroke="var(--line-strong)" stroke-width="1.5" marker-end="url(#arrow-usage)" />
-          <path d="M360,150 L395,150" fill="none" stroke="var(--line-strong)" stroke-width="1.5" marker-end="url(#arrow-usage)" />
-          <path d="M565,150 C590,150 590,75 615,75" fill="none" stroke="var(--line-strong)" stroke-width="1.5" marker-end="url(#arrow-usage)" />
-          <path d="M565,150 L615,165" fill="none" stroke="var(--line-strong)" stroke-width="1.5" marker-end="url(#arrow-usage)" />
-          <path d="M565,150 C590,150 590,255 615,255" fill="none" stroke="var(--line-strong)" stroke-width="1.5" marker-end="url(#arrow-usage)" />
-
-          <g>
-            <rect x="20" y="120" width="160" height="60" rx="8" fill="var(--paper)" stroke="var(--line-strong)" stroke-width="1.5" />
-            <text x="100" y="146" text-anchor="middle" font-family="var(--mono)" font-size="12" fill="var(--ink)">Click events</text>
-            <text x="100" y="162" text-anchor="middle" font-family="var(--mono)" font-size="9" fill="var(--muted)">views · reports · actions</text>
-          </g>
-          <g>
-            <rect x="200" y="120" width="160" height="60" rx="8" fill="var(--paper)" stroke="var(--line-strong)" stroke-width="1.5" />
-            <text x="280" y="146" text-anchor="middle" font-family="var(--mono)" font-size="12" fill="var(--ink)">Daily graph</text>
-            <text x="280" y="162" text-anchor="middle" font-family="var(--mono)" font-size="10" fill="var(--muted)">Start → steps → End</text>
-          </g>
-          <g>
-            <rect x="395" y="120" width="170" height="60" rx="8" fill="var(--paper)" stroke="var(--accent-dark)" stroke-width="2" />
-            <text x="480" y="146" text-anchor="middle" font-family="var(--mono)" font-size="12" fill="var(--ink)">Monthly merge</text>
-            <text x="480" y="162" text-anchor="middle" font-family="var(--mono)" font-size="10" fill="var(--muted)">aggregate graph</text>
-          </g>
-
-          <rect x="600" y="15" width="205" height="280" rx="10" fill="none" stroke="var(--line-strong)" stroke-dasharray="5 4" />
-          <text x="615" y="32" font-family="var(--mono)" font-size="10" fill="var(--muted)" letter-spacing="0.06em">BUSINESS PROCESS INSIGHT</text>
-
-          <g>
-            <rect x="615" y="50" width="170" height="50" rx="8" fill="var(--paper)" stroke="var(--line-strong)" stroke-width="1.5" />
-            <text x="700" y="80" text-anchor="middle" font-family="var(--mono)" font-size="12" fill="var(--ink)">Interactive diagram</text>
-          </g>
-          <g>
-            <rect x="615" y="140" width="170" height="50" rx="8" fill="var(--paper)" stroke="var(--line-strong)" stroke-width="1.5" />
-            <text x="700" y="170" text-anchor="middle" font-family="var(--mono)" font-size="12" fill="var(--ink)">4 report views</text>
-          </g>
-          <g>
-            <rect x="615" y="230" width="170" height="50" rx="8" fill="var(--ink)" stroke="var(--ink)" stroke-width="1.5" />
-            <text x="700" y="255" text-anchor="middle" font-family="var(--mono)" font-size="12" fill="var(--paper)">Agent summary</text>
-            <text x="700" y="270" text-anchor="middle" font-family="var(--mono)" font-size="10" fill="var(--void-muted)">plain-English recap</text>
-          </g>
-        </svg>
-        <div class="doc-figure-caption">Architecture — per-user daily graphs merge into one aggregate monthly graph, and that aggregate graph is what surfaces business-process insight: through an interactive diagram, four report views, and the agent's plain-English monthly summary.</div>
+      <div class="doc-figure dia">
+        <div class="dia-scroll">
+          <svg class="dia-svg" viewBox="0 0 720 362" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Usage events become daily and monthly process graphs. The analytics layer captures processes, handoffs and hours, which feed an interactive diagram, four report views and an insights agent.">
+            <defs><marker id="usage-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path class="d-head" d="M0,0 L10,5 L0,10 z"/></marker></defs>
+            <g class="d-part d-box" style="--o:7;--at:3s"><rect x="20" y="130" width="680" height="98" rx="10"/><text class="d-label" x="32" y="147">ANALYTICS LAYER</text></g>
+            <g class="d-part d-link " style="--o:1;--at:0.5s"><path class="d-line" d="M220 51 H260" marker-end="url(#usage-arrow)"/><path class="d-flow" d="M220 51 H260" pathLength="100"/></g>
+            <g class="d-part d-link " style="--o:3;--at:1.4s"><path class="d-line" d="M460 51 H500" marker-end="url(#usage-arrow)"/><path class="d-flow" d="M460 51 H500" pathLength="100"/></g>
+            <g class="d-part d-link " style="--o:5;--at:2.4s"><path class="d-line" d="M120 80 V130" marker-end="url(#usage-arrow)"/><path class="d-flow" d="M120 80 V130" pathLength="100"/></g>
+            <g class="d-part d-link " style="--o:6;--at:2.4s"><path class="d-line" d="M600 80 V130" marker-end="url(#usage-arrow)"/><path class="d-flow" d="M600 80 V130" pathLength="100"/></g>
+            <g class="d-part d-link " style="--o:11;--at:4.4s"><path class="d-line" d="M360 228 V255 H120 V282" marker-end="url(#usage-arrow)"/><path class="d-flow" d="M360 228 V255 H120 V282" pathLength="100"/></g>
+            <g class="d-part d-link " style="--o:12;--at:4.4s"><path class="d-line" d="M360 228 V282" marker-end="url(#usage-arrow)"/><path class="d-flow" d="M360 228 V282" pathLength="100"/></g>
+            <g class="d-part d-link " style="--o:13;--at:4.4s"><path class="d-line" d="M360 228 V255 H600 V282" marker-end="url(#usage-arrow)"/><path class="d-flow" d="M360 228 V255 H600 V282" pathLength="100"/></g>
+            <g class="d-part d-node " style="--o:0;--at:0s"><rect x="20" y="22" width="200" height="58" rx="8"/><text class="d-title" x="120" y="48">Usage events</text><text class="d-sub" x="120" y="65">views &#183; reports &#183; actions</text></g>
+            <g class="d-part d-node " style="--o:2;--at:1s"><rect x="260" y="22" width="200" height="58" rx="8"/><text class="d-title" x="360" y="48">Daily graphs</text><text class="d-sub" x="360" y="65">per person, per day</text></g>
+            <g class="d-part d-node " style="--o:4;--at:1.9s"><rect x="500" y="22" width="200" height="58" rx="8"/><text class="d-title" x="600" y="48">Monthly graph</text><text class="d-sub" x="600" y="65">paths with frequency</text></g>
+            <g class="d-part d-node core" style="--o:8;--at:3.2s"><rect x="40" y="158" width="196" height="54" rx="8"/><text class="d-title" x="138" y="182">Processes</text><text class="d-sub" x="138" y="199">what people do</text></g>
+            <g class="d-part d-node core" style="--o:9;--at:3.5s"><rect x="262" y="158" width="196" height="54" rx="8"/><text class="d-title" x="360" y="182">Handoffs</text><text class="d-sub" x="360" y="199">how work moves</text></g>
+            <g class="d-part d-node core" style="--o:10;--at:3.8s"><rect x="484" y="158" width="196" height="54" rx="8"/><text class="d-title" x="582" y="182">Hours</text><text class="d-sub" x="582" y="199">where time goes</text></g>
+            <g class="d-part d-node " style="--o:14;--at:5.1s"><rect x="20" y="282" width="200" height="58" rx="8"/><text class="d-title" x="120" y="308">Interactive diagram</text><text class="d-sub" x="120" y="325">explore any path</text></g>
+            <g class="d-part d-node " style="--o:15;--at:5.4s"><rect x="260" y="282" width="200" height="58" rx="8"/><text class="d-title" x="360" y="308">4 report views</text><text class="d-sub" x="360" y="325">one per question</text></g>
+            <g class="d-part d-node dark" style="--o:16;--at:5.7s"><rect x="500" y="282" width="200" height="58" rx="8"/><text class="d-title" x="600" y="308">Insights agent</text><text class="d-sub" x="600" y="325">insights + monthly recap</text></g>
+          </svg>
+        </div>
+        <div class="doc-figure-caption">Usage becomes processes, handoffs and hours, then a diagram to explore, reports to check and an agent that explains what it all means.</div>
       </div>
       <h3>Clicks into daily graphs</h3>
       <p>
@@ -199,6 +184,12 @@
         the same, Start through a sequence of steps to End, but now every edge carries a number: how
         many times that step happened that month. The paths with the highest frequency are, by
         definition, the process this person actually runs regularly.
+      </p>
+      <h3>Handoffs and hours</h3>
+      <p>
+        Alongside the paths, the analytics layer captures handoffs and the hours spent on each
+        process. The agent can use these signals together to give useful insight into how work
+        moves, where the time goes and where the bottlenecks are.
       </p>
       <h3>An interactive diagram, and four report views</h3>
       <p>
@@ -260,7 +251,7 @@
     <section id="tradeoffs" class="doc-section reveal">
       <h2>Tradeoffs &amp; risks</h2>
       <p>
-        Frequency captures <em>what</em> happened and <em>how often</em>, not <em>why</em>, so
+        The data captures <em>what</em> happened, <em>how often</em> and <em>how long</em> it took, but not always <em>why</em>, so
         interpreting a spike or a new high-frequency path still needs a human who knows the business
         context, the system surfaces the pattern, not the explanation. A single unusual month, a
         crunch period or a one-time migration, can also distort what looks like "the real process"
@@ -274,7 +265,8 @@
       <p>
         Beyond the reporting views, the same monthly graphs are the input to an agent that turns the
         aggregated metrics into a plain-English monthly summary for a team lead, replacing a report a
-        team lead used to have to assemble by hand every month. The same process-mining approach also
+        team lead used to have to assemble by hand every month. With handoffs and hours captured in
+        the same analytics layer, the agent can also point to where time goes and where work gets stuck. The same process-mining approach also
         gives implementation teams an honest, data-backed way to see which parts of a solution are
         actually being used, versus configured and forgotten, turning "is this adopted?" from a
         guess into something they can check directly.
@@ -286,10 +278,10 @@
 
 <footer class="footer" style="max-width:1180px;margin:0 auto;padding:32px clamp(24px,5vw,72px) 48px;display:flex;justify-content:space-between;font-family:var(--mono);font-size:12px;color:var(--muted);">
   <p>&copy; 2026 Navneeth Anil Kumar</p>
-  <a href="../index.html#projects">Back to Selected Work &uarr;</a>
+  <a href="../index.html?v=2#projects">Back to Selected Work &uarr;</a>
 </footer>
 
-<script src="case-study.js?v=5"></script>
-<script src="flow-diagram.js"></script>
+<script src="flow-diagram.js?v=4"></script>
+<script src="case-study.js?v=6"></script>
 </body>
 </html>

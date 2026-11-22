@@ -42,6 +42,35 @@ const io = new IntersectionObserver((entries) => {
 }, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
 revealEls.forEach(el => io.observe(el));
 
+// Animated diagrams: assemble once, then run the flow only while on screen.
+const diagrams = document.querySelectorAll('.dia');
+if (diagrams.length && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  const diagramObserver = new IntersectionObserver((entries) => {
+    entries.forEach(({ target, isIntersecting }) => {
+      if (isIntersecting && target.classList.contains('is-waiting')) {
+        target.classList.replace('is-waiting', 'is-built');
+      }
+      target.classList.toggle('is-live', isIntersecting);
+    });
+  }, { threshold: 0.15 });
+
+  diagrams.forEach((fig) => {
+    const toggle = document.createElement('button');
+    toggle.type = 'button';
+    toggle.className = 'dia-toggle';
+    toggle.textContent = 'Pause';
+    toggle.setAttribute('aria-label', 'Pause diagram animation');
+    toggle.addEventListener('click', () => {
+      const paused = fig.classList.toggle('is-paused');
+      toggle.textContent = paused ? 'Play' : 'Pause';
+      toggle.setAttribute('aria-label', paused ? 'Play diagram animation' : 'Pause diagram animation');
+    });
+    fig.appendChild(toggle);
+    fig.classList.add('is-waiting');
+    diagramObserver.observe(fig);
+  });
+}
+
 // Collapse the contents list on phones. Stacked inline it pushed the article
 // more than two screens down; the head becomes a toggle instead. Everything is
 // torn down again above the breakpoint so no dead button is left in the

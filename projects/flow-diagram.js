@@ -36,7 +36,11 @@
   const byId = Object.fromEntries(nodes.map(n => [n.id, n]));
   const NS = 'http://www.w3.org/2000/svg';
   const svg = document.createElementNS(NS, 'svg');
-  svg.setAttribute('viewBox', '0 0 1140 360');
+  svg.setAttribute('viewBox', '-25 30 1180 300');
+  svg.classList.add('dia-svg');
+  mount.classList.add('dia', 'dia-wide', 'dia-know');
+  // The flow reaches each column in turn, left to right.
+  const timeAt = (x) => ((x - 40) / 150) * 0.85;
   svg.style.width = '100%';
   svg.style.height = 'auto';
   svg.style.display = 'block';
@@ -59,7 +63,7 @@
     const a = byId[e.from], b = byId[e.to];
     const path = document.createElementNS(NS, 'path');
     const midX = (a.x + b.x) / 2;
-    const d = `M ${a.x + 45} ${a.y} C ${midX} ${a.y}, ${midX} ${b.y}, ${b.x - 45} ${b.y}`;
+    const d = `M ${a.x + 55} ${a.y} C ${midX} ${a.y}, ${midX} ${b.y}, ${b.x - 55} ${b.y}`;
     path.setAttribute('d', d);
     path.setAttribute('fill', 'none');
     path.setAttribute('stroke', 'var(--line-strong)');
@@ -74,7 +78,17 @@
       path.setAttribute('stroke', 'var(--line-strong)');
       hideTip();
     });
-    svg.appendChild(path);
+    const link = document.createElementNS(NS, 'g');
+    link.setAttribute('class', 'd-part d-link');
+    link.style.setProperty('--o', svg.childNodes.length);
+    link.style.setProperty('--at', timeAt(a.x) + 0.3 + 's');
+    const flow = document.createElementNS(NS, 'path');
+    flow.setAttribute('class', 'd-flow');
+    flow.setAttribute('d', d);
+    flow.setAttribute('pathLength', '100');
+    flow.style.strokeWidth = 3 + e.freq / 5;
+    link.append(path, flow);
+    svg.appendChild(link);
   });
 
   const colors = { Start: 'var(--muted)', End: 'var(--muted)', View: 'var(--ink)', Report: 'var(--accent-dark)', Action: 'var(--ink)' };
@@ -82,15 +96,18 @@
   nodes.forEach(n => {
     const g = document.createElementNS(NS, 'g');
     g.style.cursor = 'pointer';
+    g.setAttribute('class', 'd-part d-node' + (n.type === 'Action' ? ' dark' : ''));
+    g.style.setProperty('--o', svg.childNodes.length);
+    g.style.setProperty('--at', timeAt(n.x) + 's');
 
     const rect = document.createElementNS(NS, 'rect');
-    rect.setAttribute('x', n.x - 45);
+    rect.setAttribute('x', n.x - 55);
     rect.setAttribute('y', n.y - 20);
-    rect.setAttribute('width', 90);
+    rect.setAttribute('width', 110);
     rect.setAttribute('height', 40);
     rect.setAttribute('rx', 8);
     rect.setAttribute('fill', n.type === 'Action' ? 'var(--ink)' : 'var(--paper)');
-    rect.setAttribute('stroke', n.type === 'Report' ? 'var(--accent-dark)' : 'var(--line-strong)');
+    rect.setAttribute('stroke', 'var(--line-strong)');
     rect.setAttribute('stroke-width', 1.5);
     g.appendChild(rect);
 
@@ -99,7 +116,7 @@
     text.setAttribute('y', n.y + 5);
     text.setAttribute('text-anchor', 'middle');
     text.setAttribute('font-family', 'var(--mono)');
-    text.setAttribute('font-size', '12');
+    text.style.fontSize = '17px';
     text.setAttribute('fill', n.type === 'Action' ? 'var(--paper)' : 'var(--ink)');
     text.textContent = n.label;
     g.appendChild(text);
@@ -115,9 +132,12 @@
     svg.appendChild(g);
   });
 
-  mount.appendChild(svg);
+  const scroller = document.createElement('div');
+  scroller.className = 'dia-scroll';
+  scroller.appendChild(svg);
+  mount.appendChild(scroller);
 
-  const caption = document.createElement('p');
+  const caption = document.createElement('div');
   caption.className = 'doc-figure-caption';
   caption.style.marginTop = '2px';
   caption.textContent = 'Hover a node or edge for detail. Click an Action node to see the data it ran against.';
@@ -150,7 +170,7 @@
       Object.entries(vals).forEach(([member, count]) => {
         const row = document.createElement('div');
         row.style.cssText = 'display:flex;justify-content:space-between;font-size:13.5px;padding:4px 0;border-top:1px solid var(--line);';
-        row.innerHTML = `<span>${member}</span><span style="font-family:var(--mono);color:var(--accent-dark)">${count}&times;</span>`;
+        row.innerHTML = `<span>${member}</span><span style="font-family:var(--mono);color:var(--ink)">${count}&times;</span>`;
         col.appendChild(row);
       });
       grid.appendChild(col);

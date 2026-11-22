@@ -54,6 +54,89 @@ if (!prefersReducedMotion) {
   updateParallax();
 }
 
+// Highlight the nav link for the section currently in view
+const spyLinks = Array.from(document.querySelectorAll('.nav-links a[href^="#"]'));
+const spyTargets = spyLinks
+  .map(a => document.getElementById(a.getAttribute('href').slice(1)))
+  .filter(Boolean);
+function updateActiveNav() {
+  const line = window.innerHeight * 0.35;
+  let current = null;
+  spyTargets.forEach(sec => {
+    if (sec.getBoundingClientRect().top <= line) current = sec;
+  });
+  spyLinks.forEach(a => {
+    a.classList.toggle('active', !!current && a.getAttribute('href') === '#' + current.id);
+  });
+}
+window.addEventListener('scroll', updateActiveNav, { passive: true });
+window.addEventListener('resize', updateActiveNav);
+updateActiveNav();
+
+// System diagram: reveal the three layers in turn while it's on screen
+const sys = document.querySelector('.sys');
+if (sys) {
+  const steps = Array.from(sys.querySelectorAll('.sys-step'));
+  const playBtn = document.getElementById('sysPlay');
+  const durations = [4800, 7200, 6400];
+  let step = 3;
+  let playing = !prefersReducedMotion;
+  let visible = false;
+  let started = false;
+  let timer = null;
+
+  const show = (n) => {
+    step = n;
+    sys.dataset.step = String(n);
+    steps.forEach((b, i) => {
+      if (i + 1 === n) b.setAttribute('aria-current', 'true');
+      else b.removeAttribute('aria-current');
+    });
+    sys.style.setProperty('--dur', durations[n - 1] + 'ms');
+  };
+  const schedule = () => {
+    clearTimeout(timer);
+    if (!playing || !visible) return;
+    timer = setTimeout(() => { show(step % 3 + 1); schedule(); }, durations[step - 1]);
+  };
+  const setPlaying = (p) => {
+    playing = p;
+    sys.dataset.playing = String(p);
+    playBtn.textContent = p ? 'Pause' : 'Play';
+    playBtn.setAttribute('aria-label', p ? 'Pause animation' : 'Play animation');
+    schedule();
+  };
+
+  steps.forEach(b => b.addEventListener('click', () => {
+    setPlaying(false);
+    show(Number(b.dataset.go));
+  }));
+  playBtn.addEventListener('click', () => {
+    if (!playing && step === 3) show(1);
+    setPlaying(!playing);
+  });
+
+  if (prefersReducedMotion) {
+    setPlaying(false);
+  } else {
+    // Hidden until it scrolls into view, so the first layer animates in front of the reader.
+    sys.dataset.step = '0';
+    new IntersectionObserver(([entry]) => {
+      visible = entry.isIntersecting;
+      if (visible && !started) { started = true; show(1); setPlaying(true); }
+      else schedule();
+    }, { threshold: 0.35 }).observe(sys);
+  }
+}
+
+// Knowledge stack: run the flow only while it's on screen
+const stack = document.querySelector('.stack');
+if (stack && !prefersReducedMotion) {
+  new IntersectionObserver(([entry]) => {
+    stack.classList.toggle('is-live', entry.isIntersecting);
+  }, { rootMargin: '0px 0px -20% 0px' }).observe(stack);
+}
+
 // Mobile nav toggle
 const navToggle = document.getElementById('navToggle');
 const navLinks = document.getElementById('navLinks');

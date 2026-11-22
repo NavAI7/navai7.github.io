@@ -23,8 +23,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../styles.css?v=4" />
-<link rel="stylesheet" href="case-study.css?v=3" />
+<link rel="stylesheet" href="../styles.css?v=14" />
+<link rel="stylesheet" href="case-study.css?v=10" />
 <noscript><style>
   .reveal, .reveal.in{ opacity:1 !important; transform:none !important; filter:none !important; }
 </style></noscript>
@@ -36,8 +36,8 @@
 
 <header class="doc-header">
   <div class="doc-header-inner">
-    <a href="../index.html#projects" class="doc-back">&larr; Back to Selected Work</a>
-    <p class="doc-eyebrow">Flagship 01 &middot; Knowledge Graph &middot; Agent Infrastructure</p>
+    <a href="../index.html?v=2#projects" class="doc-back">&larr; Back to Selected Work</a>
+    <p class="doc-eyebrow">Layer 1 of 3 &middot; Knowledge Graph</p>
     <h1 class="doc-title">Config Graph <span style="color:var(--void-muted);font-weight:400;">(EKG)</span></h1>
     <p class="doc-subtitle">
       A semantic enterprise knowledge graph of platform configuration, built so AI agents can
@@ -47,16 +47,16 @@
       <div><span>Role</span><strong>Product Manager, AI R&amp;D</strong></div>
       <div><span>Org</span><strong>o9 Solutions</strong></div>
       <div><span>Backing DB</span><strong>FalkorDB</strong></div>
-      <div><span>Status</span><strong>Live &middot; Foundational layer</strong></div>
     </div>
   </div>
 </header>
+<nav class="doc-series" aria-label="Part of one system"><div class="doc-series-inner"><span class="doc-series-label">One system, three layers</span><a href="config-graph.html?v=2" aria-current="page"><b>1</b> Config Graph</a><span class="doc-series-sep" aria-hidden="true">&rarr;</span><a href="config-model-extension.html?v=2"><b>2</b> Config Model Extension</a><span class="doc-series-sep" aria-hidden="true">&rarr;</span><a href="config-designer-ui.html?v=2"><b>3</b> Config Designer UI</a></div></nav>
 
 <div class="doc-skim-wrap">
   <p class="doc-skim-label">TL;DR</p>
   <div class="doc-skim">
     <div class="doc-skim-item"><span>Problem</span><p>Agents had no native way to understand a tenant's own configuration, so every fact had to be told to them by hand.</p></div>
-    <div class="doc-skim-item"><span>User</span><p>No direct end users; consumed internally by Agent Builder, the o9 Solution Architect, Skill Builder, and Synthetic Data Generation.</p></div>
+    <div class="doc-skim-item"><span>User</span><p>Everyone who asks an agent a question, plus the people who build agents and configure solutions on the platform.</p></div>
     <div class="doc-skim-item"><span>Decision</span><p>Chose the graph database, scoped entity coverage to fit a realistic timeline, and modeled derived relationships, not just explicit ones.</p></div>
     <div class="doc-skim-item"><span>Outcome</span><p>Became the shared context layer every agentic workflow at o9 now queries against.</p></div>
     <div class="doc-skim-item"><span>My role</span><p>Designed the graph schema, made the database tradeoff (including legal review), scoped coverage, and set the timeline.</p></div>
@@ -105,18 +105,19 @@
     <section id="users" class="doc-section reveal">
       <h2>Users</h2>
       <p>
-        Config Graph has no end users of its own, it's consumed internally by other products and
-        agents on the platform: <strong>Agent Builder</strong> (which people use to build new
-        agents), the <strong>o9 Solution Architect</strong> (which configurators use to extend a
-        tenant), <strong>Skill Builder</strong>, and <strong>Synthetic Data Generation</strong>. Each
-        of those needed the same missing thing, a way to ground itself in a tenant's real state, and
-        each was solving that independently before this existed.
+        <strong>Everyone who asks an agent a question is a Config Graph user.</strong> The agent is
+        the interface and the graph is what it understands the business through. When someone asks
+        for &ldquo;sales data,&rdquo; they are querying the ontology in plain language: it works out
+        which of dozens of similarly named measures they mean and how that measure connects to
+        everything else. They never have to learn the graph to use it.
       </p>
       <p>
-        The people who actually feel Config Graph, without ever touching it directly, are anyone
-        talking to any agent built on the platform. When someone asks an agent for "sales data," the
-        graph is what disambiguates which of a tenant's dozens of similarly-named measures "sales"
-        actually refers to, instead of the agent guessing.
+        <strong>People building and extending solutions rely on it too.</strong> Agent and skill
+        builders use it to give what they build real business context in <strong>Agent Builder</strong>
+        and <strong>Skill Builder</strong>. Configurators use it through the <strong>o9 Solution
+        Architect</strong> to change a tenant safely, and explore it visually in <strong>Config
+        Designer UI</strong>. <strong>Synthetic Data Generation</strong> uses it to create data that
+        fits the model.
       </p>
     </section>
 
@@ -149,66 +150,36 @@
 
     <section id="system" class="doc-section reveal">
       <h2>System approach</h2>
-      <div class="doc-figure">
-        <svg viewBox="0 0 900 360" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Architecture: tenant configuration is ingested into typed graph nodes and relationships, enriched by derived relationships and an LLM description layer, stored in FalkorDB, and exposed through three tools to Agent Builder, the o9 Solution Architect, Skill Builder, and Synthetic Data Generation." style="width:100%;height:auto;display:block;background:var(--paper-2);">
-          <defs>
-            <marker id="arrow-graph" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
-              <path d="M0,0 L10,5 L0,10 z" fill="var(--muted)" />
-            </marker>
-          </defs>
-          <path d="M150,70 L235,70" fill="none" stroke="var(--line-strong)" stroke-width="1.5" marker-end="url(#arrow-graph)" />
-          <path d="M315,70 L410,70" fill="none" stroke="var(--line-strong)" stroke-width="1.5" marker-end="url(#arrow-graph)" />
-          <path d="M555,70 L645,70" fill="none" stroke="var(--line-strong)" stroke-width="1.5" marker-end="url(#arrow-graph)" />
-          <path d="M483,167 L483,95" fill="none" stroke="var(--line-strong)" stroke-width="1.5" marker-end="url(#arrow-graph)" />
-          <path d="M720,95 L720,112" fill="none" stroke="var(--line-strong)" stroke-width="1.5" marker-end="url(#arrow-graph)" />
-          <path d="M720,167 L720,187" fill="none" stroke="var(--line-strong)" stroke-width="1.5" marker-end="url(#arrow-graph)" />
-          <path d="M720,233 L720,255" fill="none" stroke="var(--line-strong)" stroke-width="1.5" marker-end="url(#arrow-graph)" />
-
-          <g>
-            <rect x="20" y="45" width="130" height="50" rx="8" fill="var(--paper)" stroke="var(--line-strong)" stroke-width="1.5" />
-            <text x="85" y="66" text-anchor="middle" font-family="var(--mono)" font-size="11.5" fill="var(--ink)">Tenant live</text>
-            <text x="85" y="80" text-anchor="middle" font-family="var(--mono)" font-size="11.5" fill="var(--ink)">configuration</text>
-          </g>
-          <g>
-            <rect x="235" y="45" width="80" height="50" rx="8" fill="var(--paper)" stroke="var(--line-strong)" stroke-width="1.5" />
-            <text x="275" y="66" text-anchor="middle" font-family="var(--mono)" font-size="11.5" fill="var(--ink)">Generic</text>
-            <text x="275" y="80" text-anchor="middle" font-family="var(--mono)" font-size="11.5" fill="var(--ink)">ingestion</text>
-          </g>
-          <g>
-            <rect x="410" y="45" width="145" height="50" rx="8" fill="var(--paper)" stroke="var(--line-strong)" stroke-width="1.5" />
-            <text x="482" y="66" text-anchor="middle" font-family="var(--mono)" font-size="11.5" fill="var(--ink)">Graph build</text>
-            <text x="482" y="80" text-anchor="middle" font-family="var(--mono)" font-size="10" fill="var(--muted)">typed relationships</text>
-          </g>
-          <g>
-            <rect x="395" y="167" width="175" height="50" rx="8" fill="var(--paper)" stroke="var(--line-strong)" stroke-width="1.5" />
-            <text x="483" y="188" text-anchor="middle" font-family="var(--mono)" font-size="11" fill="var(--ink)">Derived relationships</text>
-            <text x="483" y="202" text-anchor="middle" font-family="var(--mono)" font-size="10" fill="var(--muted)">traced from code</text>
-          </g>
-          <g>
-            <rect x="645" y="45" width="150" height="50" rx="8" fill="var(--paper)" stroke="var(--line-strong)" stroke-width="1.5" />
-            <text x="720" y="66" text-anchor="middle" font-family="var(--mono)" font-size="11.5" fill="var(--ink)">LLM description</text>
-            <text x="720" y="80" text-anchor="middle" font-family="var(--mono)" font-size="11.5" fill="var(--ink)">layer</text>
-          </g>
-          <g>
-            <rect x="645" y="112" width="150" height="55" rx="8" fill="var(--paper)" stroke="var(--accent-dark)" stroke-width="2" />
-            <text x="720" y="135" text-anchor="middle" font-family="var(--mono)" font-size="12" fill="var(--ink)">FalkorDB</text>
-            <text x="720" y="150" text-anchor="middle" font-family="var(--mono)" font-size="10" fill="var(--muted)">multi-tenant store</text>
-          </g>
-          <g>
-            <rect x="620" y="187" width="200" height="46" rx="8" fill="var(--ink)" stroke="var(--ink)" stroke-width="1.5" />
-            <text x="720" y="214" text-anchor="middle" font-family="var(--mono)" font-size="11" fill="var(--paper)">read · search · query</text>
-          </g>
-
-          <rect x="40" y="255" width="780" height="80" rx="10" fill="none" stroke="var(--line-strong)" stroke-dasharray="5 4" />
-          <text x="60" y="272" font-family="var(--mono)" font-size="10.5" fill="var(--muted)" letter-spacing="0.06em">CONSUMERS</text>
-          <g font-family="var(--mono)" font-size="11.5" fill="var(--ink)">
-            <text x="152" y="305" text-anchor="middle">Agent Builder</text>
-            <text x="338" y="305" text-anchor="middle">o9 Solution Architect</text>
-            <text x="523" y="305" text-anchor="middle">Skill Builder</text>
-            <text x="708" y="305" text-anchor="middle">Synthetic Data Gen</text>
-          </g>
-        </svg>
-        <div class="doc-figure-caption">Architecture — tenant config is ingested into typed graph nodes and relationships, enriched with derived relationships and LLM-written descriptions, stored in FalkorDB, and exposed through three tools that every downstream agent product consumes.</div>
+      <div class="doc-figure dia dia-know">
+        <div class="dia-scroll">
+          <svg class="dia-svg" viewBox="0 0 720 410" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Live configuration is ingested into a typed graph, enriched with derived relationships and descriptions, stored in FalkorDB, and served through read schema, search and query tools to agent workflows across the platform.">
+            <defs><marker id="graph-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path class="d-head" d="M0,0 L10,5 L0,10 z"/></marker></defs>
+            <g class="d-part d-link " style="--o:1;--at:0.4s"><path class="d-line" d="M220 51 H260" marker-end="url(#graph-arrow)"/><path class="d-flow" d="M220 51 H260" pathLength="100"/></g>
+            <g class="d-part d-link " style="--o:3;--at:1.2s"><path class="d-line" d="M460 51 H500" marker-end="url(#graph-arrow)"/><path class="d-flow" d="M460 51 H500" pathLength="100"/></g>
+            <g class="d-part d-link " style="--o:5;--at:1.9s"><path class="d-line" d="M600 80 V126" marker-end="url(#graph-arrow)"/><path class="d-flow" d="M600 80 V126" pathLength="100"/></g>
+            <g class="d-part d-link " style="--o:7;--at:2.6s"><path class="d-line" d="M500 155 H460" marker-end="url(#graph-arrow)"/><path class="d-flow" d="M500 155 H460" pathLength="100"/></g>
+            <g class="d-part d-link " style="--o:9;--at:3.3s"><path class="d-line" d="M260 155 H220" marker-end="url(#graph-arrow)"/><path class="d-flow" d="M260 155 H220" pathLength="100"/></g>
+            <g class="d-part d-link " style="--o:11;--at:4.1s"><path class="d-line" d="M120 184 V228" marker-end="url(#graph-arrow)"/><path class="d-flow" d="M120 184 V228" pathLength="100"/></g>
+            <g class="d-part d-link " style="--o:13;--at:5s"><path class="d-line" d="M360 276 V303 H84 V330" marker-end="url(#graph-arrow)"/><path class="d-flow" d="M360 276 V303 H84 V330" pathLength="100"/></g>
+            <g class="d-part d-link " style="--o:15;--at:5s"><path class="d-line" d="M360 276 V303 H222 V330" marker-end="url(#graph-arrow)"/><path class="d-flow" d="M360 276 V303 H222 V330" pathLength="100"/></g>
+            <g class="d-part d-link " style="--o:17;--at:5s"><path class="d-line" d="M360 276 V330" marker-end="url(#graph-arrow)"/><path class="d-flow" d="M360 276 V330" pathLength="100"/></g>
+            <g class="d-part d-link " style="--o:19;--at:5s"><path class="d-line" d="M360 276 V303 H498 V330" marker-end="url(#graph-arrow)"/><path class="d-flow" d="M360 276 V303 H498 V330" pathLength="100"/></g>
+            <g class="d-part d-link " style="--o:21;--at:5s"><path class="d-line" d="M360 276 V303 H636 V330" marker-end="url(#graph-arrow)"/><path class="d-flow" d="M360 276 V303 H636 V330" pathLength="100"/></g>
+            <g class="d-part d-node " style="--o:0;--at:0s"><rect x="20" y="22" width="200" height="58" rx="8"/><text class="d-title" x="120" y="48">Live configuration</text><text class="d-sub" x="120" y="65">system of record</text></g>
+            <g class="d-part d-node " style="--o:2;--at:0.9s"><rect x="260" y="22" width="200" height="58" rx="8"/><text class="d-title" x="360" y="48">Generic ingestion</text><text class="d-sub" x="360" y="65">any entity type</text></g>
+            <g class="d-part d-node " style="--o:4;--at:1.6s"><rect x="500" y="22" width="200" height="58" rx="8"/><text class="d-title" x="600" y="48">Graph build</text><text class="d-sub" x="600" y="65">typed relationships</text></g>
+            <g class="d-part d-node " style="--o:6;--at:2.3s"><rect x="500" y="126" width="200" height="58" rx="8"/><text class="d-title" x="600" y="152">Derived relationships</text><text class="d-sub" x="600" y="169">traced from code</text></g>
+            <g class="d-part d-node " style="--o:8;--at:3s"><rect x="260" y="126" width="200" height="58" rx="8"/><text class="d-title" x="360" y="152">LLM descriptions</text><text class="d-sub" x="360" y="169">searchable by meaning</text></g>
+            <g class="d-part d-node core" style="--o:10;--at:3.7s"><rect x="20" y="126" width="200" height="58" rx="8"/><text class="d-title" x="120" y="152">FalkorDB</text><text class="d-sub" x="120" y="169">one graph per tenant</text></g>
+            <g class="d-part d-node dark" style="--o:12;--at:4.6s"><rect x="20" y="228" width="680" height="48" rx="8"/><text class="d-title" x="360" y="256.5">read schema &#183; search &#183; query</text></g>
+            <g class="d-part d-node two" style="--o:14;--at:5.7s"><rect x="20" y="330" width="128" height="58" rx="8"/><text class="d-title" x="84" y="356">Solution</text><text class="d-title" x="84" y="373">Architect</text></g>
+            <g class="d-part d-node two" style="--o:16;--at:5.82s"><rect x="158" y="330" width="128" height="58" rx="8"/><text class="d-title" x="222" y="363.5">Agent Builder</text></g>
+            <g class="d-part d-node two" style="--o:18;--at:5.94s"><rect x="296" y="330" width="128" height="58" rx="8"/><text class="d-title" x="360" y="363.5">Skill Builder</text></g>
+            <g class="d-part d-node two" style="--o:20;--at:6.06s"><rect x="434" y="330" width="128" height="58" rx="8"/><text class="d-title" x="498" y="363.5">Synthetic Data</text></g>
+            <g class="d-part d-node two open" style="--o:22;--at:6.18s"><rect x="572" y="330" width="128" height="58" rx="8"/><text class="d-title" x="636" y="356">All other</text><text class="d-title" x="636" y="373">agent workflows</text></g>
+          </svg>
+        </div>
+        <div class="doc-figure-caption">Live configuration becomes a searchable graph, and three tools serve it as shared context to agent workflows across the platform.</div>
       </div>
       <h3>Modeling the platform</h3>
       <p>
@@ -287,7 +258,7 @@
     <section id="pm-decisions" class="doc-section reveal">
       <h2>Key PM decisions</h2>
       <ul>
-        <li><strong>Shipped as pure infrastructure, no UI, on purpose.</strong> Getting it adopted by Agent Builder, Skill Builder, and Config Model Extension first meant real usage patterns existed before deciding what a graph-exploration UI should even look like. Config Designer UI came later, informed by that usage &mdash; a deliberate sequencing call, not a resourcing gap.</li>
+        <li><strong>Made agents the first interface, before building a screen.</strong> People could use the graph from day one just by asking a question. Getting it adopted by Agent Builder, Skill Builder, and Config Model Extension first meant real usage patterns existed before deciding what a graph-exploration UI should even look like. Config Designer UI came later, informed by that usage &mdash; a deliberate sequencing call, not a resourcing gap.</li>
         <li><strong>Prioritized coverage breadth over exhaustive depth, to fit a realistic timeline.</strong> Ten core entity types across every tenant beat perfect metadata on a handful of entity types, since the goal was something usable at 100+ tenant scale from day one, not a showcase on one tenant, and it kept the initial build achievable instead of open-ended. That traded off richer metadata on any single entity type, and a larger database footprint, for a graph every downstream team could rely on immediately.</li>
         <li><strong>Modeled derived relationships, not just explicit ones.</strong> Deciding which implicit relationships, like which procedure actually computes a measure, were worth deriving and encoding was as much a scoping call as picking entity types, since getting it wrong either bloats the graph with low-value inference or leaves gaps agents fall into.</li>
         <li><strong>Accepted an open infrastructure question rather than blocking on it.</strong> FalkorDB's memory cost at full multi-tenant scale couldn't be answered definitively without production load, so the call was to ship on the strongest available evidence and monitor, not stall the whole roadmap waiting for certainty no evaluation could have provided anyway.</li>
@@ -330,8 +301,8 @@
         <strong>Synthetic Data Generation</strong> are both built directly on top of it, which is the
         direct payoff of prioritizing breadth-first infrastructure over a polished single-tenant demo:
         four separate product teams could build on the same graph instead of each solving grounding
-        on their own. Beyond that, it's the disambiguation layer behind a huge share of natural-language
-        queries on the platform: when someone asks an agent to "get me sales data," Config Graph is
+        on their own. And it sits behind the questions people ask agents
+        across the platform: when someone asks an agent to "get me sales data," Config Graph is
         what resolves "sales" to the right measure, and it lets a user ask why a number is what it is
         and get a real trace back through the procedures and plugins that computed it, instead of a
         shrug.
@@ -343,9 +314,9 @@
 
 <footer class="footer" style="max-width:1180px;margin:0 auto;padding:32px clamp(24px,5vw,72px) 48px;display:flex;justify-content:space-between;font-family:var(--mono);font-size:12px;color:var(--muted);">
   <p>&copy; 2026 Navneeth Anil Kumar</p>
-  <a href="../index.html#projects">Back to Selected Work &uarr;</a>
+  <a href="../index.html?v=2#projects">Back to Selected Work &uarr;</a>
 </footer>
 
-<script src="case-study.js?v=5"></script>
+<script src="case-study.js?v=6"></script>
 </body>
 </html>
