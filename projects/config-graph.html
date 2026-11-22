@@ -59,7 +59,7 @@
     <div class="doc-skim-item"><span>User</span><p>Everyone who asks an agent a question, plus the people who build agents and configure solutions on the platform.</p></div>
     <div class="doc-skim-item"><span>Decision</span><p>Chose the graph database, scoped entity coverage to fit a realistic timeline, and modeled derived relationships, not just explicit ones.</p></div>
     <div class="doc-skim-item"><span>Outcome</span><p>Became the shared context layer every agentic workflow at o9 now queries against.</p></div>
-    <div class="doc-skim-item"><span>My role</span><p>Designed the graph schema, made the database tradeoff (including legal review), scoped coverage, and set the timeline.</p></div>
+    <div class="doc-skim-item"><span>My role</span><p>Built the first version, designed the graph schema, made the database tradeoff (including legal review), scoped coverage, and set the timeline.</p></div>
   </div>
 </div>
 
@@ -192,10 +192,10 @@
 
       <h3>Choosing the database</h3>
       <p>
-        The graph needed to run natively at scale, 100+ tenants, each with their own graph, on
+        I built the first version on Neo4j, then screened ten alternatives to take it multi-tenant. The graph needed to run natively at scale, 100+ tenants, each with their own graph, on
         infrastructure the platform team could actually operate, which ruled out anything that only
         supports multi-tenancy as a paid enterprise feature. Native Cypher support mattered just as
-        much, since LLMs already generate it well.
+        much, since LLMs already generate it well and v1 was already written in it.
       </p>
       <div class="doc-compare-wrap">
         <table class="doc-compare">
@@ -227,6 +227,11 @@
           </tbody>
         </table>
       </div>
+      <p>
+        The other eight were ruled out. NebulaGraph, Dgraph, DuckPGQ, GraphLite and Ultipa
+        would have meant rewriting queries. Apache AGE needed every query wrapped in SQL, LadybugDB
+        had too small a community to depend on, and Amazon Neptune had no community edition.
+      </p>
       <p>
         The license column carried real legal weight, not just a technical one: SSPL, BSL, and
         GPL/Commercial terms each expose a platform vendor bundling the database differently, so
