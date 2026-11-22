@@ -182,6 +182,7 @@
 }
 .dia.is-waiting .d-part{ opacity:0; }
 .dia.is-built .d-part{ animation:dBuild .5s ease calc(var(--o) * 45ms) backwards; }
+.dia.is-built .d-link{ animation-delay:calc(var(--o) * 45ms + .6s); }
 .dia.is-live .d-node rect,
 .dia.is-live .d-box rect{ animation:dGlow 8s ease calc(1.3s + var(--at)) infinite; }
 .dia.is-live .d-flow{ animation:dFlow 8s linear calc(1.3s + var(--at)) infinite; }

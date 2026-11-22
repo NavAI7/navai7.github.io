@@ -24,7 +24,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=14" />
+<link rel="stylesheet" href="styles.css?v=18" />
 <noscript><style>
   .reveal, .reveal.in{ opacity:1 !important; transform:none !important; filter:none !important; }
   .hero-name .line{ opacity:1 !important; transform:none !important; }
@@ -373,18 +373,27 @@
           <text class="mono region s1" style="--d:.1s" x="246" y="84">LAYER 1 &middot; CONFIG GRAPH</text>
 
           <!-- edges: existing -->
-          <path class="edge s1" style="--d:.9s" pathLength="1" d="M362 140 L418 170" marker-end="url(#sysArrow)"/>
-          <path class="edge s1" style="--d:1s" pathLength="1" d="M362 220 L418 190" marker-end="url(#sysArrow)"/>
-          <path class="edge s1" style="--d:1.2s" pathLength="1" d="M542 170 L598 140" marker-end="url(#sysArrow)"/>
-          <path class="edge s1" style="--d:1.4s" pathLength="1" d="M660 152 L660 208" marker-end="url(#sysArrow)"/>
-          <path class="edge s1" style="--d:1.6s" pathLength="1" d="M660 252 L660 308" marker-end="url(#sysArrow)"/>
-          <text class="mono edge-label s1" style="--d:1.5s" x="668" y="176">OUTPUTS_TO</text>
+          <path class="edge s1" style="--d:.9s" pathLength="1" d="M362 140 L418 170"/>
+          <path class="edge-head s1" style="--d:1.35s" d="M362 140 L418 170" marker-end="url(#sysArrow)"/>
+          <path class="edge s1" style="--d:1s" pathLength="1" d="M362 220 L418 190"/>
+          <path class="edge-head s1" style="--d:1.45s" d="M362 220 L418 190" marker-end="url(#sysArrow)"/>
+          <path class="edge s1" style="--d:1.2s" pathLength="1" d="M542 170 L598 140"/>
+          <path class="edge-head s1" style="--d:1.65s" d="M542 170 L598 140" marker-end="url(#sysArrow)"/>
+          <path class="edge s1" style="--d:1.4s" pathLength="1" d="M660 152 L660 208"/>
+          <path class="edge-head s1" style="--d:1.85s" d="M660 152 L660 208" marker-end="url(#sysArrow)"/>
+          <path class="edge s1" style="--d:1.6s" pathLength="1" d="M660 252 L660 308"/>
+          <path class="edge-head s1" style="--d:2.05s" d="M660 252 L660 308" marker-end="url(#sysArrow)"/>
+          <text class="mono edge-label s1" style="--d:1.9s" x="668" y="176">OUTPUTS_TO</text>
           <!-- edges: added by the agent -->
-          <path class="edge e-new s2" style="--d:3.3s" pathLength="1" d="M480 202 L480 418" marker-end="url(#sysArrowNew)"/>
-          <text class="mono edge-label s2" style="--d:3.4s" x="488" y="314">INPUTS_TO</text>
-          <path class="edge e-new s2" style="--d:3.4s" pathLength="1" d="M362 440 L418 440" marker-end="url(#sysArrowNew)"/>
-          <path class="edge e-new s2" style="--d:3.7s" pathLength="1" d="M542 440 L598 440" marker-end="url(#sysArrowNew)"/>
-          <path class="edge e-new s2" style="--d:4s" pathLength="1" d="M660 418 L660 352" marker-end="url(#sysArrowNew)"/>
+          <path class="edge e-new s2" style="--d:3.3s" pathLength="1" d="M480 202 L480 418"/>
+          <path class="edge-head s2" style="--d:3.75s" d="M480 202 L480 418" marker-end="url(#sysArrowNew)"/>
+          <text class="mono edge-label s2" style="--d:3.8s" x="488" y="314">INPUTS_TO</text>
+          <path class="edge e-new s2" style="--d:3.4s" pathLength="1" d="M362 440 L418 440"/>
+          <path class="edge-head s2" style="--d:3.85s" d="M362 440 L418 440" marker-end="url(#sysArrowNew)"/>
+          <path class="edge e-new s2" style="--d:3.7s" pathLength="1" d="M542 440 L598 440"/>
+          <path class="edge-head s2" style="--d:4.15s" d="M542 440 L598 440" marker-end="url(#sysArrowNew)"/>
+          <path class="edge e-new s2" style="--d:4s" pathLength="1" d="M660 418 L660 352"/>
+          <path class="edge-head s2" style="--d:4.45s" d="M660 418 L660 352" marker-end="url(#sysArrowNew)"/>
 
           <!-- query beam: agent reading the graph -->
           <path class="beam s2only" style="--d:.8s" d="M746 194 L546 194"/>
@@ -632,7 +641,7 @@
         </div>
       </article>
 
-      <article class="tl-item tl-featured reveal">
+      <article class="tl-item tl-featured tl-lit reveal">
         <div class="tl-marker"><span class="tl-dot"></span></div>
         <div class="tl-content">
           <div class="tl-top">
@@ -644,11 +653,11 @@
           <div class="case-card">
             <div class="case-card-head">
               <span class="case-tag">Recognition &middot; o9 Innovation Hackathon 2025</span>
-              <h4>Flo9: "Your data has a story. Flo9 tells it."</h4>
+              <h4>Flo9: &ldquo;Your data has a story. <span class="case-payoff">Flo9 tells it.&rdquo;</span></h4>
             </div>
             <div class="case-stats">
               <div class="stat">
-                <span class="stat-num">Winner</span>
+                <span class="stat-num is-key">Winner</span>
                 <span class="stat-label">Innovation of the Year</span>
               </div>
               <div class="stat">
@@ -673,7 +682,7 @@
         </div>
       </article>
 
-      <article class="tl-item tl-featured reveal">
+      <article class="tl-item tl-featured tl-lit reveal">
         <div class="tl-marker"><span class="tl-dot"></span></div>
         <div class="tl-content">
           <div class="tl-top">
@@ -690,7 +699,7 @@
           <div class="case-card">
             <div class="case-card-head">
               <span class="case-tag">Featured Engagement</span>
-              <h4>Starbucks: Replenishment Planning</h4>
+              <h4>Starbucks: <span class="case-payoff">Replenishment Planning</span></h4>
             </div>
             <div class="case-stats">
               <div class="stat">
@@ -698,11 +707,11 @@
                 <span class="stat-label">client annual revenue</span>
               </div>
               <div class="stat">
-                <span class="stat-num">~30%</span>
+                <span class="stat-num is-key">~30%</span>
                 <span class="stat-label">software cost savings</span>
               </div>
               <div class="stat">
-                <span class="stat-num">70%+</span>
+                <span class="stat-num is-key">70%+</span>
                 <span class="stat-label">faster runtime</span>
               </div>
             </div>

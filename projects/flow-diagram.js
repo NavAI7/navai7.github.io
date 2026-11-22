@@ -80,7 +80,7 @@
     });
     const link = document.createElementNS(NS, 'g');
     link.setAttribute('class', 'd-part d-link');
-    link.style.setProperty('--o', svg.childNodes.length);
+    link.style.setProperty('--o', ((b.x - 40) / 150) * 3);
     link.style.setProperty('--at', timeAt(a.x) + 0.3 + 's');
     const flow = document.createElementNS(NS, 'path');
     flow.setAttribute('class', 'd-flow');
@@ -97,7 +97,7 @@
     const g = document.createElementNS(NS, 'g');
     g.style.cursor = 'pointer';
     g.setAttribute('class', 'd-part d-node' + (n.type === 'Action' ? ' dark' : ''));
-    g.style.setProperty('--o', svg.childNodes.length);
+    g.style.setProperty('--o', ((n.x - 40) / 150) * 3);
     g.style.setProperty('--at', timeAt(n.x) + 's');
 
     const rect = document.createElementNS(NS, 'rect');

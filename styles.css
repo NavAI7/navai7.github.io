@@ -808,6 +808,11 @@ em{ font-style:italic; }
 .sys .n-name{ font-size:14px; font-weight:600; text-anchor:middle; }
 .edge{ fill:none; stroke:rgba(245,243,236,0.4); stroke-width:1.4; stroke-dasharray:1; stroke-dashoffset:0; }
 .edge.e-new{ stroke:var(--accent); }
+/* Arrowheads are separate paths: a marker on the drawing line would show before the line does. */
+.edge-head{ fill:none; stroke:transparent; stroke-width:1.4; pointer-events:none; }
+.sys[data-step="1"] .edge-head.s1,
+.sys[data-step="2"] .edge-head.s2{ animation:sysHead .15s linear var(--d) both; }
+@keyframes sysHead{ from{ opacity:0; } to{ opacity:1; } }
 .sys .edge-label{ font-size:9px; letter-spacing:0.06em; fill:var(--void-muted); }
 .beam{ fill:none; stroke:var(--accent); stroke-width:2; stroke-dasharray:5 7; }
 .sys[data-step="2"] .beam{ animation:sysIn .4s ease var(--d) both, sysFlow .7s linear infinite; }
@@ -937,6 +942,28 @@ em{ font-style:italic; }
 .project.is-know .project-proof{ border-color:var(--accent-dark); }
 .project.is-know .project-proof strong{ color:var(--accent-dark); }
 .project.is-human .layer-pos{ background:var(--human-dark); }
+/* Three columns collide on phones ("PARTICIPANTS," ran into "BUILT"), so stats become rows. */
+@media (max-width:520px){
+  .case-stats{ grid-template-columns:minmax(0,1fr); gap:12px; }
+  .case-stats .stat{ flex-direction:row; align-items:center; gap:14px; }
+  .case-stats .stat-num{ flex:0 0 88px; }
+  .case-stats .stat-label{ min-width:0; }
+}
+/* Featured experience cards: Flo9, and the delivery work the knowledge layer grew out of.
+   Teal marks the payoff and Navneeth's own results, never context such as client revenue. */
+.tl-lit .tl-dot{ background:var(--accent-dark); border-color:var(--accent-dark); }
+.tl-lit .case-card{
+  border-color:rgba(20,184,166,0.45);
+  background-image:linear-gradient(rgba(20,184,166,0.07),rgba(20,184,166,0.07));
+}
+.tl-lit .case-tag,
+.case-payoff,
+.tl-lit .stat-num.is-key,
+.tl-lit .case-list li::before{ color:var(--accent); }
+.tl-lit .case-stats{ border-bottom-color:rgba(20,184,166,0.3); }
+.tl-lit .gloss{ border-bottom-color:var(--accent); }
+.tl-lit .gloss .gloss-tip{ background:var(--accent); color:var(--void); }
+.tl-lit .gloss .gloss-tip::after{ border-top-color:var(--accent); }
 
 @media (prefers-reduced-motion: reduce){
   .sys *, .sys *::after{ animation:none !important; }
