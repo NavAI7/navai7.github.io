@@ -24,10 +24,9 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=18" />
+<link rel="stylesheet" href="styles.css?v=21" />
 <noscript><style>
   .reveal, .reveal.in{ opacity:1 !important; transform:none !important; filter:none !important; }
-  .hero-name .line{ opacity:1 !important; transform:none !important; }
 </style></noscript>
 </head>
 <body>
@@ -43,780 +42,381 @@
 
 <header class="nav-wrap">
   <nav class="nav">
-    <a href="#top" class="nav-mark">NAV.</a>
+    <a href="#top" class="nav-mark"><span class="nav-mark-badge" aria-hidden="true">N</span>Navneeth Anil Kumar</a>
     <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="navLinks">
       <span></span><span></span><span></span>
     </button>
     <ul class="nav-links" id="navLinks">
-      <li><a href="#about"><span class="idx">01</span>About</a></li>
-      <li><a href="#layer"><span class="idx">02</span>Knowledge Layer</a></li>
-      <li><a href="#projects"><span class="idx">03</span>Work</a></li>
-      <li><a href="#experience"><span class="idx">04</span>Experience</a></li>
-      <li><a href="#how-i-work"><span class="idx">05</span>How I Work</a></li>
-      <li><a href="#contact"><span class="idx">06</span>Contact</a></li>
+      <li><a href="#why"><span class="idx">01</span>Why Me</a></li>
+      <li><a href="#projects"><span class="idx">02</span>Work</a></li>
+      <li><a href="#career"><span class="idx">03</span>Career</a></li>
+      <li><a href="knowledge-layer.html"><span class="idx">04</span>Knowledge Layer</a></li>
+      <li><a href="#contact"><span class="idx">05</span>Contact</a></li>
     </ul>
   </nav>
 </header>
 
 <main id="top">
 
-  <!-- HERO -->
+  <!-- HERO: who, one line, then results -->
   <div class="hero-wrap">
-  <section class="hero">
-    <div class="hero-bg-text" aria-hidden="true">PRODUCT</div>
+  <section class="hero" aria-label="Introduction and results">
     <div class="hero-inner">
-      <p class="eyebrow reveal"><span class="dot"></span>AI Product Manager &middot; Knowledge Graphs &amp; Agents &middot; o9 Solutions</p>
-      <h1 class="hero-name reveal">
-        <span class="line">Navneeth</span><br/>
-        <span class="line outline">Anil Kumar</span>
-      </h1>
-      <p class="hero-position reveal">
-        I build the <strong>knowledge layer</strong> that enterprise AI agents reason over, and the
-        agents that work on top of it.
-      </p>
-      <p class="hero-sub reveal">
-        At o9 Solutions I turned a planning platform's configuration into an ontology that agents
-        can query. An agent now builds and extends customer solutions on top of it, with a person
-        approving every phase. Before that I spent three years configuring those same systems by
-        hand for retailers like Starbucks.
-      </p>
-      <div class="hero-actions reveal">
-        <a href="#layer" class="btn btn-solid">See the knowledge layer<span class="arrow">&rarr;</span></a>
-        <a href="#projects" class="btn btn-outline">Case studies</a>
-      </div>
+      <p class="eyebrow"><span class="dot"></span>AI Product Manager &middot; o9 Solutions</p>
+      <h1 class="hero-name"><span class="line">Navneeth</span> <br/><span class="line outline">Anil Kumar</span></h1>
+      <p class="hero-position">I build AI that does <strong>months of enterprise work in days</strong>.</p>
+      <p class="hero-sub">4+ products shipped in my first year as a PM at o9.</p>
     </div>
-    <div class="hero-photo reveal">
+    <div class="hero-photo">
       <div class="hero-photo-frame">
         <img src="assets/headshot.png" alt="Portrait of Navneeth Anil Kumar" width="800" height="800" decoding="async" fetchpriority="high" />
       </div>
-      <span class="hero-photo-tag">Product · AI R&amp;D</span>
     </div>
-    <div class="scroll-cue">
-      <span>Scroll</span>
-      <div class="scroll-cue-line"></div>
+    <ul class="kpi-grid" aria-label="Impact">
+      <li class="kpi kpi-lead">
+        <strong class="kpi-value">4&ndash;6 months <span class="kpi-arrow">&rarr;</span> days</strong>
+        <span class="kpi-name">to build a customer&rsquo;s planning solution</span>
+        <span class="kpi-why">My AI agent now does the configuration work that took implementers months. Customers go live sooner.</span>
+      </li>
+      <li class="kpi kpi-words">
+        <strong class="kpi-value">Every agent</strong>
+        <span class="kpi-name">on o9&rsquo;s platform reads from the semantic layer I built</span>
+        <span class="kpi-why">The agents other teams build on o9 use it too, so no team has to rebuild that context.</span>
+      </li>
+      <li class="kpi">
+        <strong class="kpi-value"><small>up to </small><span data-count="65">65</span>%</strong>
+        <span class="kpi-name">less spent on LLM calls</span>
+        <span class="kpi-why">Repeat requests are answered from cache instead of a new model call, so agents cost less to run at scale.</span>
+      </li>
+      <li class="kpi">
+        <strong class="kpi-value">#1<small> of 250+</small></strong>
+        <span class="kpi-name">o9 Innovation of the Year</span>
+        <span class="kpi-why">Built solo. Adopted by Starbucks.</span>
+      </li>
+    </ul>
+    <div class="hero-actions">
+      <a href="#why" class="btn btn-solid">Why hire me<span class="arrow">&darr;</span></a>
+      <a href="mailto:navneethak.work@gmail.com" class="btn btn-outline">Email me</a>
     </div>
   </section>
   </div>
 
-  <!-- PROOF STRIP -->
-  <section class="pm-summary">
-    <div class="pm-summary-grid">
-      <div class="pm-summary-item reveal">
-        <span class="pm-summary-num">0 &rarr; 1</span>
-        <span class="pm-summary-label">Knowledge layer</span>
-        <p>Created the ontology AI agents use to understand, work on and extend a customer&rsquo;s setup.</p>
-      </div>
-      <div class="pm-summary-item reveal">
-        <span class="pm-summary-num">Months &rarr; weeks</span>
-        <span class="pm-summary-label">Build time</span>
-        <p>4&ndash;6 month configuration builds now ship in weeks, sometimes days.</p>
-      </div>
-      <div class="pm-summary-item reveal">
-        <span class="pm-summary-num">Up to 65%</span>
-        <span class="pm-summary-label">LLM cost cut</span>
-        <p>From response caching in the shared agent harness.</p>
-      </div>
-      <div class="pm-summary-item reveal">
-        <span class="pm-summary-num">1 of 250+</span>
-        <span class="pm-summary-label">Hackathon winner</span>
-        <p>Won o9's Innovation of the Year solo, against teams.</p>
+  <!-- CLIENTS: brand marks where a free, official-shape mark exists; names otherwise -->
+  <div class="clients-wrap">
+  <section class="clients" aria-labelledby="clientsTitle">
+    <h2 id="clientsTitle" class="clients-title">Clients I&rsquo;ve worked with</h2>
+    <!-- Brand marks from Simple Icons (CC0), drawn once and reused by both copies of the list -->
+    <svg class="sprite" aria-hidden="true" focusable="false">
+      <symbol id="lg-starbucks" viewBox="0 0 24 24"><path d="M13.2072 5.2801c-.1052-.0188-.6126-.104-1.2072-.104s-1.102.0848-1.2072.104c-.0605.0108-.0837-.0484-.0377-.0828.0417-.0308 1.2445-.9463 1.2445-.9463l1.244.9463c.0469.0344.024.0936-.0364.0828zm-2.0783 5.9446s-.0636.0228-.0804.0788c.252.1937.4257.6343.9515.6343s.6995-.4406.9511-.6343c-.0164-.0564-.08-.0788-.08-.0788s-.3293.0776-.8711.0776c-.5418 0-.8711-.0776-.8711-.0776zM12 10.4832c-.146 0-.178-.0552-.2777-.0548-.0948.0004-.2789.076-.319.1453a.1542.1542 0 00.0413.0948c.2129.032.309.1505.5558.1505.2469 0 .3425-.1185.5558-.1505a.1579.1579 0 00.0412-.0948c-.0396-.0692-.224-.1445-.3193-.1453-.1-.0008-.1324.0548-.2781.0548zm11.9868 2.27a11.964 11.964 0 01-.076.8528c-1.359.2249-1.8447-.986-3.2368-.9252.0832.2954.1508.5963.2029.9036 1.148-.0008 1.6105 1.0724 2.8878.9143-.0672.3281-.148.6519-.2413.9708-1.01.0992-1.3657-.9044-2.5345-.8767.0096.1664.0148.3345.0148.5041l-.0048.2805 2.2696.866a12.04 12.04 0 01-.3965.9479c-.6823-.0376-.9175-.9127-1.9555-.8431a9.0882 9.0882 0 01-.118.665c.9015-.0632 1.0955.7667 1.7414.834a12.2317 12.2317 0 01-.5302.8767c-.3826-.205-.7143-.8231-1.4398-.8612a8.6035 8.6035 0 00.195-.6994c-.6435 0-1.3794-.2509-1.9964-.8127.2-1.1388-1.5674-2.2984-1.5674-3.1324 0-.9059.4582-1.4073.4582-2.6285 0-.9063-.4402-1.8895-1.104-2.5614a2.2175 2.2175 0 00-.4114-.3309c.6098.7547 1.078 1.6494 1.078 2.6858 0 1.15-.535 1.757-.535 2.8186 0 1.0612 1.5526 1.9796 1.5526 3.074 0 .4305-.1377.851-.5914 1.677.697.6962 1.605 1.076 2.1908 1.076.19 0 .292-.058.3601-.2073a9.0925 9.0925 0 00.1665-.391c.631.0245.9199.5979 1.2692.8268-.1916.2573-.393.5057-.6038.7462-.234-.2593-.5486-.6954-1.0092-.8167a9.2087 9.2087 0 01-.2613.473c.3966.108.6679.5082.878.7715a12.1305 12.1305 0 01-.7075.6754c-.1532-.2384-.3917-.541-.659-.7042a8.3639 8.3639 0 01-.3077.391c.2272.154.4277.4313.5586.6574-.2833.2272-.5763.443-.8796.6446-.1496-1.2192-1.8138-2.0548-1.3653-3.4693-.1472.2493-.3229.561-.3229.9364 0 1.024 1.0908 1.8366 1.1776 2.8542-.226.1353-.4573.2625-.693.383-.0392-1.1185-1.194-2.3425-1.194-3.2604 0-1.0248 1.342-2.054 1.342-3.2636 0-1.2105-1.5485-2.0484-1.5485-3.1112 0-1.062.6586-1.673.6586-3.0343 0-.9972-.4738-2.0063-1.2056-2.651-.1297-.1144-.2573-.2052-.4106-.2849.6903.828 1.0904 1.579 1.0904 2.7186 0 1.2801-.7546 1.9908-.7546 3.244 0 1.2537 1.5197 1.9507 1.5197 3.1192 0 1.1684-1.4145 2.1532-1.4145 3.3536 0 1.092 1.2468 2.182 1.2653 3.4777a11.7704 11.7704 0 01-.8327.3257c.1584-1.3089-1.245-2.659-1.245-3.727 0-1.1676 1.4674-2.1712 1.4674-3.43 0-1.2597-1.4917-1.8451-1.4917-3.138 0-1.292.9151-2.0075.9151-3.4352 0-1.1129-.5494-2.1136-1.352-2.7338l-.0509-.0385c-.0756-.056-.138.0116-.0844.078.5682.7095.8719 1.427.8719 2.4894 0 1.306-1.0512 2.3673-1.0512 3.6325 0 1.4934 1.4117 1.9203 1.4117 3.1456 0 1.2248-1.5137 2.2048-1.5137 3.5053 0 1.206 1.4325 2.5445 1.1868 3.9366a11.6645 11.6645 0 01-.8743.192c.2689-1.7334-1.1364-2.9782-1.1364-4.1122 0-1.2277 1.5677-2.322 1.5677-3.5217 0-1.1316-1.1252-1.5014-1.2732-2.659-.0204-.158-.1473-.2753-.3221-.2461-.2285.0416-.5214.192-.9816.192-.4602 0-.753-.1508-.982-.192-.1744-.0288-.3013.0884-.3217.246-.1476 1.1577-1.2736 1.527-1.2736 2.659 0 1.1997 1.5681 2.2937 1.5681 3.5218 0 1.134-1.4053 2.3788-1.1368 4.1123a12.1233 12.1233 0 01-.8743-.1921c-.2457-1.3921 1.1872-2.7306 1.1872-3.9366 0-1.3005-1.5141-2.2805-1.5141-3.5053 0-1.2253 1.412-1.6522 1.412-3.1456 0-1.2652-1.0515-2.326-1.0515-3.6325 0-1.062.3037-1.7795.8723-2.4893.0532-.0665-.0088-.134-.0848-.078l-.0504.0384c-.802.6186-1.351 1.6193-1.351 2.7322 0 1.4277.9152 2.1431.9152 3.4352 0 1.2925-1.4917 1.878-1.4917 3.138 0 1.2588 1.4673 2.2624 1.4673 3.43 0 1.0684-1.4033 2.4181-1.2445 3.727a11.8995 11.8995 0 01-.833-.3257c.0188-1.2957 1.2648-2.3861 1.2648-3.4777 0-1.2004-1.4137-2.1852-1.4137-3.3536 0-1.1685 1.519-1.8655 1.519-3.1192 0-1.2532-.7543-1.9639-.7543-3.244 0-1.1396.3997-1.8907 1.09-2.7186-.1537.0797-.281.1705-.4102.285-.7318.6446-1.2052 1.6537-1.2052 2.651 0 1.3612.6586 1.9722.6586 3.0342 0 1.0628-1.5485 1.9007-1.5485 3.1112 0 1.2096 1.342 2.2392 1.342 3.2636 0 .9183-1.1556 2.1423-1.1944 3.2604a11.8754 11.8754 0 01-.693-.383c.0872-1.0176 1.1776-1.8303 1.1776-2.8542 0-.3754-.1753-.687-.323-.9364.4486 1.4145-1.2156 2.25-1.3652 3.4693a12.1204 12.1204 0 01-.8796-.6446c.1305-.2257.331-.5034.5586-.6575a7.9134 7.9134 0 01-.3077-.391c-.2677.1633-.5066.4659-.6594.7043a12.2459 12.2459 0 01-.707-.6754c.21-.2633.4813-.6635.8779-.7715a9.0433 9.0433 0 01-.2613-.473c-.4606.1213-.7755.5574-1.0092.8167a12.141 12.141 0 01-.6038-.7462c.3493-.229.6382-.8027 1.2688-.8267.0529.1312.1085.2617.1669.3909.068.1493.1705.2073.3601.2073.5858 0 1.4934-.3798 2.1908-1.076-.4537-.826-.5914-1.2465-.5914-1.677 0-1.094 1.5526-2.0124 1.5526-3.074 0-1.0615-.535-1.6686-.535-2.8186 0-1.0364.4682-1.9311 1.078-2.6858a2.2175 2.2175 0 00-.4114.331c-.6638.6722-1.104 1.655-1.104 2.5613 0 1.2212.4586 1.7226.4586 2.6285 0 .834-1.7679 1.9936-1.5678 3.1324-.617.5618-1.3529.8127-1.9967.8127a9.305 9.305 0 00.1949.6994c-.7251.0385-1.0568.6567-1.4398.8612a12.0872 12.0872 0 01-.5302-.8768c.6455-.0672.84-.897 1.7419-.8339a9.1275 9.1275 0 01-.1185-.665c-1.038-.0696-1.2732.8059-1.9555.8431a12.04 12.04 0 01-.3965-.948l2.27-.8659-.0048-.2805c0-.1696.0052-.3377.0144-.5041-1.1688-.0273-1.5246.976-2.5345.8767a12.106 12.106 0 01-.241-.9708c1.2766.158 1.7395-.9151 2.888-.9143a8.7482 8.7482 0 01.2024-.9036c-1.392-.0604-1.8779 1.1505-3.2364.9252a11.7352 11.7352 0 01-.076-.8527c1.5794.1764 2.1716-1.122 3.6097-.9632a8.4303 8.4303 0 01.471-.9963c-1.803-.317-2.4153 1.1908-4.0935.9591C.1813 5.2805 5.4844.0898 12 .0898S23.8187 5.2805 24 11.753c-1.6786.2317-2.2908-1.2757-4.0935-.9591.1773.32.335.6526.471.9963 1.4373-.1592 2.0295 1.1396 3.6093.9632zm-17.147-5.035c-.884-.3613-1.954-.278-2.868.309-.1416-.8504-.603-1.6058-1.26-2.0616-.0908-.0628-.1853-.0032-.1769.102.1389 1.7967-.9115 3.3569-2.2032 4.7282 1.3313.4001 2.4645-1.3141 4.1912-.7159a9.0364 9.0364 0 012.3168-2.3617zM12 6.6314c-1.1144 0-2.048.6303-2.2924 1.4446-.0188.0624.0068.1028.0788.0704.2005-.09.4285-.1333.6762-.1333.4546 0 .8551.1669 1.092.4574.1049.3457.1137.8463-.0048 1.132-.1872-.042-.2545-.1868-.4373-.1868-.1829 0-.3245.1284-.6347.1284-.3097 0-.346-.1465-.5498-.1465-.2396 0-.2837.247-.2837.5254 0 1.2417 1.1413 2.9503 2.3553 2.9503 1.2136 0 2.3549-1.7086 2.3549-2.9503 0-.2785-.0573-.517-.3077-.5494-.1249.09-.2397.1705-.5254.1705-.3102 0-.3958-.1284-.5783-.1284-.2204 0-.1984.465-.4601.491-.1745-.4194-.1829-.9572-.038-1.4362.2373-.2905.6374-.4574 1.092-.4574.2477 0 .4773.0437.6758.1333.0724.0324.0976-.0084.0788-.0704-.244-.8143-1.1772-1.4446-2.2916-1.4446zm1.7743 1.7815c-.2673 0-.5807.082-.7775.3013-.0204.0596-.0204.1484.0084.2077.4845-.166.9119-.1725 1.1184.0584.11-.1.1452-.19.1452-.2945 0-.1613-.164-.273-.4945-.273zm-3.8979.5674c.2337-.234.7263-.224 1.238-.0352.0225-.2545-.4333-.5326-.8887-.5326-.3309 0-.4945.1116-.4945.2733 0 .1044.0352.1949.1452.2945zm7.6804-4.2031c-.8799.0628-1.6442.3649-2.2624.8683.2625-.7443.5958-1.3953 1.0184-2.0264-1.1204.1189-2.0572.5286-2.7406 1.2289l-.535-1.4025 1.1876-1.0488-1.5902-.1125L12 .8053l-.635 1.479-1.5902.1124 1.1876 1.0488-.5346 1.4025c-.6838-.7003-1.6206-1.11-2.7402-1.2289.4218.6315.7551 1.2825 1.0176 2.0264-.6178-.5038-1.3821-.806-2.262-.8683.5278.6786.9955 1.402 1.342 2.18.0393.0876.1233.1164.2141.0712 1.2053-.599 2.5634-.936 4.0003-.936 1.437 0 2.7946.3374 4.0007.936.0908.0452.1748.0164.2136-.0712.347-.778.8147-1.5014 1.343-2.18zm1.9211 5.3035c1.7259-.5982 2.8595 1.1156 4.1908.7159-1.2917-1.3713-2.3417-2.9315-2.2028-4.7282.0084-.1052-.0865-.1652-.1769-.102-.6574.4558-1.1188 1.2112-1.26 2.0615-.9144-.587-1.984-.6706-2.868-.3089a9.0431 9.0431 0 012.317 2.3617z"/></symbol>
+      <symbol id="lg-samsung" viewBox="0 10.166 24 3.668"><path d="M19.8166 10.2808l.0459 2.6934h-.023l-.7793-2.6934h-1.2837v3.3925h.8481l-.0458-2.785h.023l.8366 2.785h1.2264v-3.3925zm-16.149 0l-.6418 3.427h.9284l.4699-3.1175h.0229l.4585 3.1174h.9169l-.6304-3.4269zm5.1805 0l-.424 2.6132h-.023l-.424-2.6132H6.5788l-.0688 3.427h.8596l.023-3.0832h.0114l.573 3.0831h.8711l.5731-3.083h.023l.0228 3.083h.8596l-.0802-3.4269zm-7.2664 2.4527c.0343.0802.0229.1949.0114.2522-.0229.1146-.1031.2292-.3324.2292-.2177 0-.3438-.126-.3438-.3095v-.3323H0v.2636c0 .7679.6074.9971 1.2493.9971.6189 0 1.1346-.2178 1.2149-.7794.0458-.298.0114-.4928 0-.5616-.1605-.722-1.467-.9283-1.5588-1.3295-.0114-.0688-.0114-.1375 0-.1834.023-.1146.1032-.2292.3095-.2292.2063 0 .321.126.321.3095v.2063h.8595v-.2407c0-.745-.6762-.8596-1.1576-.8596-.6074 0-1.1117.2063-1.2034.7564-.023.149-.0344.2866.0114.4585.1376.7106 1.364.9169 1.5358 1.3524m11.152 0c.0343.0803.0228.1834.0114.2522-.023.1146-.1032.2292-.3324.2292-.2178 0-.3438-.126-.3438-.3095v-.3323h-.917v.2636c0 .7564.596.9857 1.2379.9857.6189 0 1.1232-.2063 1.2034-.7794.0459-.298.0115-.4814 0-.5616-.1375-.7106-1.4327-.9284-1.5243-1.318-.0115-.0688-.0115-.1376 0-.1835.0229-.1146.1031-.2292.3094-.2292.1948 0 .321.126.321.3095v.2063h.848v-.2407c0-.745-.6647-.8596-1.146-.8596-.6075 0-1.1004.1948-1.192.7564-.023.149-.023.2866.0114.4585.1376.7106 1.341.9054 1.513 1.3524m2.8882.4585c.2407 0 .3094-.1605.3323-.2522.0115-.0343.0115-.0917.0115-.126v-2.533h.871v2.4642c0 .0688 0 .1948-.0114.2292-.0573.6419-.5616.8482-1.192.8482-.6303 0-1.1346-.2063-1.192-.8482 0-.0344-.0114-.1604-.0114-.2292v-2.4642h.871v2.533c0 .0458 0 .0916.0115.126 0 .0917.0688.2522.3095.2522m7.1518-.0344c.2522 0 .3324-.1605.3553-.2522.0115-.0343.0115-.0917.0115-.126v-.4929h-.3553v-.5043H24v.917c0 .0687 0 .1145-.0115.2292-.0573.6303-.596.8481-1.2034.8481-.6075 0-1.1461-.2178-1.2034-.8481-.0115-.1147-.0115-.1605-.0115-.2293v-1.444c0-.0574.0115-.172.0115-.2293.0802-.6419.596-.8482 1.2034-.8482s1.1347.2063 1.2034.8482c.0115.1031.0115.2292.0115.2292v.1146h-.8596v-.1948s0-.0803-.0115-.1261c-.0114-.0802-.0802-.2521-.3438-.2521-.2521 0-.321.1604-.3438.2521-.0115.0458-.0115.1032-.0115.1605v1.5702c0 .0458 0 .0916.0115.126 0 .0917.0917.2522.3323.2522"/></symbol>
+      <symbol id="lg-apple" viewBox="0 0 24 24"><path d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.662.805-3.532 1.818-.78.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.559-1.701"/></symbol>
+      <symbol id="lg-google" viewBox="0 0 24 24"><path d="M12.48 10.92v3.28h7.84c-.24 1.84-.853 3.187-1.787 4.133-1.147 1.147-2.933 2.4-6.053 2.4-4.827 0-8.6-3.893-8.6-8.72s3.773-8.72 8.6-8.72c2.6 0 4.507 1.027 5.907 2.347l2.307-2.307C18.747 1.44 16.133 0 12.48 0 5.867 0 .307 5.387.307 12s5.56 12 12.173 12c3.573 0 6.267-1.173 8.373-3.36 2.16-2.16 2.84-5.213 2.84-7.667 0-.76-.053-1.467-.173-2.053H12.48z"/></symbol>
+    </svg>
+    <div class="clients-marquee">
+      <div class="clients-track">
+        <ul class="clients-list">
+          <li><svg class="client-mark" aria-hidden="true" focusable="false"><use href="#lg-starbucks"/></svg>Starbucks</li>
+          <li>PepsiCo</li>
+          <li>AB InBev</li>
+          <li>Mondel&#275;z</li>
+          <li class="is-word"><svg class="client-word" aria-hidden="true" focusable="false"><use href="#lg-samsung"/></svg><span class="sr-only">Samsung</span></li>
+          <li><svg class="client-mark" aria-hidden="true" focusable="false"><use href="#lg-apple"/></svg>Apple</li>
+          <li><svg class="client-mark" aria-hidden="true" focusable="false"><use href="#lg-google"/></svg>Google</li>
+        </ul>
+        <ul class="clients-list" aria-hidden="true">
+          <li><svg class="client-mark" aria-hidden="true" focusable="false"><use href="#lg-starbucks"/></svg>Starbucks</li>
+          <li>PepsiCo</li>
+          <li>AB InBev</li>
+          <li>Mondel&#275;z</li>
+          <li class="is-word"><svg class="client-word" aria-hidden="true" focusable="false"><use href="#lg-samsung"/></svg><span class="sr-only">Samsung</span></li>
+          <li><svg class="client-mark" aria-hidden="true" focusable="false"><use href="#lg-apple"/></svg>Apple</li>
+          <li><svg class="client-mark" aria-hidden="true" focusable="false"><use href="#lg-google"/></svg>Google</li>
+        </ul>
       </div>
     </div>
   </section>
-
-  <!-- MARQUEE -->
-  <div class="marquee">
-    <div class="marquee-track">
-      <span>Ontology Design</span><span>&bull;</span>
-      <span>Knowledge Graphs</span><span>&bull;</span>
-      <span>Agentic Systems</span><span>&bull;</span>
-      <span>Human in the Loop</span><span>&bull;</span>
-      <span>Supply Chain Planning</span><span>&bull;</span>
-      <span>0&rarr;1 Product</span><span>&bull;</span>
-      <span>Ontology Design</span><span>&bull;</span>
-      <span>Knowledge Graphs</span><span>&bull;</span>
-      <span>Agentic Systems</span><span>&bull;</span>
-      <span>Human in the Loop</span><span>&bull;</span>
-      <span>Supply Chain Planning</span><span>&bull;</span>
-      <span>0&rarr;1 Product</span><span>&bull;</span>
-    </div>
   </div>
 
-  <!-- ABOUT -->
-  <section id="about" class="section about">
+  <!-- WHY HIRE ME: four claims, each with its proof -->
+  <section id="why" class="section why">
     <div class="section-head reveal">
       <span class="section-num">01</span>
-      <h2>About</h2>
+      <h2>Why hire me</h2>
     </div>
-    <div class="about-grid">
-      <p class="about-lead reveal">
-        An agent is only as good as what it knows about the company it's working in. My job on
-        o9's AI R&amp;D team is that knowledge: how it's modelled, how agents query it, and what
-        they're allowed to change once they have it.
-      </p>
-      <div class="about-body reveal">
-        <h4 class="about-subhead">What I own</h4>
-        <p>
-          Three products that stack. The Config Graph is the ontology of a customer's o9 setup.
-          Config Model Extension is the agent that builds and extends that setup using the graph.
-          Config Designer UI is the workspace that puts the graph and the agent on one page. I also
-          own Usage Analytics, an intelligence layer in the platform that shows how people
-          actually work on it.
-        </p>
-        <h4 class="about-subhead">How technical</h4>
-        <p>
-          I design the graph schema with engineering, decide what an agent may do without asking,
-          and chose the graph database it runs on. I also built
-          Flo9 on my own and won o9's hackathon with it.
-        </p>
-        <h4 class="about-subhead">Before product</h4>
-        <p>
-          Three years in delivery at o9, implementing supply chain planning for Fortune 500
-          retailers. I led the replenishment planning build for <strong>Starbucks</strong>.
-          Configuration was slow, fragile and locked in a few experts' heads, and I was one of the
-          people doing it. That's the problem I now solve with AI.
-        </p>
-        <h4 class="about-subhead">Education</h4>
-        <p>
-          B.Tech, Electrical and Electronics Engineering, <strong>NIT Karnataka, Surathkal</strong>.
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <!-- THE KNOWLEDGE LAYER -->
-  <div class="layer-wrap">
-  <section id="layer" class="section layer">
-    <div class="section-head reveal">
-      <span class="section-num">02</span>
-      <h2>The knowledge layer</h2>
-      <p class="section-intro">
-        AI can't help run a business it doesn't understand. So I model the enterprise once, as a graph
-        that AI can understand, work on top of and extend.
-      </p>
-    </div>
-
-    <div class="stack">
-
-      <div class="tier reveal" style="--at:0s">
-        <div class="tier-label">
-          <span class="tier-idx">SOURCE</span>
-          <h3>Platform</h3>
-          <svg class="tier-viz viz-source" viewBox="0 0 160 64" aria-hidden="true" focusable="false">
-            <rect class="v-row" style="--i:0" x="1" y="3" width="158" height="13" rx="3"/>
-            <rect class="v-row" style="--i:1" x="1" y="19" width="158" height="13" rx="3"/>
-            <rect class="v-row" style="--i:2" x="1" y="35" width="158" height="13" rx="3"/>
-            <rect class="v-row" style="--i:3" x="1" y="51" width="158" height="12" rx="3"/>
-            <path class="v-text" d="M9 9.5h36M58 9.5h62M9 25.5h26M58 25.5h78M9 41.5h40M58 41.5h48M9 57h30M58 57h70"/>
-          </svg>
-        </div>
-        <div class="tier-body">
-          <p>A customer's live o9 configuration: dimensions, measures, plugins, procedures, reports and views. It stays the system of record. The graph is derived from it and never writes back.</p>
-        </div>
-      </div>
-
-      <div class="tier-link is-know" style="--at:1.2s" aria-hidden="true"><span>&darr;</span> synced from live config, read-only</div>
-
-      <div class="tier tier-core reveal" style="--at:2.1s">
-        <div class="tier-label">
-          <span class="tier-idx">LAYER 1</span>
-          <h3>Knowledge layer</h3>
-          <svg class="tier-viz viz-graph" viewBox="0 0 160 88" aria-hidden="true" focusable="false">
-            <path class="v-edge" style="--i:1" pathLength="1" d="M18 18L70 40"/>
-            <path class="v-edge" style="--i:2" pathLength="1" d="M18 70L70 40"/>
-            <path class="v-edge" style="--i:3" pathLength="1" d="M70 40L122 14"/>
-            <path class="v-edge" style="--i:4" pathLength="1" d="M70 40L112 70"/>
-            <path class="v-edge" style="--i:5" pathLength="1" d="M122 14L150 46"/>
-            <path class="v-edge" style="--i:6" pathLength="1" d="M112 70L150 46"/>
-            <circle class="v-node" style="--i:0" cx="18" cy="18" r="6"/>
-            <circle class="v-node" style="--i:1" cx="18" cy="70" r="6"/>
-            <circle class="v-node v-hub" style="--i:2" cx="70" cy="40" r="10"/>
-            <circle class="v-node" style="--i:3" cx="122" cy="14" r="6"/>
-            <circle class="v-node" style="--i:4" cx="112" cy="70" r="6"/>
-            <circle class="v-node" style="--i:5" cx="150" cy="46" r="6"/>
-          </svg>
-        </div>
-        <div class="tier-body">
-          <p><strong>The shared context and ontology layer for AI across the platform.</strong> It models ten kinds of configuration entity and how they relate, including links no config record stores, like which procedure computes a measure.</p>
-          <ul class="tier-chips">
-            <li><a href="projects/config-graph.html?v=2">Config Graph (EKG)</a></li>
-            <li>Reference Model Graph</li>
-          </ul>
-          <div class="context-hub">
-            <div class="context-head">
-              <strong>One ontology, used across the board</strong>
-              <span>Every agentic workflow gets its context here</span>
-            </div>
-            <ul class="context-fan">
-              <li style="--i:0">Solution Architect</li>
-              <li style="--i:1">Agent Builder</li>
-              <li style="--i:2">Skill Builder</li>
-              <li style="--i:3">Synthetic Data</li>
-              <li class="context-all" style="--i:4">All other agent workflows</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-
-      <div class="tier-link is-know" style="--at:4.3s" aria-hidden="true"><span>&darr;</span> read schema &middot; search &middot; query</div>
-
-      <div class="tier reveal" style="--at:5.2s">
-        <div class="tier-label">
-          <span class="tier-idx">LAYER 2</span>
-          <h3>Agents act</h3>
-          <svg class="tier-viz viz-plan" viewBox="0 0 160 40" aria-hidden="true" focusable="false">
-            <path class="v-track" d="M30 20h36M94 20h36"/>
-            <circle class="v-step" cx="16" cy="20" r="14"/>
-            <circle class="v-step" cx="80" cy="20" r="14"/>
-            <circle class="v-step" cx="144" cy="20" r="14"/>
-            <path class="v-tick" style="--i:1" d="M10 20l4 5 9-10"/>
-            <path class="v-tick" style="--i:3" d="M74 20l4 5 9-10"/>
-            <path class="v-tick" style="--i:5" d="M138 20l4 5 9-10"/>
-          </svg>
-        </div>
-        <div class="tier-body">
-          <p>Agents plan and execute configuration, and generate test data. The configuration tools enforce dependency order and roll back on failure, so safety doesn't depend on the model behaving.</p>
-          <ul class="tier-chips">
-            <li><a href="projects/config-model-extension.html?v=2">Config Model Extension</a></li>
-            <li>Synthetic Data Generation</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="tier-link is-human" style="--at:6.5s" aria-hidden="true"><span>&darr;</span> phased plan, sent for approval</div>
-
-      <div class="tier tier-human reveal" style="--at:7.4s">
-        <div class="tier-label">
-          <span class="tier-idx">LAYER 3</span>
-          <h3>People decide</h3>
-          <svg class="tier-viz viz-approve" viewBox="0 0 160 40" aria-hidden="true" focusable="false">
-            <rect class="v-button" x="1" y="3" width="126" height="34" rx="17"/>
-            <g class="v-approved">
-              <rect x="1" y="3" width="126" height="34" rx="17"/>
-              <path d="M18 20l4 5 9-10"/>
-              <text x="40" y="24.5">Approved</text>
-            </g>
-          </svg>
-        </div>
-        <div class="tier-body">
-          <p>Implementers browse the tenant as a graph and work with the agent on the same page, reviewing its plan one phase at a time and accepting, editing or rejecting it. Nothing runs unattended.</p>
-          <ul class="tier-chips">
-            <li><a href="projects/config-designer-ui.html?v=2">Config Designer UI</a></li>
-          </ul>
-        </div>
-      </div>
-
-    </div>
-
-    <div class="example reveal">
-      <h3 class="example-head">Why context matters</h3>
-      <p class="example-ask"><span>For example, someone asks an agent</span>&ldquo;Get me the sales number from Demand Review.&rdquo;</p>
-      <div class="example-grid">
-        <div class="example-side">
-          <h4>Without the graph</h4>
-          <p>The agent searches by name and finds four measures that all look right.</p>
-          <ul class="example-matches">
-            <li>Sales</li><li>Sales_Adj</li><li>Sales_Net_v2</li><li>Sales_LY</li>
-          </ul>
-          <p class="example-result">It has to guess, or ask someone who knows the setup.</p>
-        </div>
-        <div class="example-side example-with">
-          <h4>With the graph</h4>
-          <p>The agent starts at the report and follows the relationships.</p>
-          <ol class="example-path">
-            <li><span>Report</span>Demand Review</li>
-            <li><span>Shows measure</span>Sales_Net_v2</li>
-            <li><span>Computed by</span>Calc_Net_Sales</li>
-          </ol>
-          <p class="example-result">It gets the right number, and can show where it came from.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-  </div>
-
-  <!-- PROJECTS -->
-  <section id="projects" class="section projects">
-    <div class="section-head reveal">
-      <span class="section-num">03</span>
-      <h2>Selected Work</h2>
-      <p class="section-intro">
-        Products that help AI understand a business, let it build safely with people in control,
-        and show teams how their work really gets done.
-      </p>
-    </div>
-
-    <!-- SYSTEM DIAGRAM: one SVG, revealed layer by layer via data-step -->
-    <figure class="sys reveal" data-step="3" data-playing="false" aria-label="How Config Graph, Config Model Extension and Config Designer UI fit together">
-      <div class="sys-stage">
-        <svg viewBox="0 0 1000 560" role="img" aria-labelledby="sysTitle sysDesc">
-          <title id="sysTitle">Three layers of one system</title>
-          <desc id="sysDesc">Layer 1, the Config Graph, models a tenant as typed nodes and relationships. Layer 2, the Config Model Extension agent, reads the graph, proposes a phased plan, and adds new nodes once a person approves. Layer 3, Config Designer UI, wraps both in one workspace with an explorer, the graph canvas and the agent panel.</desc>
-          <defs>
-            <pattern id="sysDots" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="1" cy="1" r="1" class="sys-dot"/></pattern>
-            <marker id="sysArrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" class="sys-arrow"/></marker>
-            <marker id="sysArrowNew" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" class="sys-arrow-new"/></marker>
-          </defs>
-
-          <!-- LAYER 3: workspace chrome (drawn first so it sits behind) -->
-          <g class="s3" style="--d:0s">
-            <rect class="ui-frame" x="10" y="10" width="980" height="540" rx="12"/>
-            <path class="ui-bar" d="M10 54 H990"/>
-            <circle class="ui-dot" cx="34" cy="32" r="5"/><circle class="ui-dot" cx="52" cy="32" r="5"/><circle class="ui-dot" cx="70" cy="32" r="5"/>
-            <text class="ui-title" x="92" y="37">Config Designer UI</text>
-            <text class="mono region region-ui" x="974" y="36" text-anchor="end">LAYER 3 &middot; WORKSPACE</text>
-            <path class="ui-div" d="M222 54 V550 M738 54 V550"/>
-          </g>
-
-          <!-- LAYER 1: Config Graph canvas -->
-          <g class="s1" style="--d:0s"><rect x="230" y="62" width="500" height="480" fill="url(#sysDots)"/></g>
-          <text class="mono region s1" style="--d:.1s" x="246" y="84">LAYER 1 &middot; CONFIG GRAPH</text>
-
-          <!-- edges: existing -->
-          <path class="edge s1" style="--d:.9s" pathLength="1" d="M362 140 L418 170"/>
-          <path class="edge-head s1" style="--d:1.35s" d="M362 140 L418 170" marker-end="url(#sysArrow)"/>
-          <path class="edge s1" style="--d:1s" pathLength="1" d="M362 220 L418 190"/>
-          <path class="edge-head s1" style="--d:1.45s" d="M362 220 L418 190" marker-end="url(#sysArrow)"/>
-          <path class="edge s1" style="--d:1.2s" pathLength="1" d="M542 170 L598 140"/>
-          <path class="edge-head s1" style="--d:1.65s" d="M542 170 L598 140" marker-end="url(#sysArrow)"/>
-          <path class="edge s1" style="--d:1.4s" pathLength="1" d="M660 152 L660 208"/>
-          <path class="edge-head s1" style="--d:1.85s" d="M660 152 L660 208" marker-end="url(#sysArrow)"/>
-          <path class="edge s1" style="--d:1.6s" pathLength="1" d="M660 252 L660 308"/>
-          <path class="edge-head s1" style="--d:2.05s" d="M660 252 L660 308" marker-end="url(#sysArrow)"/>
-          <text class="mono edge-label s1" style="--d:1.9s" x="668" y="176">OUTPUTS_TO</text>
-          <!-- edges: added by the agent -->
-          <path class="edge e-new s2" style="--d:3.3s" pathLength="1" d="M480 202 L480 418"/>
-          <path class="edge-head s2" style="--d:3.75s" d="M480 202 L480 418" marker-end="url(#sysArrowNew)"/>
-          <text class="mono edge-label s2" style="--d:3.8s" x="488" y="314">INPUTS_TO</text>
-          <path class="edge e-new s2" style="--d:3.4s" pathLength="1" d="M362 440 L418 440"/>
-          <path class="edge-head s2" style="--d:3.85s" d="M362 440 L418 440" marker-end="url(#sysArrowNew)"/>
-          <path class="edge e-new s2" style="--d:3.7s" pathLength="1" d="M542 440 L598 440"/>
-          <path class="edge-head s2" style="--d:4.15s" d="M542 440 L598 440" marker-end="url(#sysArrowNew)"/>
-          <path class="edge e-new s2" style="--d:4s" pathLength="1" d="M660 418 L660 352"/>
-          <path class="edge-head s2" style="--d:4.45s" d="M660 418 L660 352" marker-end="url(#sysArrowNew)"/>
-
-          <!-- query beam: agent reading the graph -->
-          <path class="beam s2only" style="--d:.8s" d="M746 194 L546 194"/>
-
-          <!-- nodes: existing tenant config -->
-          <g transform="translate(300 130)"><g class="node s1" style="--d:.2s"><rect x="-62" y="-22" width="124" height="44" rx="7"/><text class="n-type" y="-6">DIMENSION</text><text class="n-name" y="13">Item</text></g></g>
-          <g transform="translate(300 230)"><g class="node s1" style="--d:.3s"><rect x="-62" y="-22" width="124" height="44" rx="7"/><text class="n-type" y="-6">DIMENSION</text><text class="n-name" y="13">Location</text></g></g>
-          <g transform="translate(480 180)"><g class="node n-measure n-read s1" style="--d:.45s"><rect x="-62" y="-22" width="124" height="44" rx="7"/><text class="n-type" y="-6">MEASURE</text><text class="n-name" y="13">Sales</text></g></g>
-          <g transform="translate(660 130)"><g class="node n-plugin n-read s1" style="--d:.6s"><rect x="-62" y="-22" width="124" height="44" rx="7"/><text class="n-type" y="-6">PLUGIN</text><text class="n-name" y="13">Stat Engine</text></g></g>
-          <g transform="translate(660 230)"><g class="node n-measure s1" style="--d:.7s"><rect x="-62" y="-22" width="124" height="44" rx="7"/><text class="n-type" y="-6">MEASURE</text><text class="n-name" y="13">Stat Fcst</text></g></g>
-          <g transform="translate(660 330)"><g class="node n-report s1" style="--d:.8s"><rect x="-62" y="-22" width="124" height="44" rx="7"/><text class="n-type" y="-6">REPORT</text><text class="n-name" y="13">Demand Review</text></g></g>
-          <!-- nodes: created by the agent after approval -->
-          <g transform="translate(300 440)"><g class="node n-new s2" style="--d:3.1s"><rect x="-62" y="-22" width="124" height="44" rx="7"/><text class="n-type" y="-6">MEASURE &middot; NEW</text><text class="n-name" y="13">Price Driver</text></g></g>
-          <g transform="translate(480 440)"><g class="node n-new s2" style="--d:3.4s"><rect x="-62" y="-22" width="124" height="44" rx="7"/><text class="n-type" y="-6">PLUGIN &middot; NEW</text><text class="n-name" y="13">ML Engine</text></g></g>
-          <g transform="translate(660 440)"><g class="node n-new s2" style="--d:3.7s"><rect x="-62" y="-22" width="124" height="44" rx="7"/><text class="n-type" y="-6">MEASURE &middot; NEW</text><text class="n-name" y="13">ML Fcst</text></g></g>
-
-          <!-- LAYER 2: Config Model Extension agent panel -->
-          <text class="mono region s2" style="--d:0s" x="760" y="84">LAYER 2 &middot; MODEL EXTENSION</text>
-          <g class="s2" style="--d:.05s">
-            <circle class="agent-dot" cx="766" cy="111" r="4"/>
-            <text class="agent-name" x="778" y="116">Solution Architect</text>
-          </g>
-          <g class="s2" style="--d:.2s">
-            <rect class="bubble-user" x="800" y="132" width="162" height="46" rx="8"/>
-            <text class="bubble-text" x="812" y="151">Add an ML forecast</text>
-            <text class="bubble-text" x="812" y="168">driven by price</text>
-          </g>
-          <g class="s2" style="--d:.7s">
-            <rect class="bubble-agent" x="760" y="190" width="176" height="30" rx="8"/>
-            <text class="bubble-text muted" x="772" y="210">Reading the Config Graph&hellip;</text>
-          </g>
-          <g class="s2" style="--d:1.6s">
-            <rect class="plan" x="760" y="234" width="202" height="160" rx="8"/>
-            <text class="mono plan-head" x="774" y="258">PLAN &middot; 3 PHASES</text>
-            <text class="plan-row" x="774" y="284">1&#160;&#160;Add measures</text>
-            <text class="plan-row" x="774" y="308">2&#160;&#160;Add ML Engine plugin</text>
-            <text class="plan-row" x="774" y="332">3&#160;&#160;Wire to Demand Review</text>
-            <g class="approve"><rect x="774" y="348" width="104" height="30" rx="15"/><text x="826" y="368" text-anchor="middle">Approve</text></g>
-          </g>
-          <text class="check s2" style="--d:3.1s" x="948" y="284" text-anchor="end">&#10003;</text>
-          <text class="check s2" style="--d:3.5s" x="948" y="308" text-anchor="end">&#10003;</text>
-          <text class="check s2" style="--d:4s" x="948" y="332" text-anchor="end">&#10003;</text>
-          <text class="mono status s2" style="--d:4.4s" x="760" y="420">3 OF 3 PHASES APPLIED</text>
-          <text class="mono status-sub s2" style="--d:4.6s" x="760" y="440">dependency order checked</text>
-
-          <!-- LAYER 3: explorer list + node actions -->
-          <text class="mono region s3" style="--d:.3s" x="34" y="84">EXPLORER</text>
-          <g class="s3" style="--d:.4s"><rect class="search" x="34" y="96" width="172" height="30" rx="6"/><text class="list-muted" x="46" y="116">Search entities</text></g>
-          <g class="s3" style="--d:.6s"><text class="mono list-cat" x="38" y="156">DIMENSIONS</text><text class="list-item" x="38" y="178">Item</text><text class="list-item" x="38" y="200">Location</text></g>
-          <g class="s3" style="--d:.8s"><text class="mono list-cat" x="38" y="236">MEASURES</text>
-            <rect class="list-sel" x="30" y="243" width="182" height="23" rx="4"/>
-            <text class="list-item" x="38" y="259">Sales</text><text class="list-item" x="38" y="281">Stat Fcst</text><text class="list-item list-new" x="38" y="303">Price Driver</text><text class="list-item list-new" x="38" y="325">ML Fcst</text></g>
-          <g class="s3" style="--d:1s"><text class="mono list-cat" x="38" y="361">PLUGINS</text><text class="list-item" x="38" y="383">Stat Engine</text><text class="list-item list-new" x="38" y="405">ML Engine</text></g>
-          <g class="s3" style="--d:1.2s"><text class="mono list-cat" x="38" y="441">REPORTS</text><text class="list-item" x="38" y="463">Demand Review</text></g>
-          <rect class="sel-ring s3" style="--d:1.6s" x="412" y="152" width="136" height="56" rx="10"/>
-          <g class="s3 pop" style="--d:2s">
-            <rect class="popover" x="366" y="262" width="232" height="34" rx="7"/>
-            <text class="pop-item" x="376" y="284">&#8599; Traverse</text>
-            <text class="pop-item" x="446" y="284">+ Add to chat</text>
-            <text class="pop-item" x="527" y="284">&#9638; View data</text>
-          </g>
-        </svg>
-      </div>
-      <p class="sys-hint" aria-hidden="true">Swipe to see the whole workspace &rarr;</p>
-      <figcaption class="sys-steps">
-        <button type="button" class="sys-step" data-go="1">
-          <span class="sys-step-num">Layer 1</span>
-          <strong>Config Graph</strong>
-          <span class="sys-step-text">The tenant as a graph of typed entities and relationships, so agents can look things up instead of being told.</span>
-          <span class="sys-bar"></span>
-        </button>
-        <button type="button" class="sys-step" data-go="2">
-          <span class="sys-step-num">Layer 2</span>
-          <strong>Config Model Extension</strong>
-          <span class="sys-step-text">An agent reads the graph, proposes a phased plan, and builds it once a person approves.</span>
-          <span class="sys-bar"></span>
-        </button>
-        <button type="button" class="sys-step" data-go="3" aria-current="true">
-          <span class="sys-step-num">Layer 3</span>
-          <strong>Config Designer UI</strong>
-          <span class="sys-step-text">The workspace on top: browse the graph, follow relationships, check data, with the agent in a side panel.</span>
-          <span class="sys-bar"></span>
-        </button>
-        <button type="button" class="sys-play" id="sysPlay" aria-label="Pause animation">Pause</button>
-      </figcaption>
-    </figure>
-
-    <!-- Case Study 01 -->
-    <article class="project is-know reveal">
-      <div class="project-index">01</div>
-      <div class="project-main">
-        <div class="project-heading">
-          <h3><a href="projects/config-graph.html?v=2">Config Graph <span class="mono">(EKG)</span></a></h3>
-          <div class="project-meta-row">
-            <span class="layer-pos">Layer 1 &middot; Knowledge</span>
-          </div>
-        </div>
-        <div class="project-brief">
-          <div>
-            <p class="project-value">Gives AI agents an expert&rsquo;s understanding of how a customer&rsquo;s platform is set up.</p>
-            <ul class="project-parts">
-              <li>Ten entity types, linked by typed relationships</li>
-              <li>Hidden dependencies traced from code</li>
-              <li>Searchable by meaning, one graph per tenant</li>
-            </ul>
-          </div>
-          <p class="project-proof"><strong>Platform&#8209;wide</strong> <span>the shared context layer for every agentic workflow</span></p>
-        </div>
-        <a href="projects/config-graph.html?v=2" class="project-read-more">Read the case study &rarr;</a>
-      </div>
-    </article>
-
-    <!-- Case Study 02 -->
-    <article class="project reveal">
-      <div class="project-index">02</div>
-      <div class="project-main">
-        <div class="project-heading">
-          <h3><a href="projects/config-model-extension.html?v=2">Config Model Extension</a></h3>
-          <div class="project-meta-row">
-            <span class="layer-pos">Layer 2 &middot; Agent</span>
-          </div>
-        </div>
-        <div class="project-brief">
-          <div>
-            <p class="project-value">An agent that turns a business ask into a configured planning solution.</p>
-            <ul class="project-parts">
-              <li>Plans from the graph and reference models</li>
-              <li>A person approves every phase</li>
-              <li>Tools enforce build order and roll back failures</li>
-            </ul>
-          </div>
-          <p class="project-proof"><strong>Months &rarr; weeks</strong> <span>for builds that used to take 4&ndash;6 months</span></p>
-        </div>
-        <a href="projects/config-model-extension.html?v=2" class="project-read-more">Read the case study &rarr;</a>
-      </div>
-    </article>
-
-    <!-- Case Study 03 -->
-    <article class="project is-human reveal">
-      <div class="project-index">03</div>
-      <div class="project-main">
-        <div class="project-heading">
-          <h3><a href="projects/config-designer-ui.html?v=2">Config Designer UI</a></h3>
-          <div class="project-meta-row">
-            <span class="layer-pos">Layer 3 &middot; Workspace</span>
-          </div>
-        </div>
-        <div class="project-brief">
-          <div>
-            <p class="project-value">One place to see, understand and change a customer&rsquo;s configuration.</p>
-            <ul class="project-parts">
-              <li>Search and traverse the graph visually</li>
-              <li>See the data behind any entity</li>
-              <li>Config Model Extension built in as the agent panel</li>
-            </ul>
-          </div>
-          <p class="project-proof"><strong>Replaced the legacy&nbsp;UI</strong> <span>a slow, click-heavy tool that implementers avoided</span></p>
-        </div>
-        <a href="projects/config-designer-ui.html?v=2" class="project-read-more">Read the case study &rarr;</a>
-      </div>
-    </article>
-
-    <!-- Case Study 04 -->
-    <article class="project reveal">
-      <div class="project-index">04</div>
-      <div class="project-main">
-        <div class="project-heading">
-          <h3><a href="projects/usage-analytics.html?v=2">Usage Analytics</a></h3>
-          <div class="project-meta-row">
-            <span class="layer-pos">Intelligence layer</span>
-          </div>
-        </div>
-        <div class="project-brief">
-          <div>
-            <p class="project-value">Shows how work really happens on the platform, from usage logs.</p>
-            <ul class="project-parts">
-              <li>Business processes and work patterns</li>
-              <li>Bottlenecks and handoffs</li>
-              <li>Most-visited views and hours per process</li>
-            </ul>
-          </div>
-          <p class="project-proof"><strong>4 report views</strong> <span>plus an agent that surfaces insights and writes the monthly summary</span></p>
-        </div>
-        <a href="projects/usage-analytics.html?v=2" class="project-read-more">Read the case study &rarr;</a>
-      </div>
-    </article>
-
-    <!-- Compact cards -->
-    <h3 class="supporting-heading reveal">Supporting work</h3>
-    <div class="project-grid">
-
-      <article class="project-card reveal">
-        <span class="card-index">05</span>
-        <h4>Harness Engineering</h4>
-        <p>Led the move from a traditional LangGraph orchestration harness to a middleware-based
-          LangGraph architecture with LLM response caching, which cut LLM costs by up to 65%.</p>
-        <p class="card-why">Every agent product above runs on this harness, so a cheaper core pays off across all of them.</p>
-        <ul class="card-tags"><li>LangGraph</li><li>LLM Caching</li></ul>
-      </article>
-
-      <article class="project-card reveal">
-        <span class="card-index">06</span>
-        <h4>Synthetic Data Generation</h4>
-        <p>Agents generate realistic planning data, grounded
-          in the Config Graph. Used for demo stories, performance testing at scale and quick
-          proof-of-concept setups.</p>
-        <p class="card-why">Customer data can't be used for demos or load tests. This gives teams data that behaves like the real thing.</p>
-        <ul class="card-tags"><li>Data Generation</li><li>POC Toolkit</li></ul>
-      </article>
-
-    </div>
-  </section>
-
-  <!-- EXPERIENCE -->
-  <section id="experience" class="section experience">
-    <div class="section-head reveal">
-      <span class="section-num">04</span>
-      <h2>Experience</h2>
-    </div>
-
-    <div class="timeline">
-
-      <article class="tl-item tl-featured reveal">
-        <div class="tl-marker"><span class="tl-dot"></span></div>
-        <div class="tl-content">
-          <div class="tl-top">
-            <h3>Product Manager, AI R&amp;D</h3>
-            <span class="tl-date">Sep 2025 &ndash; Present</span>
-          </div>
-          <p class="tl-org">o9 Solutions</p>
-          <p class="tl-desc">
-            Own three linked products built in layers: the Config Graph that o9's agents ground
-            on, Config Model Extension, an agent that builds and extends customer solutions on top
-            of it, and Config Designer UI, the workspace that puts both on one page. Also own
-            Usage Analytics, the platform's intelligence layer on how people work. Full
-            case studies are in <a href="#projects">Selected Work &uarr;</a>.
-          </p>
-          <ul class="tl-tags">
-            <li>Config Graph (EKG)</li>
-            <li>Agentic Config Extension</li>
-            <li>Config Designer UI</li>
-            <li>Synthetic Data Gen</li>
-            <li>Usage Analytics</li>
-          </ul>
-        </div>
-      </article>
-
-      <article class="tl-item tl-featured tl-lit reveal">
-        <div class="tl-marker"><span class="tl-dot"></span></div>
-        <div class="tl-content">
-          <div class="tl-top">
-            <h3>Flo9, Solo Hackathon Project</h3>
-            <span class="tl-date">2025</span>
-          </div>
-          <p class="tl-org">o9 Solutions</p>
-
-          <div class="case-card">
-            <div class="case-card-head">
-              <span class="case-tag">Recognition &middot; o9 Innovation Hackathon 2025</span>
-              <h4>Flo9: &ldquo;Your data has a story. <span class="case-payoff">Flo9 tells it.&rdquo;</span></h4>
-            </div>
-            <div class="case-stats">
-              <div class="stat">
-                <span class="stat-num is-key">Winner</span>
-                <span class="stat-label">Innovation of the Year</span>
-              </div>
-              <div class="stat">
-                <span class="stat-num">250+</span>
-                <span class="stat-label">participants, competing in teams</span>
-              </div>
-              <div class="stat">
-                <span class="stat-num">Solo</span>
-                <span class="stat-label">built &amp; pitched without a team</span>
-              </div>
-            </div>
-            <p class="case-note">
-              Working out how an o9 <span class="gloss" tabindex="0">measure<span class="gloss-tip">A numeric metric being tracked, e.g. a forecast or inventory number.</span></span> is
-              calculated meant tracing <span class="gloss" tabindex="0">plugins<span class="gloss-tip">Packaged calculation modules that run on the platform.</span></span>,
-              batch order and integration code by hand, which could eat a full week. Flo9 is an
-              agent that traces that lineage itself and explains it in plain English, with
-              generated flow diagrams for root-cause analysis and summaries of the code logic.
-              I built it alone during the hackathon and demoed it live to Starbucks' Customer
-              Success team, who have since adopted it as part of their solution.
-            </p>
-          </div>
-        </div>
-      </article>
-
-      <article class="tl-item tl-featured tl-lit reveal">
-        <div class="tl-marker"><span class="tl-dot"></span></div>
-        <div class="tl-content">
-          <div class="tl-top">
-            <h3>Consultant, Delivery</h3>
-            <span class="tl-date">Jul 2022 &ndash; Sep 2025</span>
-          </div>
-          <p class="tl-org">o9 Solutions</p>
-          <p class="tl-desc">
-            Implemented o9 supply chain planning for enterprise customers, turning business
-            requirements into configured, tested solutions. Most of my work was replenishment
-            planning: forecast accuracy, inventory optimization and order management.
-          </p>
-
-          <div class="case-card">
-            <div class="case-card-head">
-              <span class="case-tag">Featured Engagement</span>
-              <h4>Starbucks: <span class="case-payoff">Replenishment Planning</span></h4>
-            </div>
-            <div class="case-stats">
-              <div class="stat">
-                <span class="stat-num">$26B+</span>
-                <span class="stat-label">client annual revenue</span>
-              </div>
-              <div class="stat">
-                <span class="stat-num is-key">~30%</span>
-                <span class="stat-label">software cost savings</span>
-              </div>
-              <div class="stat">
-                <span class="stat-num is-key">70%+</span>
-                <span class="stat-label">faster runtime</span>
-              </div>
-            </div>
-            <ul class="case-list">
-              <li>Led migration of the SCM solution from Hadoop to Kubernetes, with ~30% software cost savings for a Fortune 500 retailer with $26B+ in annual revenue.</li>
-              <li>Cut the runtime of overstock and understock identification by 70%+, so planners got answers sooner.</li>
-              <li>Designed and built substitute-item logic into inventory planning, which reduced overstocking.</li>
-              <li>Gave planners a choice between Automated Ordering (system-driven) and Suggested Ordering (planner-adjustable) at the item-store level.</li>
-              <li>Wrote Python and PySpark tools that took repetitive implementation tasks off o9 implementers.</li>
-              <li>Ran several project tracks at once against delivery milestones, and led org-wide training on platform performance.</li>
-            </ul>
-          </div>
-        </div>
-      </article>
-
-      <article class="tl-item reveal">
-        <div class="tl-marker"><span class="tl-dot"></span></div>
-        <div class="tl-content">
-          <div class="tl-top">
-            <h3>Business Analyst Intern</h3>
-            <span class="tl-date">May 2021 &ndash; Jun 2021</span>
-          </div>
-          <p class="tl-org">Goodera</p>
-          <p class="tl-desc">
-            Worked on the Growth team, turning raw data into reports and charts, then helped turn
-            what they showed into growth plans. Also found and helped onboard process-automation
-            tools for day-to-day business operations.
-          </p>
-        </div>
-      </article>
-
-      <article class="tl-item reveal">
-        <div class="tl-marker"><span class="tl-dot"></span></div>
-        <div class="tl-content">
-          <div class="tl-top">
-            <h3>Software Development Intern</h3>
-            <span class="tl-date">Nov 2020 &ndash; Apr 2021</span>
-          </div>
-          <p class="tl-org">Smarkt</p>
-          <p class="tl-desc">
-            Built features for consumer mobile apps in Java and Kotlin, working on API
-            integrations under an MVVM architecture. A good part of the role was bug fixing and
-            performance tuning.
-          </p>
-        </div>
-      </article>
-
-    </div>
-  </section>
-
-  <!-- HOW I WORK -->
-  <div class="band-alt">
-  <section id="how-i-work" class="section how-i-work">
-    <div class="section-head reveal">
-      <span class="section-num">05</span>
-      <h2>How I work</h2>
-      <p class="section-intro">
-        How I take an AI product from a messy problem to something people trust.
-      </p>
-    </div>
-    <ol class="how-list">
-      <li class="how-item reveal">
-        <span class="how-num">01</span>
-        <h4>Start where the work hurts</h4>
-        <p>I begin with what's slow, fragile or stuck in one expert's head. The model comes second.</p>
+    <ol class="why-list">
+      <li class="why-item reveal">
+        <svg class="why-icon" viewBox="0 0 44 32" aria-hidden="true" focusable="false"><path class="g-d" style="--i:0" pathLength="1" d="M22 4L40 11L22 18L4 11Z"/><path class="g-d" style="--i:2" pathLength="1" d="M4 17L22 24L40 17"/><path class="g-d" style="--i:3" pathLength="1" d="M4 23L22 30L40 23"/></svg>
+        <h3>I build platforms, not one-off features.</h3>
+        <p>My semantic layer is the context every agent on o9 runs on, including the products other teams build.</p>
+        <a href="#work-config-graph">See the Config Graph &rarr;</a>
       </li>
-      <li class="how-item reveal">
-        <span class="how-num">02</span>
-        <h4>Foundation before interface</h4>
-        <p>I ship what others can build on, then design the screen around real usage.</p>
+      <li class="why-item reveal">
+        <svg class="why-icon" viewBox="0 0 44 32" aria-hidden="true" focusable="false"><path class="g-d" style="--i:0" pathLength="1" d="M4 5H32V27H4ZM4 13H32M4 20H32M14 5V27M23 5V27"/><path class="g-d" style="--i:3" pathLength="1" d="M34 16L40 30L36 27L32 31Z"/></svg>
+        <h3>I&rsquo;ve done the job I&rsquo;m automating.</h3>
+        <p>Three years configuring planning by hand for retailers like Starbucks, so I know where the months go.</p>
+        <a href="#work-starbucks">See the Starbucks work &rarr;</a>
       </li>
-      <li class="how-item reveal">
-        <span class="how-num">03</span>
-        <h4>Draw the line for the agent</h4>
-        <p>I decide what it does alone, where it must ask and how it fails.</p>
+      <li class="why-item reveal">
+        <svg class="why-icon" viewBox="0 0 44 32" aria-hidden="true" focusable="false"><path class="g-d" style="--i:0" pathLength="1" d="M4 9H24A6 6 0 0 1 24 21H4A6 6 0 0 1 4 9Z"/><circle cx="22" cy="15" r="4" class="g-p" style="--i:2"/><path class="g-d" style="--i:3" pathLength="1" d="M33 4L41 7V15C41 21 37 25 33 27C29 25 25 21 25 15V7Z"/></svg>
+        <h3>I decide how much autonomy AI gets.</h3>
+        <p>Approval by default, auto mode where it&rsquo;s safe, and the limits are enforced in the tools, not the prompt.</p>
+        <a href="#work-model-extension">See how the agent works &rarr;</a>
       </li>
-      <li class="how-item reveal">
-        <span class="how-num">04</span>
-        <h4>Put safety in the tools</h4>
-        <p>A prompt asks the model to behave. A tool can refuse.</p>
-      </li>
-      <li class="how-item reveal">
-        <span class="how-num">05</span>
-        <h4>Pick boring metrics</h4>
-        <p>I track whether the job gets done reliably, long before how clever it sounds.</p>
-      </li>
-      <li class="how-item reveal">
-        <span class="how-num">06</span>
-        <h4>Let the skeptic check</h4>
-        <p>People adopt what they can verify, so every answer leads back to its source.</p>
+      <li class="why-item reveal">
+        <svg class="why-icon" viewBox="0 0 44 32" aria-hidden="true" focusable="false"><path class="g-d" style="--i:0" pathLength="1" d="M3 8H41"/><rect x="5" y="17" width="7" height="12" rx="1" class="g-p" style="--i:1"/><rect x="16" y="12" width="7" height="17" rx="1" class="g-p" style="--i:2"/><rect x="27" y="7" width="7" height="22" rx="1" class="g-p" style="--i:3"/></svg>
+        <h3>I hold AI to numbers.</h3>
+        <p>I set the success metrics (tool coverage, call success, dependency errors caught) and cut LLM cost by up to 65%.</p>
+        <a href="#work-agent-harness">See the agent harness &rarr;</a>
       </li>
     </ol>
   </section>
+
+  <!-- WHAT I BUILT: the o9 platform, foundation first. id kept from the old Selected Work section. -->
+  <div class="band-alt">
+  <section id="projects" class="section work">
+    <div class="section-head reveal">
+      <span class="section-num">02</span>
+      <h2>What I built: one AI platform, in layers</h2>
+      <p class="section-intro">Each layer makes the next one possible. Select any product for the details.</p>
+    </div>
+    <div class="stk">
+    <div class="stk-row is-know reveal">
+      <p class="stk-label"><span>Foundation</span>What every agent runs on</p>
+      <ul class="stk-cards">
+        <li class="stk-item">
+          <details class="cp-card has-scene" id="work-config-graph">
+            <summary>
+              <svg class="scene" viewBox="0 0 280 110" role="img" aria-label="A graph of configuration entities, with a query tracing a report back to the calculation behind it" focusable="false"><path class="sc-edge" style="--i:0" pathLength="1" d="M46 28L111 52"/><path class="sc-edge" style="--i:1" pathLength="1" d="M46 82L111 58"/><path class="sc-edge" style="--i:2" pathLength="1" d="M128 51L194 30"/><path class="sc-edge" style="--i:3" pathLength="1" d="M128 59L194 80"/><path class="sc-edge" style="--i:4" pathLength="1" d="M206 30L246 52"/><path class="sc-edge" style="--i:5" pathLength="1" d="M206 80L246 58"/><circle class="sc-node" style="--i:0" cx="40" cy="26" r="6"/><circle class="sc-node" style="--i:1" cx="40" cy="84" r="6"/><circle class="sc-node sc-hub" style="--i:2" cx="120" cy="55" r="9"/><circle class="sc-node" style="--i:3" cx="200" cy="28" r="6"/><circle class="sc-node" style="--i:4" cx="200" cy="82" r="6"/><circle class="sc-node" style="--i:5" cx="252" cy="55" r="6"/><text x="40" y="12" text-anchor="middle">Item</text><text x="40" y="104" text-anchor="middle">Store</text><text x="120" y="80" text-anchor="middle">Sales</text><text x="200" y="14" text-anchor="middle">Calc</text><text x="200" y="104" text-anchor="middle">Report</text><text x="252" y="76" text-anchor="middle">Plan</text><circle class="sc-dot sc-query sc-move" r="4" opacity="0"><set attributeName="opacity" to="1" begin="1.6s"/><animateMotion dur="3.2s" begin="1.6s" repeatCount="indefinite" path="M200 82 L120 55 L200 28"/></circle></svg>
+              <h4>Config Graph</h4>
+              <svg class="cp-glyph" viewBox="0 0 72 48" aria-hidden="true" focusable="false"><path class="g-d" style="--i:1" pathLength="1" d="M12 12L36 24"/><path class="g-d" style="--i:2" pathLength="1" d="M12 38L36 24"/><path class="g-d" style="--i:3" pathLength="1" d="M36 24L60 10"/><path class="g-d" style="--i:4" pathLength="1" d="M36 24L58 40"/><circle cx="12" cy="12" r="4" class="g-p" style="--i:0"/><circle cx="12" cy="38" r="4" class="g-p" style="--i:1"/><circle cx="36" cy="24" r="7" class="g-p" style="--i:2"/><circle cx="60" cy="10" r="4" class="g-p" style="--i:4"/><circle cx="58" cy="40" r="4" class="g-p" style="--i:5"/></svg>
+              <span class="cp-result">The semantic layer for AI</span>
+              <span class="cp-label">What every measure, report and rule means in a customer&rsquo;s setup, so agents know instead of guessing</span>
+              <span class="cp-more" aria-hidden="true"></span>
+            </summary>
+            <div class="cp-body">
+            <p class="cp-trace"><span>&ldquo;Get me sales&rdquo;</span><span>Demand Review</span><span>Sales_Net_v2</span><span>Calc_Net_Sales</span></p>
+            <ul>
+              <li>Maps each customer&rsquo;s data model, business logic and reports</li>
+              <li>Captures links that live only in code, like which procedure computes a measure</li>
+              <li>Built from zero, now used by my agents and by the agents other teams build on o9</li>
+            </ul>
+            <a class="cp-link" href="projects/config-graph.html?v=3">Read the case study &rarr;</a>
+            </div>
+          </details>
+        </li>
+        <li class="stk-item">
+          <details class="cp-card has-scene" id="work-agent-harness">
+            <summary>
+              <svg class="scene" viewBox="0 0 280 110" role="img" aria-label="Agents calling an LLM through a cache, with the cost bar falling" focusable="false"><rect class="sc-box" x="10" y="8" width="42" height="20" rx="4"/><text x="31" y="21" text-anchor="middle">agent</text><rect class="sc-box" x="10" y="38" width="42" height="20" rx="4"/><text x="31" y="51" text-anchor="middle">agent</text><rect class="sc-box" x="10" y="68" width="42" height="20" rx="4"/><text x="31" y="81" text-anchor="middle">agent</text><path class="sc-line" d="M52 18L112 50M52 48L112 52M52 78L112 54M168 52H222"/><rect class="sc-box sc-strong" x="112" y="38" width="56" height="28" rx="5"/><text x="140" y="55" text-anchor="middle">cache</text><rect class="sc-box" x="222" y="38" width="48" height="28" rx="5"/><text x="246" y="55" text-anchor="middle">LLM</text><circle class="sc-dot sc-move" r="3.5" opacity="0"><set attributeName="opacity" to="1" begin="0s"/><animateMotion dur="2.4s" begin="0s" repeatCount="indefinite" path="M52 18 L112 50 L52 18"/></circle><circle class="sc-dot sc-move" r="3.5" opacity="0"><set attributeName="opacity" to="1" begin="0.7s"/><animateMotion dur="3.6s" begin="0.7s" repeatCount="indefinite" path="M52 48 L112 52 L222 52 L112 52 L52 48"/></circle><circle class="sc-dot sc-move" r="3.5" opacity="0"><set attributeName="opacity" to="1" begin="1.4s"/><animateMotion dur="2.4s" begin="1.4s" repeatCount="indefinite" path="M52 78 L112 54 L52 78"/></circle><text x="10" y="104">cost</text><rect class="sc-track" x="36" y="98" width="196" height="7" rx="3.5"/><rect class="sc-cost" x="36" y="98" width="196" height="7" rx="3.5"/><text class="sc-em" x="270" y="105" text-anchor="end">&#8722;65%</text></svg>
+              <h4>Agent Harness</h4>
+              <svg class="cp-glyph" viewBox="0 0 72 48" aria-hidden="true" focusable="false"><rect x="6" y="6" width="10" height="38" rx="2" class="g-p" style="--i:0"/><rect x="22" y="17" width="10" height="27" rx="2" class="g-p" style="--i:1"/><rect x="38" y="26" width="10" height="18" rx="2" class="g-p" style="--i:2"/><rect x="54" y="32" width="10" height="12" rx="2" class="g-p" style="--i:3"/></svg>
+              <span class="cp-result">Up to 65%</span>
+              <span class="cp-label">less spent on LLM calls: repeat requests come back from cache, not a new model call</span>
+              <span class="cp-more" aria-hidden="true"></span>
+            </summary>
+            <div class="cp-body">
+            <ul>
+              <li>Led the move to a middleware-based setup on LangGraph, an open-source agent framework</li>
+              <li>Added LLM response caching</li>
+              <li>Shared by the agent products on the platform</li>
+            </ul>
+            </div>
+          </details>
+        </li>
+        <li class="stk-item">
+          <details class="cp-card has-scene" id="work-agent-triggers">
+            <summary>
+              <svg class="scene" viewBox="0 0 280 110" role="img" aria-label="A set time, an event or another app starts an agent; an order email arrives and its data is loaded into the platform" focusable="false"><path class="sc-line" d="M66 16L112 39M66 44L112 43M66 72L112 47M170 43H214M92 93H106M178 93H192"/><rect class="sc-box" x="10" y="6" width="56" height="20" rx="4"/><text x="38" y="19" text-anchor="middle">set time</text><rect class="sc-box sc-strong" x="10" y="34" width="56" height="20" rx="4"/><text class="sc-bright" x="38" y="47" text-anchor="middle">an event</text><rect class="sc-box sc-strong" x="10" y="62" width="56" height="20" rx="4"/><text class="sc-bright" x="38" y="75" text-anchor="middle">other app</text><rect class="sc-box sc-strong" x="112" y="30" width="58" height="26" rx="5"/><text class="sc-bright" x="141" y="46" text-anchor="middle">trigger</text><rect class="sc-box" x="214" y="30" width="56" height="26" rx="5"/><text x="242" y="46" text-anchor="middle">agent</text><text class="sc-bright sc-t1" x="10" y="96">order email in</text><text class="sc-bright sc-t2" x="112" y="96">agent runs</text><text class="sc-em sc-t3" x="270" y="96" text-anchor="end">&#10003; data loaded</text><circle class="sc-dot sc-move" r="3.5" opacity="0"><set attributeName="opacity" to="1" begin="0s"/><animateMotion dur="3s" begin="0s" repeatCount="indefinite" path="M66 72 L112 47 L170 43 L214 43"/></circle><circle class="sc-dot sc-move" r="3" opacity="0"><set attributeName="opacity" to="1" begin="1.5s"/><animateMotion dur="4.5s" begin="1.5s" repeatCount="indefinite" path="M66 16 L112 39 L170 43 L214 43"/></circle></svg>
+              <h4>Agent Triggers</h4>
+              <svg class="cp-glyph" viewBox="0 0 72 48" aria-hidden="true" focusable="false"><path class="g-d" style="--i:0" pathLength="1" d="M6 24H22L28 10L38 38L44 24H58"/><circle cx="64" cy="24" r="6" class="g-p" style="--i:3"/></svg>
+              <span class="cp-result">From signal to action</span>
+              <span class="cp-label">Agents start on their own when something happens, like an email arriving, instead of waiting to be asked</span>
+              <span class="cp-more" aria-hidden="true"></span>
+            </summary>
+            <div class="cp-body">
+            <ul>
+              <li>Before, agents ran only when a person asked, or at a set time</li>
+              <li>Now they also start when something happens, in o9 or in another app a customer uses</li>
+              <li>Example: a purchase order arrives by email, and an agent loads it into the platform</li>
+            </ul>
+            </div>
+          </details>
+        </li>
+      </ul>
+    </div>
+    <p class="stk-link" aria-hidden="true"><span>powers</span></p>
+    <div class="stk-row is-know reveal">
+      <p class="stk-label"><span>What it enables</span>Any agent can use it to</p>
+      <ul class="stk-cards stk-uses">
+        <li class="stk-use"><svg class="scene mini-scene" viewBox="0 0 240 64" role="img" aria-label="A question resolved to the right measure and level, then the results" focusable="false"><text class="sc-bright" x="10" y="15">&#8220;sales by week?&#8221;</text><text class="sc-em sc-t1" x="10" y="30">&#8594; Sales_Net_v2 &#183; Week &#215; Store</text><rect class="sc-bar" style="--i:0" x="10" y="48" width="14" height="10" rx="2"/><rect class="sc-bar" style="--i:1" x="30" y="42" width="14" height="16" rx="2"/><rect class="sc-bar" style="--i:2" x="50" y="46" width="14" height="12" rx="2"/><rect class="sc-bar" style="--i:3" x="70" y="38" width="14" height="20" rx="2"/><rect class="sc-bar" style="--i:4" x="90" y="44" width="14" height="14" rx="2"/><rect class="sc-bar" style="--i:5" x="110" y="36" width="14" height="22" rx="2"/><rect class="sc-bar" style="--i:6" x="130" y="40" width="14" height="18" rx="2"/><rect class="sc-bar" style="--i:7" x="150" y="34" width="14" height="24" rx="2"/><rect class="sc-bar" style="--i:8" x="170" y="43" width="14" height="15" rx="2"/><rect class="sc-bar" style="--i:9" x="190" y="39" width="14" height="19" rx="2"/><rect class="sc-bar" style="--i:10" x="210" y="37" width="14" height="21" rx="2"/></svg><strong>Query data</strong>Finds the right measure and its granularity, then writes the query that fetches it, in o9&rsquo;s own query language.</li>
+        <li class="stk-use"><svg class="scene mini-scene" viewBox="0 0 240 64" role="img" aria-label="A path to one planning number lights up, then its value is updated" focusable="false"><text class="sc-bright" x="10" y="14">Plan &#8250; W32 &#8250; Store 14</text><rect class="sc-cellbox" x="10" y="24" width="40" height="16" rx="2"/><rect class="sc-cellbox" x="55" y="24" width="40" height="16" rx="2"/><rect class="sc-cellbox" x="100" y="24" width="40" height="16" rx="2"/><rect class="sc-cellbox" x="145" y="24" width="40" height="16" rx="2"/><rect class="sc-cellbox" x="190" y="24" width="40" height="16" rx="2"/><rect class="sc-cellbox" x="10" y="44" width="40" height="16" rx="2"/><rect class="sc-cellbox" x="55" y="44" width="40" height="16" rx="2"/><rect class="sc-cellbox" x="100" y="44" width="40" height="16" rx="2"/><rect class="sc-cellbox" x="145" y="44" width="40" height="16" rx="2"/><rect class="sc-cellbox" x="190" y="44" width="40" height="16" rx="2"/><rect class="sc-target" x="100" y="44" width="40" height="16" rx="2"/><text class="sc-old" x="120" y="55.5" text-anchor="middle">120</text><text class="sc-new sc-t2" x="120" y="55.5" text-anchor="middle">135</text></svg><strong>Update data</strong>Knows where each number lives, so changes land in the right place.</li>
+        <li class="stk-use"><svg class="scene mini-scene" viewBox="0 0 240 64" role="img" aria-label="A workflow runs through the right procedures in order, then finishes" focusable="false"><path class="sc-line" d="M70 24H90M150 24H170"/><rect class="sc-box" x="10" y="13" width="60" height="22" rx="4"/><rect class="sc-proc sc-t1" x="10" y="13" width="60" height="22" rx="4"/><text x="40" y="27" text-anchor="middle">load</text><rect class="sc-box" x="90" y="13" width="60" height="22" rx="4"/><rect class="sc-proc sc-t2" x="90" y="13" width="60" height="22" rx="4"/><text x="120" y="27" text-anchor="middle">forecast</text><rect class="sc-box" x="170" y="13" width="60" height="22" rx="4"/><rect class="sc-proc sc-t3" x="170" y="13" width="60" height="22" rx="4"/><text x="200" y="27" text-anchor="middle">publish</text><text class="sc-em sc-t3" x="230" y="56" text-anchor="end">&#10003; done</text><circle class="sc-dot sc-move" r="3.5" opacity="0"><set attributeName="opacity" to="1" begin="0s"/><animateMotion dur="6s" repeatCount="indefinite" calcMode="linear" keyPoints="0;1;1" keyTimes="0;0.75;1" path="M10 46 H230"/></circle></svg><strong>Run workflows</strong>Finds the procedures that can run a given workflow.</li>
+      </ul>
+    </div>
+    <p class="stk-link" aria-hidden="true"><span>and powers</span></p>
+    <div class="stk-row reveal">
+      <p class="stk-label"><span>My products on it</span>AI that does the work</p>
+      <ul class="stk-cards">
+        <li class="stk-item">
+          <details class="cp-card has-scene" id="work-model-extension">
+            <summary>
+              <svg class="scene" viewBox="0 0 280 110" role="img" aria-label="A request becomes a three-phase plan, data model, computation layer and dashboards, each approved and then built" focusable="false"><rect class="sc-bubble" x="10" y="6" width="122" height="22" rx="6"/><text class="sc-bright" x="19" y="20">Set up demand planning</text><rect class="sc-box" x="10" y="36" width="152" height="68" rx="6"/><text x="19" y="49">PLAN &#183; 3 PHASES</text><text class="sc-bright" x="19" y="64">1  Data model</text><text class="sc-tick sc-t1" x="152" y="64" text-anchor="end">&#10003;</text><text class="sc-bright" x="19" y="79">2  Computation layer</text><text class="sc-tick sc-t2" x="152" y="79" text-anchor="end">&#10003;</text><text class="sc-bright" x="19" y="94">3  Dashboards</text><text class="sc-tick sc-t3" x="152" y="94" text-anchor="end">&#10003;</text><g class="sc-approve"><rect x="170" y="70" width="50" height="17" rx="8.5"/><text x="195" y="81.5" text-anchor="middle">Approve</text></g><path class="sc-line" d="M240 18L266 34"/><circle class="sc-old" cx="240" cy="18" r="4.5"/><circle class="sc-old" cx="266" cy="34" r="4.5"/><path class="sc-new-edge sc-t1" d="M266 34L240 54"/><circle class="sc-new sc-t1" cx="240" cy="54" r="4.5"/><path class="sc-new-edge sc-t2" d="M240 54L266 72"/><circle class="sc-new sc-t2" cx="266" cy="72" r="4.5"/><path class="sc-new-edge sc-t3" d="M266 72L244 94"/><circle class="sc-new sc-t3" cx="244" cy="94" r="4.5"/></svg>
+              <h4>Config Model Extension</h4>
+              <svg class="cp-glyph" viewBox="0 0 72 48" aria-hidden="true" focusable="false"><path class="g-d" style="--i:1" pathLength="1" d="M8 11L13 16L21 7"/><path class="g-d" style="--i:2" pathLength="1" d="M30 12H64"/><path class="g-d" style="--i:3" pathLength="1" d="M8 25L13 30L21 21"/><path class="g-d" style="--i:4" pathLength="1" d="M30 26H64"/><path class="g-d" style="--i:5" pathLength="1" d="M8 39L13 44L21 35"/><path class="g-d" style="--i:6" pathLength="1" d="M30 40H54"/></svg>
+              <span class="cp-result">Months &rarr; days</span>
+              <span class="cp-label">An agent that builds a customer&rsquo;s solution end to end: data model, computation layer and dashboards</span>
+              <span class="cp-more" aria-hidden="true"></span>
+            </summary>
+            <div class="cp-body">
+            <ul>
+              <li>Sets up new customers and extends existing ones, like moving from statistical to ML forecasting</li>
+              <li>Plans from the graph and reference models</li>
+              <li>Approve each phase, or let auto mode apply what&rsquo;s safe</li>
+              <li>Tools enforce build order and roll back failures</li>
+            </ul>
+            <a class="cp-link" href="projects/config-model-extension.html?v=3">Read the case study &rarr;</a>
+            </div>
+          </details>
+        </li>
+        <li class="stk-item">
+          <details class="cp-card has-scene" id="work-synthetic-data">
+            <summary>
+              <svg class="scene" viewBox="0 0 280 110" role="img" aria-label="A table of generated planning data filling in, under a trend line" focusable="false"><path class="sc-spark" pathLength="1" d="M12 24L40 17L68 20L96 11L124 15L152 8L180 14L208 9L236 16L268 10"/><rect class="sc-cell" style="--k:0;--o:0.35" x="12" y="36" width="33" height="13" rx="2"/><rect class="sc-cell" style="--k:1;--o:0.7" x="49" y="36" width="33" height="13" rx="2"/><rect class="sc-cell" style="--k:2;--o:0.5" x="86" y="36" width="33" height="13" rx="2"/><rect class="sc-cell" style="--k:3;--o:0.9" x="123" y="36" width="33" height="13" rx="2"/><rect class="sc-cell" style="--k:4;--o:0.45" x="160" y="36" width="33" height="13" rx="2"/><rect class="sc-cell" style="--k:5;--o:0.6" x="197" y="36" width="33" height="13" rx="2"/><rect class="sc-cell" style="--k:6;--o:0.8" x="234" y="36" width="33" height="13" rx="2"/><rect class="sc-cell" style="--k:7;--o:0.55" x="12" y="53" width="33" height="13" rx="2"/><rect class="sc-cell" style="--k:8;--o:0.4" x="49" y="53" width="33" height="13" rx="2"/><rect class="sc-cell" style="--k:9;--o:0.85" x="86" y="53" width="33" height="13" rx="2"/><rect class="sc-cell" style="--k:10;--o:0.65" x="123" y="53" width="33" height="13" rx="2"/><rect class="sc-cell" style="--k:11;--o:0.3" x="160" y="53" width="33" height="13" rx="2"/><rect class="sc-cell" style="--k:12;--o:0.75" x="197" y="53" width="33" height="13" rx="2"/><rect class="sc-cell" style="--k:13;--o:0.5" x="234" y="53" width="33" height="13" rx="2"/><rect class="sc-cell" style="--k:14;--o:0.6" x="12" y="70" width="33" height="13" rx="2"/><rect class="sc-cell" style="--k:15;--o:0.9" x="49" y="70" width="33" height="13" rx="2"/><rect class="sc-cell" style="--k:16;--o:0.4" x="86" y="70" width="33" height="13" rx="2"/><rect class="sc-cell" style="--k:17;--o:0.7" x="123" y="70" width="33" height="13" rx="2"/><rect class="sc-cell" style="--k:18;--o:0.55" x="160" y="70" width="33" height="13" rx="2"/><rect class="sc-cell" style="--k:19;--o:0.8" x="197" y="70" width="33" height="13" rx="2"/><rect class="sc-cell" style="--k:20;--o:0.35" x="234" y="70" width="33" height="13" rx="2"/><rect class="sc-cell" style="--k:21;--o:0.45" x="12" y="87" width="33" height="13" rx="2"/><rect class="sc-cell" style="--k:22;--o:0.75" x="49" y="87" width="33" height="13" rx="2"/><rect class="sc-cell" style="--k:23;--o:0.6" x="86" y="87" width="33" height="13" rx="2"/><rect class="sc-cell" style="--k:24;--o:0.9" x="123" y="87" width="33" height="13" rx="2"/><rect class="sc-cell" style="--k:25;--o:0.5" x="160" y="87" width="33" height="13" rx="2"/><rect class="sc-cell" style="--k:26;--o:0.65" x="197" y="87" width="33" height="13" rx="2"/><rect class="sc-cell" style="--k:27;--o:0.4" x="234" y="87" width="33" height="13" rx="2"/></svg>
+              <h4>Synthetic Data</h4>
+              <svg class="cp-glyph" viewBox="0 0 72 48" aria-hidden="true" focusable="false"><path class="g-d" style="--i:0" pathLength="1" d="M6 6H66V42H6Z"/><path class="g-d" style="--i:2" pathLength="1" d="M6 18H66M6 30H66M26 6V42M46 6V42"/></svg>
+              <span class="cp-result">Data that tells a story</span>
+              <span class="cp-label">Realistic planning data on demand for demos, load tests and proofs of concept, no customer data needed</span>
+              <span class="cp-more" aria-hidden="true"></span>
+            </summary>
+            <div class="cp-body">
+            <ul>
+              <li>Agent-generated and grounded in the Config Graph</li>
+              <li>Used for demos, load tests and quick proofs of concept</li>
+            </ul>
+            </div>
+          </details>
+        </li>
+      </ul>
+    </div>
+    <p class="stk-link" aria-hidden="true"><span>plans go to a person</span></p>
+    <div class="stk-row is-human reveal">
+      <p class="stk-label"><span>Where people decide</span>One workspace for all of it</p>
+      <ul class="stk-cards">
+        <li class="stk-item">
+          <details class="cp-card has-scene" id="work-designer-ui">
+            <summary>
+              <svg class="scene" viewBox="0 0 280 110" role="img" aria-label="A workspace with an explorer, a graph and a side panel; a node is picked and its change approved" focusable="false"><rect class="sc-box" x="6" y="6" width="268" height="98" rx="6"/><path class="sc-line" d="M6 18H274M74 18V104M206 18V104"/><circle class="sc-chrome" cx="14" cy="12" r="2"/><circle class="sc-chrome" cx="22" cy="12" r="2"/><circle class="sc-chrome" cx="30" cy="12" r="2"/><rect class="sc-text" x="14" y="28" width="44" height="5" rx="2"/><rect class="sc-text" x="14" y="40" width="34" height="5" rx="2"/><rect class="sc-text" x="14" y="52" width="40" height="5" rx="2"/><rect class="sc-text" x="14" y="64" width="30" height="5" rx="2"/><rect class="sc-text" x="14" y="76" width="38" height="5" rx="2"/><path class="sc-line" d="M104 48L140 34M104 48L140 78M140 34L176 56M140 78L176 56"/><circle class="sc-old" cx="104" cy="48" r="5"/><circle class="sc-old" cx="140" cy="34" r="5"/><circle class="sc-old" cx="140" cy="78" r="5"/><circle class="sc-old" cx="176" cy="56" r="5"/><circle class="sc-ring" cx="140" cy="78" r="10"/><rect class="sc-text sc-panel" style="--i:0" x="214" y="28" width="50" height="5" rx="2"/><rect class="sc-text sc-panel" style="--i:1" x="214" y="40" width="40" height="5" rx="2"/><rect class="sc-text sc-panel" style="--i:2" x="214" y="52" width="46" height="5" rx="2"/><g class="sc-approve sc-approve-ui"><rect x="214" y="76" width="52" height="17" rx="8.5"/><text x="240" y="87.5" text-anchor="middle">Approve</text></g><path class="sc-cursor" d="M0 0L0 12L3.5 9L6.5 14.5L8.5 13.5L5.5 8L10 8Z"><animateMotion dur="6s" repeatCount="indefinite" calcMode="linear" keyPoints="0;1;1" keyTimes="0;0.32;1" path="M58 100 L142 80"/></path></svg>
+              <h4>Config Designer UI</h4>
+              <svg class="cp-glyph" viewBox="0 0 72 48" aria-hidden="true" focusable="false"><path class="g-d" style="--i:0" pathLength="1" d="M5 5H67V43H5Z"/><path class="g-d" style="--i:1" pathLength="1" d="M5 14H67M22 14V43"/><circle cx="34" cy="24" r="3" class="g-p" style="--i:3"/><circle cx="45" cy="35" r="3" class="g-p" style="--i:4"/><rect x="51" y="20" width="12" height="8" rx="4" class="g-p" style="--i:5"/></svg>
+              <span class="cp-result">Explore, understand, configure</span>
+              <span class="cp-label">a customer&rsquo;s whole setup in one place, with the agent alongside. It replaced a click-heavy tool implementers avoided.</span>
+              <span class="cp-more" aria-hidden="true"></span>
+            </summary>
+            <div class="cp-body">
+            <ul>
+              <li>See the data behind any entity, not just its settings</li>
+              <li>Follow relationships across the whole configuration</li>
+              <li>The agent works in the same page</li>
+            </ul>
+            <a class="cp-link" href="projects/config-designer-ui.html?v=3">Read the case study &rarr;</a>
+            </div>
+          </details>
+        </li>
+      </ul>
+    </div>
+    <p class="stk-link" aria-hidden="true"><span>all of it is measured</span></p>
+    <div class="stk-row reveal">
+      <p class="stk-label"><span>Across the platform</span>How work really happens</p>
+      <ul class="stk-cards">
+        <li class="stk-item">
+          <details class="cp-card has-scene" id="work-usage-analytics">
+            <summary>
+              <svg class="scene" viewBox="0 0 280 110" role="img" aria-label="Process steps with hours spent on each, and a bottleneck highlighted" focusable="false"><path class="sc-line" d="M43 22H93M107 22H157M171 22H221"/><circle class="sc-step" cx="36" cy="22" r="7"/><text x="36" y="42" text-anchor="middle">Plan</text><circle class="sc-step" cx="100" cy="22" r="7"/><text x="100" y="42" text-anchor="middle">Review</text><circle class="sc-step" cx="164" cy="22" r="7"/><text x="164" y="42" text-anchor="middle">Sign-off</text><circle class="sc-step" cx="228" cy="22" r="7"/><text x="228" y="42" text-anchor="middle">Ship</text><circle class="sc-pulse-ring" cx="100" cy="22" r="7"/><rect class="sc-bar" style="--i:0" x="24" y="84" width="24" height="20" rx="2"/><rect class="sc-bar sc-hot" style="--i:1" x="88" y="58" width="24" height="46" rx="2"/><rect class="sc-bar" style="--i:2" x="152" y="76" width="24" height="28" rx="2"/><rect class="sc-bar" style="--i:3" x="216" y="88" width="24" height="16" rx="2"/><text class="sc-bright" x="116" y="66">bottleneck</text></svg>
+              <h4>Usage Analytics</h4>
+              <svg class="cp-glyph" viewBox="0 0 72 48" aria-hidden="true" focusable="false"><path class="g-d" style="--i:1" pathLength="1" d="M10 24H30"/><path class="g-d" style="--i:3" pathLength="1" d="M34 24L58 9"/><path class="g-d" style="--i:4" pathLength="1" d="M34 24L58 39"/><circle cx="8" cy="24" r="4" class="g-p" style="--i:0"/><circle cx="34" cy="24" r="6" class="g-p" style="--i:2"/><circle cx="62" cy="8" r="4" class="g-p" style="--i:5"/><circle cx="62" cy="40" r="4" class="g-p" style="--i:6"/></svg>
+              <span class="cp-result">Where the hours go</span>
+              <span class="cp-label">Each planning process mapped from real usage: its steps, handoffs and bottlenecks, explained by an agent</span>
+              <span class="cp-more" aria-hidden="true"></span>
+            </summary>
+            <div class="cp-body">
+            <ul>
+              <li>Built from real platform usage logs</li>
+              <li>Shows work patterns and most-used views</li>
+              <li>An agent surfaces insights and writes a monthly summary</li>
+            </ul>
+            <a class="cp-link" href="projects/usage-analytics.html?v=3">Read the case study &rarr;</a>
+            </div>
+          </details>
+        </li>
+      </ul>
+    </div>
+    </div>
+    <a href="knowledge-layer.html" class="stk-more">See how the knowledge layer works &rarr;</a>
+  </section>
   </div>
+
+  <!-- CAREER: a horizontal path, oldest to now -->
+  <section id="career" class="section career">
+    <div class="section-head reveal">
+      <span class="section-num">03</span>
+      <h2>How I got here</h2>
+    </div>
+    <div class="path-wrap">
+    <ol class="path reveal">
+      <li class="path-stop" style="--n:0">
+        <svg class="path-icon" viewBox="0 0 44 30" aria-hidden="true" focusable="false"><path class="g-d" style="--i:0" pathLength="1" d="M4 11L22 3L40 11L22 19Z"/><path class="g-d" style="--i:2" pathLength="1" d="M12 15V22Q22 28 32 22V15"/></svg>
+        <span class="path-when">2018 &ndash; 2022</span>
+        <h3>Foundations</h3>
+        <p>B.Tech, Electrical and Electronics Engineering, NIT Karnataka.</p>
+        <ul class="path-wins">
+          <li><b>Learned to build</b> apps at Smarkt, where my coding started</li>
+          <li><b>Learned to measure</b> with metrics, KPIs and strategy at Goodera</li>
+        </ul>
+      </li>
+      <li class="path-stop" id="work-starbucks" style="--n:1">
+        <svg class="path-icon" viewBox="0 0 44 30" aria-hidden="true" focusable="false"><path class="g-d" style="--i:0" pathLength="1" d="M4 16H16V27H4ZM16 16H28V27H16ZM10 5H22V16H10Z"/><path class="g-d" style="--i:2" pathLength="1" d="M31 9A6 6 0 1 1 33 21"/><path class="g-d" style="--i:3" pathLength="1" d="M29 6L31 9L34 7"/></svg>
+        <span class="path-when">2022 &ndash; 2025</span>
+        <h3>Consultant, Delivery &middot; o9</h3>
+        <p>Led <strong>inventory and replenishment planning</strong> for Starbucks, configured by hand.</p>
+        <ul class="path-wins">
+          <li><b>Critical SLAs met</b> with 70%+ faster stock root-cause analysis</li>
+          <li><b>~30% cheaper</b> to run, after moving to Kubernetes</li>
+        </ul>
+      </li>
+      <li class="path-stop" id="work-flo9" style="--n:2">
+        <svg class="path-icon" viewBox="0 0 44 30" aria-hidden="true" focusable="false"><path class="g-d" style="--i:0" pathLength="1" d="M14 3H30V11C30 21 14 21 14 11Z"/><path class="g-d" style="--i:2" pathLength="1" d="M14 6H8C8 12 11 14 15 14M30 6H36C36 12 33 14 29 14"/><path class="g-d" style="--i:3" pathLength="1" d="M22 20V25M15 27H29"/></svg>
+        <span class="path-when">2025</span>
+        <h3>Flo9, built solo</h3>
+        <p>o9 Innovation of the Year. An agent that explains how any number is calculated.</p>
+      </li>
+      <li class="path-stop is-now" style="--n:3">
+        <svg class="path-icon" viewBox="0 0 44 30" aria-hidden="true" focusable="false"><path class="g-d" style="--i:1" pathLength="1" d="M8 8L22 15M8 24L22 15M22 15L36 7M22 15L36 24"/><circle cx="8" cy="8" r="3" class="g-p" style="--i:0"/><circle cx="8" cy="24" r="3" class="g-p" style="--i:0"/><circle cx="22" cy="15" r="5" class="g-p" style="--i:2"/><circle cx="36" cy="7" r="3" class="g-p" style="--i:3"/><circle cx="36" cy="24" r="3" class="g-p" style="--i:3"/></svg>
+        <span class="path-when">2025 &ndash; now</span>
+        <h3>Product Manager, AI R&amp;D &middot; o9</h3>
+        <p>Building the platform above.</p>
+        <a class="path-link" href="#projects">See it &uarr;</a>
+      </li>
+    </ol>
+    <span class="path-runner" aria-hidden="true"></span>
+    <!-- Internship marks: placed by date inside 2018-2022, details on hover or focus -->
+    <button type="button" class="path-mark is-left" style="--x:.71;--d:.55s" aria-label="Smarkt internship, November 2020 to April 2021: learned app development">
+      <span class="path-mark-label" aria-hidden="true">Smarkt &middot; 2020</span>
+      <span class="path-tip"><b>Smarkt</b><span>Nov 2020 &ndash; Apr 2021</span>Built apps. Where my coding started.</span>
+    </button>
+    <button type="button" class="path-mark is-left is-high" style="--x:.84;--d:.65s" aria-label="Goodera internship, May to June 2021: learned to work with metrics, KPIs and strategy">
+      <span class="path-mark-label" aria-hidden="true">Goodera &middot; 2021</span>
+      <span class="path-tip"><b>Goodera</b><span>May &ndash; Jun 2021</span>Business analytics: metrics, KPIs and strategy.</span>
+    </button>
+    </div>
+  </section>
 
   <!-- CONTACT -->
   <div class="contact-wrap">
   <section id="contact" class="section contact">
     <div class="contact-inner">
-      <span class="section-num reveal">06</span>
+      <span class="section-num reveal">05</span>
       <h2 class="reveal">Let's talk<span class="dot-accent">.</span></h2>
-      <p class="reveal">
-        Happy to talk about agentic products, knowledge graphs for enterprise AI, or planning
-        systems. Reach out any time.
-      </p>
+      <p class="reveal">Building AI products? I&rsquo;d like to hear about it.</p>
       <div class="contact-links reveal">
         <a href="mailto:navneethak.work@gmail.com" class="contact-link">
           <span>Email</span>
@@ -842,6 +442,6 @@
   <a href="#top">Back to top &uarr;</a>
 </footer>
 
-<script src="script.js?v=7"></script>
+<script src="script.js?v=9"></script>
 </body>
 </html>

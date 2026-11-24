@@ -31,6 +31,7 @@ window.addEventListener('scroll', updateActive, { passive: true });
 updateActive();
 
 // Scroll reveal (matches the main site's one-shot fade-up)
+document.documentElement.classList.add('js-reveal');
 const revealEls = document.querySelectorAll('.reveal');
 const io = new IntersectionObserver((entries) => {
   entries.forEach((entry) => {

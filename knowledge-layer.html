@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>The Knowledge Layer — Navneeth Anil Kumar</title>
+<meta name="description" content="How one ontology gives every AI agent on o9’s platform the context to understand, build on and extend a customer’s setup, with people approving each phase." />
+<link rel="canonical" href="https://navai7.github.io/knowledge-layer.html" />
+<meta name="theme-color" content="#0a0a0a" />
+
+
+<link rel="icon" href="favicon.svg" type="image/svg+xml" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css?v=21" />
+<noscript><style>
+  .reveal, .reveal.in{ opacity:1 !important; transform:none !important; filter:none !important; }
+</style></noscript>
+</head>
+<body>
+
+<!-- grain overlay -->
+<div class="grain"></div>
+
+<!-- cursor dot -->
+<div class="cursor-dot" id="cursorDot"></div>
+
+<!-- progress bar -->
+<div class="scroll-progress" id="scrollProgress"></div>
+
+<header class="nav-wrap">
+  <nav class="nav">
+    <a href="index.html" class="nav-mark"><span class="nav-mark-badge" aria-hidden="true">N</span>Navneeth Anil Kumar</a>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="navLinks">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html#why"><span class="idx">01</span>Why Me</a></li>
+      <li><a href="index.html#projects"><span class="idx">02</span>Work</a></li>
+      <li><a href="index.html#career"><span class="idx">03</span>Career</a></li>
+      <li><a href="knowledge-layer.html" class="active" aria-current="page"><span class="idx">04</span>Knowledge Layer</a></li>
+      <li><a href="index.html#contact"><span class="idx">05</span>Contact</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main id="top">
+
+  <!-- THE KNOWLEDGE LAYER, in full -->
+  <div class="layer-wrap">
+  <section id="layer" class="section layer layer-page">
+    <div class="section-head reveal">
+      <a href="index.html#projects" class="page-back">&larr; Home</a>
+      <h1 class="page-title">The knowledge layer</h1>
+      <p class="section-intro">AI can&rsquo;t help run a business it doesn&rsquo;t understand. So I model it once, for every agent.</p>
+    </div>
+
+    <div class="stack">
+
+      <div class="tier reveal" style="--at:0s">
+        <div class="tier-label">
+          <span class="tier-idx">SOURCE</span>
+          <h3>Platform</h3>
+          <svg class="tier-viz viz-source" viewBox="0 0 160 64" aria-hidden="true" focusable="false">
+            <rect class="v-row" style="--i:0" x="1" y="3" width="158" height="13" rx="3"/>
+            <rect class="v-row" style="--i:1" x="1" y="19" width="158" height="13" rx="3"/>
+            <rect class="v-row" style="--i:2" x="1" y="35" width="158" height="13" rx="3"/>
+            <rect class="v-row" style="--i:3" x="1" y="51" width="158" height="12" rx="3"/>
+            <path class="v-text" d="M9 9.5h36M58 9.5h62M9 25.5h26M58 25.5h78M9 41.5h40M58 41.5h48M9 57h30M58 57h70"/>
+          </svg>
+        </div>
+        <div class="tier-body">
+          <p>A customer's live configuration: data model, business logic, reports and views.</p>
+        </div>
+      </div>
+
+      <div class="tier-link is-know" style="--at:1.2s" aria-hidden="true"><span>&darr;</span> synced from live config, read-only</div>
+
+      <div class="tier tier-core reveal" style="--at:2.1s">
+        <div class="tier-label">
+          <span class="tier-idx">LAYER 1</span>
+          <h3>Knowledge layer</h3>
+          <svg class="tier-viz viz-graph" viewBox="0 0 160 88" aria-hidden="true" focusable="false">
+            <path class="v-edge" style="--i:1" pathLength="1" d="M18 18L70 40"/>
+            <path class="v-edge" style="--i:2" pathLength="1" d="M18 70L70 40"/>
+            <path class="v-edge" style="--i:3" pathLength="1" d="M70 40L122 14"/>
+            <path class="v-edge" style="--i:4" pathLength="1" d="M70 40L112 70"/>
+            <path class="v-edge" style="--i:5" pathLength="1" d="M122 14L150 46"/>
+            <path class="v-edge" style="--i:6" pathLength="1" d="M112 70L150 46"/>
+            <circle class="v-node" style="--i:0" cx="18" cy="18" r="6"/>
+            <circle class="v-node" style="--i:1" cx="18" cy="70" r="6"/>
+            <circle class="v-node v-hub" style="--i:2" cx="70" cy="40" r="10"/>
+            <circle class="v-node" style="--i:3" cx="122" cy="14" r="6"/>
+            <circle class="v-node" style="--i:4" cx="112" cy="70" r="6"/>
+            <circle class="v-node" style="--i:5" cx="150" cy="46" r="6"/>
+          </svg>
+        </div>
+        <div class="tier-body">
+          <p><strong>The shared context and ontology layer for AI across the platform.</strong></p>
+          <ul class="tier-chips">
+            <li><a href="projects/config-graph.html?v=3">Config Graph</a></li>
+            <li>Reference Model Graph &middot; standard solution patterns</li>
+          </ul>
+          <div class="context-hub">
+            <div class="context-head">
+              <strong>One ontology, used across the board</strong>
+              <span>Every agentic workflow gets its context here</span>
+            </div>
+            <ul class="context-fan">
+              <li style="--i:0">Solution Architect<small>the agent that builds configuration</small></li>
+              <li style="--i:1">Agent Builder<small>where teams build agents</small></li>
+              <li style="--i:2">Skill Builder<small>where teams build agent skills</small></li>
+              <li style="--i:3">Synthetic Data<small>demo and test data</small></li>
+              <li class="context-all" style="--i:4">All other agent workflows</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="tier-link is-know" style="--at:4.3s" aria-hidden="true"><span>&darr;</span> read schema &middot; search &middot; query</div>
+
+      <div class="tier reveal" style="--at:5.2s">
+        <div class="tier-label">
+          <span class="tier-idx">LAYER 2</span>
+          <h3>Agents act</h3>
+          <svg class="tier-viz viz-plan" viewBox="0 0 160 40" aria-hidden="true" focusable="false">
+            <path class="v-track" d="M30 20h36M94 20h36"/>
+            <circle class="v-step" cx="16" cy="20" r="14"/>
+            <circle class="v-step" cx="80" cy="20" r="14"/>
+            <circle class="v-step" cx="144" cy="20" r="14"/>
+            <path class="v-tick" style="--i:1" d="M10 20l4 5 9-10"/>
+            <path class="v-tick" style="--i:3" d="M74 20l4 5 9-10"/>
+            <path class="v-tick" style="--i:5" d="M138 20l4 5 9-10"/>
+          </svg>
+        </div>
+        <div class="tier-body">
+          <p>Agents plan and build. Their tools enforce order and roll back failures.</p>
+          <ul class="tier-chips">
+            <li><a href="projects/config-model-extension.html?v=3">Config Model Extension</a></li>
+            <li>Synthetic Data Generation</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="tier-link is-human" style="--at:6.5s" aria-hidden="true"><span>&darr;</span> phased plan, sent for approval</div>
+
+      <div class="tier tier-human reveal" style="--at:7.4s">
+        <div class="tier-label">
+          <span class="tier-idx">LAYER 3</span>
+          <h3>People decide</h3>
+          <svg class="tier-viz viz-approve" viewBox="0 0 160 40" aria-hidden="true" focusable="false">
+            <rect class="v-button" x="1" y="3" width="126" height="34" rx="17"/>
+            <g class="v-approved">
+              <rect x="1" y="3" width="126" height="34" rx="17"/>
+              <path d="M18 20l4 5 9-10"/>
+              <text x="40" y="24.5">Approved</text>
+            </g>
+          </svg>
+        </div>
+        <div class="tier-body">
+          <p>People explore the graph and approve, edit or reject each phase.</p>
+          <ul class="tier-chips">
+            <li><a href="projects/config-designer-ui.html?v=3">Config Designer UI</a></li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="example reveal">
+      <h3 class="example-head">Why context matters</h3>
+      <p class="example-ask"><span>For example, someone asks an agent</span>&ldquo;Get me the sales number from Demand Review.&rdquo;</p>
+      <div class="example-grid">
+        <div class="example-side">
+          <h4>Without the graph</h4>
+          <p>The agent searches by name and finds four measures that all look right.</p>
+          <ul class="example-matches">
+            <li>Sales</li><li>Sales_Adj</li><li>Sales_Net_v2</li><li>Sales_LY</li>
+          </ul>
+          <p class="example-result">It has to guess, or ask someone who knows the setup.</p>
+        </div>
+        <div class="example-side example-with">
+          <h4>With the graph</h4>
+          <p>The agent starts at the report and follows the relationships.</p>
+          <ol class="example-path">
+            <li><span>Report</span>Demand Review</li>
+            <li><span>Shows measure</span>Sales_Net_v2</li>
+            <li><span>Computed by</span>Calc_Net_Sales</li>
+          </ol>
+          <p class="example-result">It gets the right number, and can show where it came from.</p>
+        </div>
+      </div>
+    </div>
+
+    <h3 class="sys-head reveal">See the three products work together</h3>
+    <!-- SYSTEM DIAGRAM: one SVG, revealed layer by layer via data-step -->
+    <figure class="sys reveal" data-step="3" data-playing="false" aria-label="How Config Graph, Config Model Extension and Config Designer UI fit together">
+      <div class="sys-stage">
+        <svg viewBox="0 0 1000 560" role="img" aria-labelledby="sysTitle sysDesc">
+          <title id="sysTitle">Three layers of one system</title>
+          <desc id="sysDesc">Layer 1, the Config Graph, models a tenant as typed nodes and relationships. Layer 2, the Config Model Extension agent, reads the graph, proposes a phased plan, and adds new nodes once a person approves. Layer 3, Config Designer UI, wraps both in one workspace with an explorer, the graph canvas and the agent panel.</desc>
+          <defs>
+            <pattern id="sysDots" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="1" cy="1" r="1" class="sys-dot"/></pattern>
+            <marker id="sysArrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" class="sys-arrow"/></marker>
+            <marker id="sysArrowNew" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" class="sys-arrow-new"/></marker>
+          </defs>
+
+          <!-- LAYER 3: workspace chrome (drawn first so it sits behind) -->
+          <g class="s3" style="--d:0s">
+            <rect class="ui-frame" x="10" y="10" width="980" height="540" rx="12"/>
+            <path class="ui-bar" d="M10 54 H990"/>
+            <circle class="ui-dot" cx="34" cy="32" r="5"/><circle class="ui-dot" cx="52" cy="32" r="5"/><circle class="ui-dot" cx="70" cy="32" r="5"/>
+            <text class="ui-title" x="92" y="37">Config Designer UI</text>
+            <text class="mono region region-ui" x="974" y="36" text-anchor="end">LAYER 3 &middot; WORKSPACE</text>
+            <path class="ui-div" d="M222 54 V550 M738 54 V550"/>
+          </g>
+
+          <!-- LAYER 1: Config Graph canvas -->
+          <g class="s1" style="--d:0s"><rect x="230" y="62" width="500" height="480" fill="url(#sysDots)"/></g>
+          <text class="mono region s1" style="--d:.1s" x="246" y="84">LAYER 1 &middot; CONFIG GRAPH</text>
+
+          <!-- edges: existing -->
+          <path class="edge s1" style="--d:.9s" pathLength="1" d="M362 140 L418 170"/>
+          <path class="edge-head s1" style="--d:1.35s" d="M362 140 L418 170" marker-end="url(#sysArrow)"/>
+          <path class="edge s1" style="--d:1s" pathLength="1" d="M362 220 L418 190"/>
+          <path class="edge-head s1" style="--d:1.45s" d="M362 220 L418 190" marker-end="url(#sysArrow)"/>
+          <path class="edge s1" style="--d:1.2s" pathLength="1" d="M542 170 L598 140"/>
+          <path class="edge-head s1" style="--d:1.65s" d="M542 170 L598 140" marker-end="url(#sysArrow)"/>
+          <path class="edge s1" style="--d:1.4s" pathLength="1" d="M660 152 L660 208"/>
+          <path class="edge-head s1" style="--d:1.85s" d="M660 152 L660 208" marker-end="url(#sysArrow)"/>
+          <path class="edge s1" style="--d:1.6s" pathLength="1" d="M660 252 L660 308"/>
+          <path class="edge-head s1" style="--d:2.05s" d="M660 252 L660 308" marker-end="url(#sysArrow)"/>
+          <text class="mono edge-label s1" style="--d:1.9s" x="668" y="176">OUTPUTS_TO</text>
+          <!-- edges: added by the agent -->
+          <path class="edge e-new s2" style="--d:3.3s" pathLength="1" d="M480 202 L480 418"/>
+          <path class="edge-head s2" style="--d:3.75s" d="M480 202 L480 418" marker-end="url(#sysArrowNew)"/>
+          <text class="mono edge-label s2" style="--d:3.8s" x="488" y="314">INPUTS_TO</text>
+          <path class="edge e-new s2" style="--d:3.4s" pathLength="1" d="M362 440 L418 440"/>
+          <path class="edge-head s2" style="--d:3.85s" d="M362 440 L418 440" marker-end="url(#sysArrowNew)"/>
+          <path class="edge e-new s2" style="--d:3.7s" pathLength="1" d="M542 440 L598 440"/>
+          <path class="edge-head s2" style="--d:4.15s" d="M542 440 L598 440" marker-end="url(#sysArrowNew)"/>
+          <path class="edge e-new s2" style="--d:4s" pathLength="1" d="M660 418 L660 352"/>
+          <path class="edge-head s2" style="--d:4.45s" d="M660 418 L660 352" marker-end="url(#sysArrowNew)"/>
+
+          <!-- query beam: agent reading the graph -->
+          <path class="beam s2only" style="--d:.8s" d="M746 194 L546 194"/>
+
+          <!-- nodes: existing tenant config -->
+          <g transform="translate(300 130)"><g class="node s1" style="--d:.2s"><rect x="-62" y="-22" width="124" height="44" rx="7"/><text class="n-type" y="-6">DIMENSION</text><text class="n-name" y="13">Item</text></g></g>
+          <g transform="translate(300 230)"><g class="node s1" style="--d:.3s"><rect x="-62" y="-22" width="124" height="44" rx="7"/><text class="n-type" y="-6">DIMENSION</text><text class="n-name" y="13">Location</text></g></g>
+          <g transform="translate(480 180)"><g class="node n-measure n-read s1" style="--d:.45s"><rect x="-62" y="-22" width="124" height="44" rx="7"/><text class="n-type" y="-6">MEASURE</text><text class="n-name" y="13">Sales</text></g></g>
+          <g transform="translate(660 130)"><g class="node n-plugin n-read s1" style="--d:.6s"><rect x="-62" y="-22" width="124" height="44" rx="7"/><text class="n-type" y="-6">PLUGIN</text><text class="n-name" y="13">Stat Engine</text></g></g>
+          <g transform="translate(660 230)"><g class="node n-measure s1" style="--d:.7s"><rect x="-62" y="-22" width="124" height="44" rx="7"/><text class="n-type" y="-6">MEASURE</text><text class="n-name" y="13">Stat Fcst</text></g></g>
+          <g transform="translate(660 330)"><g class="node n-report s1" style="--d:.8s"><rect x="-62" y="-22" width="124" height="44" rx="7"/><text class="n-type" y="-6">REPORT</text><text class="n-name" y="13">Demand Review</text></g></g>
+          <!-- nodes: created by the agent after approval -->
+          <g transform="translate(300 440)"><g class="node n-new s2" style="--d:3.1s"><rect x="-62" y="-22" width="124" height="44" rx="7"/><text class="n-type" y="-6">MEASURE &middot; NEW</text><text class="n-name" y="13">Price Driver</text></g></g>
+          <g transform="translate(480 440)"><g class="node n-new s2" style="--d:3.4s"><rect x="-62" y="-22" width="124" height="44" rx="7"/><text class="n-type" y="-6">PLUGIN &middot; NEW</text><text class="n-name" y="13">ML Engine</text></g></g>
+          <g transform="translate(660 440)"><g class="node n-new s2" style="--d:3.7s"><rect x="-62" y="-22" width="124" height="44" rx="7"/><text class="n-type" y="-6">MEASURE &middot; NEW</text><text class="n-name" y="13">ML Fcst</text></g></g>
+
+          <!-- LAYER 2: Config Model Extension agent panel -->
+          <text class="mono region s2" style="--d:0s" x="760" y="84">LAYER 2 &middot; MODEL EXTENSION</text>
+          <g class="s2" style="--d:.05s">
+            <circle class="agent-dot" cx="766" cy="111" r="4"/>
+            <text class="agent-name" x="778" y="116">Solution Architect</text>
+          </g>
+          <g class="s2" style="--d:.2s">
+            <rect class="bubble-user" x="800" y="132" width="162" height="46" rx="8"/>
+            <text class="bubble-text" x="812" y="151">Add an ML forecast</text>
+            <text class="bubble-text" x="812" y="168">driven by price</text>
+          </g>
+          <g class="s2" style="--d:.7s">
+            <rect class="bubble-agent" x="760" y="190" width="176" height="30" rx="8"/>
+            <text class="bubble-text muted" x="772" y="210">Reading the Config Graph&hellip;</text>
+          </g>
+          <g class="s2" style="--d:1.6s">
+            <rect class="plan" x="760" y="234" width="202" height="160" rx="8"/>
+            <text class="mono plan-head" x="774" y="258">PLAN &middot; 3 PHASES</text>
+            <text class="plan-row" x="774" y="284">1&#160;&#160;Add measures</text>
+            <text class="plan-row" x="774" y="308">2&#160;&#160;Add ML Engine plugin</text>
+            <text class="plan-row" x="774" y="332">3&#160;&#160;Wire to Demand Review</text>
+            <g class="approve"><rect x="774" y="348" width="104" height="30" rx="15"/><text x="826" y="368" text-anchor="middle">Approve</text></g>
+          </g>
+          <text class="check s2" style="--d:3.1s" x="948" y="284" text-anchor="end">&#10003;</text>
+          <text class="check s2" style="--d:3.5s" x="948" y="308" text-anchor="end">&#10003;</text>
+          <text class="check s2" style="--d:4s" x="948" y="332" text-anchor="end">&#10003;</text>
+          <text class="mono status s2" style="--d:4.4s" x="760" y="420">3 OF 3 PHASES APPLIED</text>
+          <text class="mono status-sub s2" style="--d:4.6s" x="760" y="440">dependency order checked</text>
+
+          <!-- LAYER 3: explorer list + node actions -->
+          <text class="mono region s3" style="--d:.3s" x="34" y="84">EXPLORER</text>
+          <g class="s3" style="--d:.4s"><rect class="search" x="34" y="96" width="172" height="30" rx="6"/><text class="list-muted" x="46" y="116">Search entities</text></g>
+          <g class="s3" style="--d:.6s"><text class="mono list-cat" x="38" y="156">DIMENSIONS</text><text class="list-item" x="38" y="178">Item</text><text class="list-item" x="38" y="200">Location</text></g>
+          <g class="s3" style="--d:.8s"><text class="mono list-cat" x="38" y="236">MEASURES</text>
+            <rect class="list-sel" x="30" y="243" width="182" height="23" rx="4"/>
+            <text class="list-item" x="38" y="259">Sales</text><text class="list-item" x="38" y="281">Stat Fcst</text><text class="list-item list-new" x="38" y="303">Price Driver</text><text class="list-item list-new" x="38" y="325">ML Fcst</text></g>
+          <g class="s3" style="--d:1s"><text class="mono list-cat" x="38" y="361">PLUGINS</text><text class="list-item" x="38" y="383">Stat Engine</text><text class="list-item list-new" x="38" y="405">ML Engine</text></g>
+          <g class="s3" style="--d:1.2s"><text class="mono list-cat" x="38" y="441">REPORTS</text><text class="list-item" x="38" y="463">Demand Review</text></g>
+          <rect class="sel-ring s3" style="--d:1.6s" x="412" y="152" width="136" height="56" rx="10"/>
+          <g class="s3 pop" style="--d:2s">
+            <rect class="popover" x="366" y="262" width="232" height="34" rx="7"/>
+            <text class="pop-item" x="376" y="284">&#8599; Traverse</text>
+            <text class="pop-item" x="446" y="284">+ Add to chat</text>
+            <text class="pop-item" x="527" y="284">&#9638; View data</text>
+          </g>
+        </svg>
+      </div>
+      <p class="sys-hint" aria-hidden="true">Swipe to see the whole workspace &rarr;</p>
+      <figcaption class="sys-steps">
+        <button type="button" class="sys-step" data-go="1">
+          <span class="sys-step-num">Layer 1</span>
+          <strong>Config Graph</strong>
+          <span class="sys-step-text">What AI knows</span>
+          <span class="sys-bar"></span>
+        </button>
+        <button type="button" class="sys-step" data-go="2">
+          <span class="sys-step-num">Layer 2</span>
+          <strong>Config Model Extension</strong>
+          <span class="sys-step-text">What agents build</span>
+          <span class="sys-bar"></span>
+        </button>
+        <button type="button" class="sys-step" data-go="3" aria-current="true">
+          <span class="sys-step-num">Layer 3</span>
+          <strong>Config Designer UI</strong>
+          <span class="sys-step-text">Where people decide</span>
+          <span class="sys-bar"></span>
+        </button>
+        <button type="button" class="sys-play" id="sysPlay" aria-label="Pause animation">Pause</button>
+      </figcaption>
+    </figure>
+
+  </section>
+  </div>
+
+  <div class="contact-wrap">
+  <section class="section contact page-next">
+    <div class="contact-inner">
+      <h2>See it in the products</h2>
+      <div class="contact-links">
+        <a href="projects/config-graph.html?v=3" class="contact-link"><span>Layer 1</span><strong>Config Graph</strong></a>
+        <a href="projects/config-model-extension.html?v=3" class="contact-link"><span>Layer 2</span><strong>Config Model Extension</strong></a>
+        <a href="projects/config-designer-ui.html?v=3" class="contact-link"><span>Layer 3</span><strong>Config Designer UI</strong></a>
+        <a href="index.html#projects" class="contact-link"><span>Everything else</span><strong>The whole platform</strong></a>
+      </div>
+    </div>
+  </section>
+  </div>
+
+</main>
+
+<footer class="footer">
+  <p>&copy; 2026 Navneeth Anil Kumar</p>
+  <a href="index.html">Home &uarr;</a>
+</footer>
+
+<script src="script.js?v=9"></script>
+</body>
+</html>

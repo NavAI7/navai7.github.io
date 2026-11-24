@@ -12,18 +12,18 @@
 <meta property="og:site_name" content="Navneeth Anil Kumar" />
 <meta property="og:url" content="https://navai7.github.io/projects/config-model-extension.html" />
 <meta property="og:title" content="Config Model Extension — Case Study" />
-<meta property="og:description" content="The o9 Solution Architect agent that turns a 4–6 month, expert-bound configuration build into an agent-executed, human-approved workflow shipped in weeks." />
+<meta property="og:description" content="The o9 Solution Architect agent that turns a 4–6 month, expert-bound configuration build into an agent-executed, human-approved workflow that ships in days." />
 <meta property="og:image" content="https://navai7.github.io/assets/headshot.png" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="Config Model Extension — Case Study" />
-<meta name="twitter:description" content="The o9 Solution Architect agent that turns a 4–6 month, expert-bound configuration build into an agent-executed, human-approved workflow shipped in weeks." />
+<meta name="twitter:description" content="The o9 Solution Architect agent that turns a 4–6 month, expert-bound configuration build into an agent-executed, human-approved workflow that ships in days." />
 <meta name="twitter:image" content="https://navai7.github.io/assets/headshot.png" />
 
 <link rel="icon" href="../favicon.svg" type="image/svg+xml" />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../styles.css?v=18" />
+<link rel="stylesheet" href="../styles.css?v=21" />
 <link rel="stylesheet" href="case-study.css?v=11" />
 <noscript><style>
   .reveal, .reveal.in{ opacity:1 !important; transform:none !important; filter:none !important; }
@@ -36,7 +36,7 @@
 
 <header class="doc-header">
   <div class="doc-header-inner">
-    <a href="../index.html?v=2#projects" class="doc-back">&larr; Back to Selected Work</a>
+    <a href="../index.html?v=3#work-model-extension" class="doc-back">&larr; Back to the timeline</a>
     <p class="doc-eyebrow">Layer 2 of 3 &middot; Agent Built on the Config Graph</p>
     <h1 class="doc-title">Config Model Extension</h1>
     <p class="doc-subtitle">
@@ -59,7 +59,7 @@
     <div class="doc-skim-item"><span>Problem</span><p>Configuration took 4&ndash;6 months, was expert-bound, and relied on fragile manual dependency tracking.</p></div>
     <div class="doc-skim-item"><span>User</span><p>Configurators, who use the o9 Solution Architect agent to provision or extend a tenant's configuration.</p></div>
     <div class="doc-skim-item"><span>Decision</span><p>Shipped the agent's core capabilities before any dedicated UI, and scoped exactly which edits it could make safely on its own.</p></div>
-    <div class="doc-skim-item"><span>Outcome</span><p>4&ndash;6 month builds now ship in weeks, sometimes days, with a human approving every phase.</p></div>
+    <div class="doc-skim-item"><span>Outcome</span><p>4&ndash;6 month builds now ship in days, with a person approving each phase or auto mode applying what&rsquo;s safe.</p></div>
     <div class="doc-skim-item"><span>My role</span><p>Scoped the PRD, defined capability boundaries and edit safety, deferred the UI, and set success metrics.</p></div>
   </div>
 </div>
@@ -227,9 +227,11 @@
     <section id="trust" class="doc-section reveal">
       <h2>Human-in-the-loop &amp; trust</h2>
       <p>
-        No phase of a proposed plan executes unattended. The configurator can accept, edit, or
-        reject each phase before the agent proceeds to the tool calls for it, human-in-the-loop by
-        design, not as an afterthought bolted onto an autonomous system.
+        By default, the configurator accepts, edits or rejects each phase before the agent makes the
+        tool calls for it: human-in-the-loop by design, not bolted onto an autonomous system. For
+        work that doesn&rsquo;t need a person at every step, there is an auto mode, where the agent
+        decides which steps are safe to apply on its own. Either way, the limits are enforced by the
+        tools rather than the prompt, so build order and rollback hold in both modes.
       </p>
       <p>
         Failure handling gets the same treatment as a first-class flow, not an edge case. When a tool
@@ -266,7 +268,7 @@
         </div>
       </div>
       <p>
-        Implementations that used to take four to six months can ship in weeks, sometimes days, for
+        Implementations that used to take four to six months can now ship in days, for
         both greenfield tenant provisioning and extending an existing solution, for example moving a
         tenant from statistical to ML-based forecasting. The Solution Architect agent built here also
         became the engine behind <strong>Config Designer UI</strong>, and a related, adjacent tool
@@ -280,9 +282,9 @@
 
 <footer class="footer" style="max-width:1180px;margin:0 auto;padding:32px clamp(24px,5vw,72px) 48px;display:flex;justify-content:space-between;font-family:var(--mono);font-size:12px;color:var(--muted);">
   <p>&copy; 2026 Navneeth Anil Kumar</p>
-  <a href="../index.html?v=2#projects">Back to Selected Work &uarr;</a>
+  <a href="../index.html?v=3#work-model-extension">Back to the timeline &uarr;</a>
 </footer>
 
-<script src="case-study.js?v=6"></script>
+<script src="case-study.js?v=7"></script>
 </body>
 </html>
